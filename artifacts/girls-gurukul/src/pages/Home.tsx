@@ -60,10 +60,17 @@ const events = [
 ];
 
 const galleryImages = [
+  { src: "/images/school-gate.png", label: "Our School Gate" },
+  { src: "/images/school-building.png", label: "School Building" },
   { src: "/images/gallery-annual-function.png", label: "Annual Function" },
   { src: "/images/gallery-sports-day.png", label: "Sports Day" },
   { src: "/images/gallery-science-fair.png", label: "Science Fair" },
   { src: "/images/campus-aerial.png", label: "Our Campus" },
+];
+
+const heroSlides = [
+  { src: "/images/school-gate.png", label: "Welcome to The Girls Gurukul" },
+  { src: "/images/school-building.png", label: "World-Class Infrastructure" },
 ];
 
 export default function Home() {
@@ -73,6 +80,7 @@ export default function Home() {
 
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [autoplay, setAutoplay] = useState(true);
+  const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
 
   useEffect(() => {
     if (!autoplay) return;
@@ -80,32 +88,52 @@ export default function Home() {
     return () => clearInterval(t);
   }, [autoplay]);
 
+  useEffect(() => {
+    const t = setInterval(() => setCurrentHeroSlide((p) => (p + 1) % heroSlides.length), 6000);
+    return () => clearInterval(t);
+  }, []);
+
   return (
     <div className="overflow-x-hidden">
       {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center scale-105" style={{ backgroundImage: "url('/images/hero-bg.png')" }} />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1a2e5a]/95 via-[#1a2e5a]/80 to-[#1a2e5a]/60" />
-        <div className="absolute inset-0 hero-pattern" />
+        {/* Sliding background images */}
+        {heroSlides.map((slide, i) => (
+          <div
+            key={slide.src}
+            className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+            style={{
+              backgroundImage: `url('${slide.src}')`,
+              opacity: i === currentHeroSlide ? 1 : 0,
+            }}
+          />
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1a2e5a]/90 via-[#1a2e5a]/75 to-[#1a2e5a]/55" />
+        <div className="absolute inset-0 hero-pattern opacity-30" />
         <div className="relative z-10 container mx-auto px-4 py-28 flex flex-col items-center text-center">
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}
+          {/* School Logo in Hero */}
+          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}
+            className="mb-6">
+            <img src="/images/school-logo.png" alt="The Girls Gurukul" className="w-24 h-24 md:w-28 md:h-28 object-contain drop-shadow-2xl mx-auto" />
+          </motion.div>
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.1 }}
             className="inline-flex items-center gap-2 bg-[#d4a017]/20 border border-[#d4a017]/40 text-[#d4a017] text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-6">
             <span className="w-2 h-2 bg-[#d4a017] rounded-full animate-pulse" />
             Admissions Open 2025-26
           </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
             className="font-serif font-bold text-4xl md:text-6xl lg:text-7xl text-white leading-tight mb-4">
             The Girls Gurukul
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
             className="text-[#d4a017] font-semibold text-xl md:text-2xl mb-4 tracking-wide">
             Kalayat, Haryana
           </motion.p>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }}
             className="text-white/80 text-lg md:text-xl max-w-2xl mb-10 italic">
             "Shaping Futures, Building Characters — Where Ancient Wisdom Meets Modern Excellence"
           </motion.p>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }}
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }}
             className="flex flex-col sm:flex-row gap-4">
             <Link href="/admissions">
               <Button size="lg" className="bg-[#d4a017] text-[#1a2e5a] hover:bg-[#d4a017]/90 font-bold px-8 py-4 rounded-full text-base shadow-2xl shadow-[#d4a017]/30">
@@ -119,8 +147,18 @@ export default function Home() {
             </Link>
           </motion.div>
         </div>
+
+        {/* Slide indicator dots */}
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+          {heroSlides.map((_, i) => (
+            <button key={i} onClick={() => setCurrentHeroSlide(i)}
+              className={`rounded-full transition-all duration-300 ${i === currentHeroSlide ? "w-8 h-2.5 bg-[#d4a017]" : "w-2.5 h-2.5 bg-white/40 hover:bg-white/70"}`}
+            />
+          ))}
+        </div>
+
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/60 text-xs">
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/50 text-xs">
           <span>Scroll Down</span>
           <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}
             className="w-5 h-8 border-2 border-white/30 rounded-full flex justify-center pt-1">

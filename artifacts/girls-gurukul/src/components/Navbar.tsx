@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { useState, useEffect, useRef } from "react";
-import { Menu, X, ChevronDown, GraduationCap } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
@@ -104,9 +104,11 @@ export default function Navbar() {
 
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between" ref={dropdownRef}>
         <Link href="/" className="flex items-center gap-3 py-1">
-          <div className="w-10 h-10 bg-[#1a2e5a] rounded-full flex items-center justify-center flex-shrink-0">
-            <GraduationCap className="w-6 h-6 text-[#d4a017]" />
-          </div>
+          <img
+            src="/images/school-logo.png"
+            alt="The Girls Gurukul Logo"
+            className="w-12 h-12 object-contain flex-shrink-0 drop-shadow-sm"
+          />
           <div className="flex flex-col">
             <span className="font-serif font-bold text-lg md:text-xl text-[#1a2e5a] leading-tight">
               The Girls Gurukul
