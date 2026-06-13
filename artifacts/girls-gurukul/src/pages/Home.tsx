@@ -96,73 +96,125 @@ export default function Home() {
   return (
     <div className="overflow-x-hidden">
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Sliding background images */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Sliding background photos */}
         {heroSlides.map((slide, i) => (
-          <div
-            key={slide.src}
-            className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
-            style={{
-              backgroundImage: `url('${slide.src}')`,
-              opacity: i === currentHeroSlide ? 1 : 0,
-            }}
-          />
+          <div key={slide.src} className="absolute inset-0 bg-cover bg-center transition-opacity duration-1500"
+            style={{ backgroundImage: `url('${slide.src}')`, opacity: i === currentHeroSlide ? 1 : 0 }} />
         ))}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1a2e5a]/90 via-[#1a2e5a]/75 to-[#1a2e5a]/55" />
-        <div className="absolute inset-0 hero-pattern opacity-30" />
-        <div className="relative z-10 container mx-auto px-4 py-28 flex flex-col items-center text-center">
-          {/* School Logo in Hero */}
-          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}
-            className="mb-6">
-            <img src="/images/school-logo.png" alt="The Girls Gurukul" className="w-24 h-24 md:w-28 md:h-28 object-contain drop-shadow-2xl mx-auto" />
-          </motion.div>
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center gap-2 bg-[#d4a017]/20 border border-[#d4a017]/40 text-[#d4a017] text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-6">
-            <span className="w-2 h-2 bg-[#d4a017] rounded-full animate-pulse" />
-            Admissions Open 2025-26
-          </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
-            className="font-serif font-bold text-4xl md:text-6xl lg:text-7xl text-white leading-tight mb-4">
-            The Girls Gurukul
-          </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-[#d4a017] font-semibold text-xl md:text-2xl mb-4 tracking-wide">
-            Kalayat, Haryana
-          </motion.p>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }}
-            className="text-white/80 text-lg md:text-xl max-w-2xl mb-10 italic">
-            "Shaping Futures, Building Characters — Where Ancient Wisdom Meets Modern Excellence"
-          </motion.p>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4">
-            <Link href="/admissions">
-              <Button size="lg" className="bg-[#d4a017] text-[#1a2e5a] hover:bg-[#d4a017]/90 font-bold px-8 py-4 rounded-full text-base shadow-2xl shadow-[#d4a017]/30">
-                Apply Now <ArrowRight size={18} className="ml-2" />
-              </Button>
-            </Link>
-            <Link href="/about">
-              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-[#1a2e5a] font-semibold px-8 py-4 rounded-full text-base bg-transparent">
-                Explore School <ChevronRight size={18} className="ml-2" />
-              </Button>
-            </Link>
-          </motion.div>
+        {/* Strong left gradient so left side is readable, right side shows photo */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1a2e5a] via-[#1a2e5a]/85 to-[#1a2e5a]/20" />
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1a2e5a]/60 to-transparent" />
+
+        <div className="relative z-10 container mx-auto px-6 lg:px-12 py-32">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+            {/* LEFT — Text Content */}
+            <div>
+              {/* Location badge */}
+              <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}
+                className="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-sm text-white/80 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-5">
+                📍 Kalayat, Kaithal, Haryana
+              </motion.div>
+
+              {/* Admissions badge */}
+              <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.05 }}
+                className="flex items-center gap-2 mb-4">
+                <span className="inline-flex items-center gap-2 bg-[#d4a017]/25 border border-[#d4a017]/50 text-[#d4a017] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
+                  <span className="w-2 h-2 bg-[#d4a017] rounded-full animate-pulse" /> Admissions Open 2025-26
+                </span>
+              </motion.div>
+
+              {/* School Name */}
+              <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
+                className="font-serif font-bold text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-3">
+                The Girls<br />
+                <span className="text-[#d4a017]">Gurukul</span>
+              </motion.h1>
+
+              {/* Divider */}
+              <motion.div initial={{ width: 0 }} animate={{ width: "5rem" }} transition={{ duration: 0.8, delay: 0.3 }}
+                className="h-1 bg-[#d4a017] rounded-full mb-5" />
+
+              {/* Tagline */}
+              <motion.p initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.35 }}
+                className="text-white/75 text-base md:text-lg max-w-md mb-8 leading-relaxed italic">
+                "Shaping Futures, Building Characters — Where Ancient Wisdom Meets Modern Excellence"
+              </motion.p>
+
+              {/* Quick stats row */}
+              <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.45 }}
+                className="flex gap-6 mb-10">
+                {[{ val: "1200+", lbl: "Students" }, { val: "19+", lbl: "Years" }, { val: "100%", lbl: "Results" }].map(({ val, lbl }) => (
+                  <div key={lbl} className="text-center">
+                    <p className="text-[#d4a017] font-bold text-xl leading-none">{val}</p>
+                    <p className="text-white/60 text-xs mt-0.5">{lbl}</p>
+                  </div>
+                ))}
+              </motion.div>
+
+              {/* CTA Buttons */}
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.55 }}
+                className="flex flex-wrap gap-4">
+                <Link href="/admissions">
+                  <Button size="lg" className="bg-[#d4a017] text-[#1a2e5a] hover:bg-[#d4a017]/90 font-bold px-8 py-4 rounded-full text-base shadow-2xl shadow-[#d4a017]/30">
+                    Apply Now <ArrowRight size={18} className="ml-2" />
+                  </Button>
+                </Link>
+                <Link href="/about">
+                  <Button size="lg" variant="outline" className="border-2 border-white/60 text-white hover:bg-white hover:text-[#1a2e5a] font-semibold px-8 py-4 rounded-full text-base bg-transparent">
+                    Explore School <ChevronRight size={18} className="ml-2" />
+                  </Button>
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* RIGHT — Large Logo */}
+            <motion.div initial={{ opacity: 0, scale: 0.7 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.2, type: "spring", stiffness: 80 }}
+              className="hidden lg:flex items-center justify-center">
+              <div className="relative">
+                {/* Outer glow ring */}
+                <div className="absolute inset-0 rounded-full bg-[#d4a017]/20 blur-3xl scale-125" />
+                {/* Gold ring border */}
+                <div className="relative w-72 h-72 xl:w-80 xl:h-80 rounded-full border-2 border-[#d4a017]/40 flex items-center justify-center bg-white/5 backdrop-blur-sm shadow-2xl">
+                  {/* Inner decorative ring */}
+                  <div className="absolute inset-3 rounded-full border border-[#d4a017]/20" />
+                  {/* Logo image */}
+                  <img src="/images/school-logo.png" alt="The Girls Gurukul"
+                    className="w-56 h-56 xl:w-64 xl:h-64 object-contain relative z-10 drop-shadow-[0_0_30px_rgba(212,160,23,0.4)]"
+                  />
+                </div>
+                {/* Decorative floating badges */}
+                <motion.div animate={{ y: [-4, 4, -4] }} transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                  className="absolute -top-4 -right-4 bg-[#d4a017] text-[#1a2e5a] text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                  🏆 Best School Award
+                </motion.div>
+                <motion.div animate={{ y: [4, -4, 4] }} transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
+                  className="absolute -bottom-4 -left-4 bg-white text-[#1a2e5a] text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                  📚 CBSE Affiliated
+                </motion.div>
+              </div>
+            </motion.div>
+
+          </div>
         </div>
 
-        {/* Slide indicator dots */}
-        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        {/* Slide dots — bottom center */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-2 z-10">
           {heroSlides.map((_, i) => (
             <button key={i} onClick={() => setCurrentHeroSlide(i)}
-              className={`rounded-full transition-all duration-300 ${i === currentHeroSlide ? "w-8 h-2.5 bg-[#d4a017]" : "w-2.5 h-2.5 bg-white/40 hover:bg-white/70"}`}
-            />
+              className={`rounded-full transition-all duration-300 ${i === currentHeroSlide ? "w-8 h-2 bg-[#d4a017]" : "w-2 h-2 bg-white/40 hover:bg-white/70"}`} />
           ))}
         </div>
 
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/50 text-xs">
-          <span>Scroll Down</span>
+        {/* Scroll hint */}
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}
+          className="absolute bottom-10 right-10 hidden lg:flex flex-col items-center gap-1.5 text-white/40 text-xs">
+          <span className="rotate-90 tracking-widest text-[10px] uppercase">Scroll</span>
           <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}
-            className="w-5 h-8 border-2 border-white/30 rounded-full flex justify-center pt-1">
-            <div className="w-1 h-2 bg-white/60 rounded-full" />
+            className="w-4 h-7 border border-white/20 rounded-full flex justify-center pt-1">
+            <div className="w-0.5 h-1.5 bg-white/40 rounded-full" />
           </motion.div>
         </motion.div>
       </section>
