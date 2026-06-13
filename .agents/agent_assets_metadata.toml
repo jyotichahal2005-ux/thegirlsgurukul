@@ -1,0 +1,38 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "PdfNIJr91zoFvaPi-SddG"
+uri = "file://attached_assets/hero-bg.png"
+type = "image"
+title = "hero background watercolor school"
+
+[[generated]]
+id = "Rc4RYJHYqL6ffyoU-jAvm"
+uri = "file://attached_assets/principal.png"
+type = "image"
+title = "principal portrait"
+
+[[generated]]
+id = "D0zRlMbwVOHdfDbSR1Rn2"
+uri = "file://attached_assets/campus-aerial.png"
+type = "image"
+title = "campus aerial view"
+
+[[generated]]
+id = "DOB8jf7gXC0w1_T9EMvqO"
+uri = "file://attached_assets/gallery-annual-function.png"
+type = "image"
+title = "annual function stage"
+
+[[generated]]
+id = "bg0363Ou08RddNfBSxPfu"
+uri = "file://attached_assets/gallery-sports-day.png"
+type = "image"
+title = "sports day girls"
+
+[[generated]]
+id = "TXhLwjZ3ytl-tk1YAi8sT"
+uri = "file://attached_assets/gallery-science-fair.png"
+type = "image"
+title = "science fair girls"

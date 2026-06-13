@@ -1,44 +1,58 @@
-# [Project name]
+# The Girls Gurukul — School Website
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A modern, interactive, fully responsive school website for "The Girls Gurukul, Kalayat (Haryana, India)". Frontend-only presentation site with 5 pages, Framer Motion animations, AI-generated images, and a navy blue (#1a2e5a) + gold (#d4a017) + white color palette.
 
 ## Run & Operate
 
+- `pnpm --filter @workspace/girls-gurukul run dev` — run the school website (port 5173)
 - `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
 
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- Frontend: React + Vite + Tailwind CSS v4 + shadcn/ui + wouter routing
+- Animations: Framer Motion
+- Icons: Lucide React + React Icons (react-icons/si)
+- No backend — frontend-only presentation site
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/girls-gurukul/` — school website (main artifact)
+  - `src/pages/` — Home, About, Gallery, Documents, Contact
+  - `src/components/` — Navbar, Footer, WhatsAppButton, BackToTop
+  - `public/images/` — AI-generated images (hero, principal, campus, gallery)
+  - `src/index.css` — Tailwind v4 + CSS theme variables (primary=navy, secondary=gold)
+- `artifacts/api-server/` — Express API server (not used by website)
+- `attached_assets/` — source images (copied to public/images/ for Vite serving)
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Frontend-only SPA at previewPath "/" — no backend API calls
+- Images stored in `public/images/` (not @assets alias) to stay within Vite root
+- Wouter for client-side routing (lightweight alternative to react-router)
+- All animations use Framer Motion `whileInView` with `viewport: { once: true }` for performance
+- Navy/gold theme defined as HSL CSS variables in index.css and consumed via Tailwind
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+5-page school website:
+1. **Home** — hero, about snippet, stats, features, principal's message, achievements, gallery preview, testimonials carousel, quick links
+2. **About** — history, mission/vision, core values, infrastructure, affiliation, management, full principal message, timings, filterable staff directory
+3. **Gallery** — filterable photo grid with lightbox, video gallery, achievements gallery
+4. **Documents** — syllabus table, certificates, mandatory disclosures, circulars, TC download, fee structure
+5. **Contact** — contact cards, Google Maps placeholder, contact form, department contacts, eligibility table, full admission form, social links
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+_Populate as you build._
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Use `restartWorkflow` callback from code_execution (not `restart_workflow` tool) for artifact-managed workflows — the tool's health checker fails even when the app works correctly
+- Images must be in `public/images/` (not imported via @assets alias) to be served reliably
+- The workflow uses PORT=5173 and BASE_PATH=/ from artifact.toml env section
 
 ## Pointers
 

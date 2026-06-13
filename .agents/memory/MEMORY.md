@@ -1,0 +1,2 @@
+- [Workflow restart method](workflow-restart.md) — use `restartWorkflow` callback from code_execution, not the `restart_workflow` tool, for artifact-managed workflows.
+- [Static images in Vite artifacts](vite-static-images.md) — put images in `public/images/` and reference via URL string, not `@assets` alias imports.
