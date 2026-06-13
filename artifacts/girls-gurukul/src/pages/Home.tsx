@@ -1,390 +1,345 @@
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
-import { motion } from "framer-motion";
 import {
-  MonitorSmartphone, Users, Trophy, Shield,
-  Laptop, Music, Download, FileText, Star,
-  ArrowRight, ChevronLeft, ChevronRight
+  ChevronRight, Star, Award, BookOpen, Users, Trophy,
+  ArrowRight, CheckCircle, Quote, Calendar, Newspaper, ChevronLeft
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect } from "react";
-const heroBg = "/images/hero-bg.png";
-const principalImg = "/images/principal.png";
-const galleryAnnual = "/images/gallery-annual-function.png";
-const gallerySports = "/images/gallery-sports-day.png";
-const galleryScience = "/images/gallery-science-fair.png";
+import AnimatedCounter from "@/components/AnimatedCounter";
+import SectionHeader from "@/components/SectionHeader";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.1 },
-  }),
+  hidden: { opacity: 0, y: 30 },
+  visible: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.6, delay: i * 0.1 } }),
 };
 
 const stats = [
-  { label: "Founded Year", value: "1995" },
-  { label: "Students Enrolled", value: "1,200+" },
-  { label: "Experienced Teachers", value: "60+" },
-  { label: "Acres of Campus", value: "8" },
+  { label: "Students Enrolled", value: 1200, suffix: "+", icon: Users, color: "bg-blue-500" },
+  { label: "Expert Teachers", value: 65, suffix: "+", icon: BookOpen, color: "bg-amber-500" },
+  { label: "Years of Excellence", value: 19, suffix: "+", icon: Award, color: "bg-green-500" },
+  { label: "Board Results 100%", value: 100, suffix: "%", icon: Trophy, color: "bg-purple-500" },
 ];
 
 const features = [
-  { icon: MonitorSmartphone, label: "Smart Classrooms", desc: "State-of-the-art digital classrooms with interactive whiteboards" },
-  { icon: Users, label: "Experienced Faculty", desc: "Highly qualified teachers with decades of combined experience" },
-  { icon: Trophy, label: "Sports Facilities", desc: "Dedicated grounds for athletics, kabaddi, volleyball and more" },
-  { icon: Shield, label: "Safe Environment", desc: "CCTV-monitored, walled campus with trained security staff" },
-  { icon: Laptop, label: "Digital Learning", desc: "Computer labs with high-speed internet and modern software" },
-  { icon: Music, label: "Co-curricular Activities", desc: "Dance, music, debate, art and dozens of clubs to explore" },
-];
-
-const achievements = [
-  { title: "Board Topper 2024", sub: "Priya Sharma — 98.6% in Class XII HBSE", color: "from-yellow-50 to-yellow-100 border-yellow-300" },
-  { title: "State Sports Winner", sub: "Gold Medal — Under-16 Kabaddi Championship", color: "from-blue-50 to-blue-100 border-blue-300" },
-  { title: "Science Olympiad Gold", sub: "National Level — 3 students qualified", color: "from-green-50 to-green-100 border-green-300" },
-  { title: "100% Board Result", sub: "Class X & XII — 5 consecutive years", color: "from-purple-50 to-purple-100 border-purple-300" },
-];
-
-const galleryTiles = [
-  { label: "Annual Function", img: galleryAnnual, color: "from-purple-900/70" },
-  { label: "Sports Day", img: gallerySports, color: "from-blue-900/70" },
-  { label: "Science Fair", img: galleryScience, color: "from-green-900/70" },
-  { label: "Republic Day", img: galleryAnnual, color: "from-orange-900/70" },
-  { label: "Cultural Programs", img: gallerySports, color: "from-pink-900/70" },
-  { label: "Prize Distribution", img: galleryScience, color: "from-yellow-900/70" },
-  { label: "Field Trips", img: galleryAnnual, color: "from-teal-900/70" },
-  { label: "Classroom Activities", img: gallerySports, color: "from-indigo-900/70" },
+  { icon: "🎓", title: "CBSE Curriculum", desc: "Comprehensive curriculum aligned with national standards for holistic development." },
+  { icon: "🏫", title: "Modern Infrastructure", desc: "State-of-the-art classrooms, labs, library and sports facilities." },
+  { icon: "🧪", title: "Science Labs", desc: "Fully equipped Physics, Chemistry and Biology labs for practical learning." },
+  { icon: "🎨", title: "Arts & Culture", desc: "Rich cultural programs fostering creativity, music, dance and fine arts." },
+  { icon: "⚽", title: "Sports Excellence", desc: "Extensive sports facilities and trained coaches for physical development." },
+  { icon: "🌱", title: "Gurukul Values", desc: "Ancient gurukul wisdom integrated with modern education for character building." },
 ];
 
 const testimonials = [
-  { name: "Rekha Devi", role: "Parent, Class VIII", text: "The Girls Gurukul has transformed my daughter completely. The teachers are dedicated and the environment is incredibly safe. Best decision we made for her education.", stars: 5 },
-  { name: "Kavita Sharma", role: "Parent, Class X", text: "Excellent faculty and discipline. My daughter has improved tremendously in both studies and co-curricular activities. We are proud to be part of this institution.", stars: 5 },
-  { name: "Ananya Singh", role: "Student, Class XII", text: "The school taught me not just academics but life skills. The principal is very supportive and the teachers go beyond books to inspire us.", stars: 5 },
-  { name: "Sunita Yadav", role: "Parent, Class VI", text: "Affordable fees with top-quality education. The infrastructure is modern and the school keeps parents informed at every step. Highly recommended!", stars: 5 },
+  { name: "Sunita Devi", role: "Parent of Class X Student", text: "The Girls Gurukul has transformed my daughter's life. The teachers are dedicated, the environment is nurturing, and the academic results speak for themselves. We couldn't be prouder.", rating: 5 },
+  { name: "Priya Sharma", role: "Alumni, Batch 2020", text: "My years at The Girls Gurukul were the most formative of my life. The values instilled here helped me succeed at Delhi University and in my career. Forever grateful!", rating: 5 },
+  { name: "Rekha Malhotra", role: "Parent of Class VII Student", text: "Excellent teachers, safe environment, and a truly holistic approach. My daughter loves going to school every day. The school has exceeded all our expectations.", rating: 5 },
+  { name: "Meena Kumari", role: "Parent of Class XII Student", text: "My daughter scored 95% in boards thanks to the exceptional guidance here. The faculty is highly qualified and always available. Best school in Kaithal district!", rating: 5 },
 ];
 
-const quickLinks = [
-  { icon: FileText, label: "Documents", href: "/documents" },
-  { icon: FileText, label: "Admission Form", href: "/contact" },
-  { icon: Download, label: "Download TC", href: "/documents" },
-  { icon: FileText, label: "Syllabus", href: "/documents" },
-  { icon: FileText, label: "Holiday List", href: "/documents" },
+const achievements = [
+  { icon: "🏆", title: "District Topper 2024", desc: "Our student ranked 1st in Kaithal district board results" },
+  { icon: "🥇", title: "Sports Championship", desc: "State-level inter-school athletics championship winners" },
+  { icon: "🎖️", title: "Best School Award", desc: "Best Girls School in Haryana by State Govt 2023" },
+  { icon: "📚", title: "100% Board Results", desc: "Consistent 100% pass rate in CBSE board examinations" },
+  { icon: "🌟", title: "Cultural Excellence", desc: "National winners in folk dance and classical music" },
+  { icon: "💡", title: "Innovation Award", desc: "Recognised for science innovation projects at NCERT" },
+];
+
+const news = [
+  { date: "June 10, 2025", category: "Academic", title: "Annual Prize Distribution Ceremony 2025", desc: "Celebrating excellence with our top performers and achievers across all classes." },
+  { date: "May 28, 2025", category: "Sports", title: "Inter-School Athletics Championship Victory", desc: "Our students won 8 gold medals at the district-level sports meet." },
+  { date: "May 15, 2025", category: "Admissions", title: "Admissions Open for Academic Year 2025-26", desc: "Enroll now for Nursery to Class XII. Limited seats available." },
+];
+
+const events = [
+  { date: { day: "25", month: "Jun" }, title: "Parent-Teacher Meeting", time: "9:00 AM – 12:00 PM", icon: "👨‍👩‍👧" },
+  { date: { day: "15", month: "Jul" }, title: "Independence Day Celebration", time: "8:00 AM – 11:00 AM", icon: "🇮🇳" },
+  { date: { day: "05", month: "Aug" }, title: "Science Exhibition 2025", time: "10:00 AM – 4:00 PM", icon: "🔬" },
+  { date: { day: "20", month: "Aug" }, title: "Annual Sports Day", time: "8:00 AM – 2:00 PM", icon: "⚽" },
+];
+
+const galleryImages = [
+  { src: "/images/gallery-annual-function.png", label: "Annual Function" },
+  { src: "/images/gallery-sports-day.png", label: "Sports Day" },
+  { src: "/images/gallery-science-fair.png", label: "Science Fair" },
+  { src: "/images/campus-aerial.png", label: "Our Campus" },
 ];
 
 export default function Home() {
-  const [testimonialIdx, setTestimonialIdx] = useState(0);
+  useEffect(() => {
+    document.title = "The Girls Gurukul, Kalayat – Shaping Futures, Building Characters";
+  }, []);
+
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [autoplay, setAutoplay] = useState(true);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTestimonialIdx((i) => (i + 1) % testimonials.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
+    if (!autoplay) return;
+    const t = setInterval(() => setCurrentTestimonial((p) => (p + 1) % testimonials.length), 5000);
+    return () => clearInterval(t);
+  }, [autoplay]);
 
   return (
     <div className="overflow-x-hidden">
-
-      {/* ── HERO ── */}
-      <section
-        className="relative min-h-[92vh] flex items-center justify-center overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #1a2e5a 0%, #0d1e3d 60%, #1a2e5a 100%)" }}
-      >
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: `url(${heroBg})` }}
-        />
-        <div className="absolute inset-0" style={{
-          backgroundImage: "radial-gradient(circle at 20% 50%, rgba(212,160,23,0.15) 0%, transparent 60%), radial-gradient(circle at 80% 20%, rgba(212,160,23,0.1) 0%, transparent 50%)"
-        }} />
-
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="inline-block mb-4 px-4 py-1.5 rounded-full border border-yellow-400/40 bg-yellow-400/10 text-yellow-300 text-sm font-medium tracking-widest uppercase"
-          >
-            Admissions Open 2025–26
+      {/* HERO */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center scale-105" style={{ backgroundImage: "url('/images/hero-bg.png')" }} />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1a2e5a]/95 via-[#1a2e5a]/80 to-[#1a2e5a]/60" />
+        <div className="absolute inset-0 hero-pattern" />
+        <div className="relative z-10 container mx-auto px-4 py-28 flex flex-col items-center text-center">
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 bg-[#d4a017]/20 border border-[#d4a017]/40 text-[#d4a017] text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full mb-6">
+            <span className="w-2 h-2 bg-[#d4a017] rounded-full animate-pulse" />
+            Admissions Open 2025-26
           </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-2"
-          >
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
+            className="font-serif font-bold text-4xl md:text-6xl lg:text-7xl text-white leading-tight mb-4">
             The Girls Gurukul
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-yellow-300 font-medium mb-2"
-          >
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
+            className="text-[#d4a017] font-semibold text-xl md:text-2xl mb-4 tracking-wide">
             Kalayat, Haryana
           </motion.p>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-lg md:text-xl text-gray-300 italic mb-10"
-          >
-            "Shaping Futures, Building Characters"
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
+            className="text-white/80 text-lg md:text-xl max-w-2xl mb-10 italic">
+            "Shaping Futures, Building Characters — Where Ancient Wisdom Meets Modern Excellence"
           </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <Link href="/about">
-              <Button
-                data-testid="button-explore-school"
-                className="px-8 py-6 text-lg font-semibold rounded-full bg-yellow-500 text-primary hover:bg-yellow-400 hover:scale-105 transition-all shadow-xl shadow-yellow-500/30"
-              >
-                Explore School <ArrowRight className="ml-2" size={20} />
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-4">
+            <Link href="/admissions">
+              <Button size="lg" className="bg-[#d4a017] text-[#1a2e5a] hover:bg-[#d4a017]/90 font-bold px-8 py-4 rounded-full text-base shadow-2xl shadow-[#d4a017]/30">
+                Apply Now <ArrowRight size={18} className="ml-2" />
               </Button>
             </Link>
-            <Link href="/contact">
-              <Button
-                data-testid="button-apply-now"
-                variant="outline"
-                className="px-8 py-6 text-lg font-semibold rounded-full border-2 border-white/40 text-white hover:bg-white/10 hover:border-white transition-all"
-              >
-                Apply Now
+            <Link href="/about">
+              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-[#1a2e5a] font-semibold px-8 py-4 rounded-full text-base bg-transparent">
+                Explore School <ChevronRight size={18} className="ml-2" />
               </Button>
             </Link>
           </motion.div>
         </div>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/60 text-xs">
+          <span>Scroll Down</span>
+          <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}
+            className="w-5 h-8 border-2 border-white/30 rounded-full flex justify-center pt-1">
+            <div className="w-1 h-2 bg-white/60 rounded-full" />
+          </motion.div>
+        </motion.div>
+      </section>
 
-        {/* decorative wave */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 80L1440 80L1440 20C1200 70 800 0 600 40C400 80 200 10 0 40L0 80Z" fill="white" />
-          </svg>
+      {/* TICKER */}
+      <section className="bg-[#d4a017] py-2.5 overflow-hidden">
+        <div className="flex items-center gap-4">
+          <div className="flex-shrink-0 bg-[#1a2e5a] text-white text-xs font-bold px-4 py-1.5 uppercase tracking-wider z-10">📢 Notice</div>
+          <div className="overflow-hidden flex-1">
+            <div className="ticker-track flex gap-20 whitespace-nowrap text-[#1a2e5a] text-sm font-semibold">
+              {Array(2).fill(["🎓 Admissions Open for 2025-26 – Apply Now!", "🏆 100% Results in CBSE Board 2024", "📅 Parent-Teacher Meeting on 25th June 2025", "🏅 District Champions in Athletics 2024", "📚 Scholarships available for meritorious students", "🎉 Annual Function on 15th August 2025"]).flat().map((text, i) => (
+                <span key={i} className="flex-shrink-0">{text}</span>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ── ABOUT SHORT ── */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <span className="text-secondary font-semibold uppercase tracking-widest text-sm">Our Legacy</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-primary mt-2 mb-4">About The Girls Gurukul</h2>
+      {/* STATS */}
+      <section className="py-16 bg-[#1a2e5a] relative overflow-hidden">
+        <div className="absolute inset-0 hero-pattern opacity-30" />
+        <div className="relative container mx-auto px-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {stats.map(({ label, value, suffix, icon: Icon, color }, i) => (
+              <motion.div key={label} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center">
+                <div className={`${color} w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg`}>
+                  <Icon className="w-7 h-7 text-white" />
+                </div>
+                <div className="font-serif font-bold text-4xl md:text-5xl text-white mb-1">
+                  <AnimatedCounter to={value} suffix={suffix} />
+                </div>
+                <p className="text-[#d4a017] font-semibold text-sm uppercase tracking-wide">{label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT SNIPPET */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="relative">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <img src="/images/campus-aerial.png" alt="Our Campus" className="w-full h-[420px] object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a2e5a]/60 to-transparent" />
+                <div className="absolute bottom-6 left-6 glass-card rounded-2xl p-4 text-white">
+                  <p className="font-bold text-lg">Est. 2005</p>
+                  <p className="text-sm text-white/80">19+ Years of Excellence</p>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+              <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#d4a017]/15 text-[#d4a017] mb-4">About Our School</span>
+              <h2 className="font-serif font-bold text-3xl md:text-4xl text-[#1a2e5a] leading-tight mb-6">
+                A Legacy of Excellence in <span className="gold-text">Girls' Education</span>
+              </h2>
               <p className="text-gray-600 leading-relaxed mb-4">
-                Established in 1995, The Girls Gurukul, Kalayat has been nurturing generations of confident, educated young women of Haryana. With a legacy of nearly three decades, we blend the timeless wisdom of the gurukul tradition with modern academic excellence.
+                The Girls Gurukul, Kalayat is a premier educational institution committed to providing world-class education to girls of Haryana. Founded in 2005, we blend the timeless values of the ancient gurukul tradition with modern academics.
               </p>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                Our campus is a vibrant learning community where every girl is encouraged to discover her potential, develop her character, and prepare for a bright future.
+              <p className="text-gray-600 leading-relaxed mb-8">
+                Our CBSE-affiliated school offers classes from Nursery to Class XII with a focus on academic excellence, character development, and holistic growth.
               </p>
+              <ul className="space-y-3 mb-8">
+                {["CBSE Affiliated Institution", "ISO Certified School", "Smart classrooms & digital labs", "Qualified & experienced faculty"].map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-gray-700">
+                    <CheckCircle size={18} className="text-[#d4a017] flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
               <Link href="/about">
-                <Button data-testid="button-read-more-about" className="bg-primary text-white hover:bg-primary/90 rounded-full px-6">
-                  Read More <ArrowRight className="ml-2" size={16} />
+                <Button className="bg-[#1a2e5a] text-white hover:bg-[#1a2e5a]/90 rounded-full px-8 font-semibold">
+                  Learn More <ChevronRight size={16} className="ml-1" />
                 </Button>
               </Link>
             </motion.div>
+          </div>
+        </div>
+      </section>
 
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              custom={2}
-              className="grid grid-cols-2 gap-4"
-            >
-              {stats.map((s, i) => (
-                <div
-                  key={i}
-                  className="rounded-2xl bg-primary p-6 text-center text-white shadow-lg hover:scale-105 transition-transform"
-                >
-                  <p className="text-3xl font-bold text-secondary mb-1">{s.value}</p>
-                  <p className="text-sm text-gray-200 font-medium">{s.label}</p>
+      {/* FEATURES */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <SectionHeader badge="Why Choose Us" title="A Complete Educational Experience" subtitle="We provide everything a child needs to grow academically, physically, and emotionally." />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {features.map(({ icon, title, desc }, i) => (
+              <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 card-hover border border-gray-100 group">
+                <div className="w-14 h-14 bg-[#1a2e5a]/5 group-hover:bg-[#d4a017]/10 rounded-2xl flex items-center justify-center text-2xl mb-4 transition-colors">{icon}</div>
+                <h3 className="font-serif font-bold text-lg text-[#1a2e5a] mb-2">{title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PRINCIPAL'S MESSAGE */}
+      <section className="py-20 bg-[#1a2e5a] relative overflow-hidden">
+        <div className="absolute inset-0 hero-pattern" />
+        <div className="relative container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="order-2 lg:order-1">
+              <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#d4a017]/20 text-[#d4a017] mb-4">From The Principal's Desk</span>
+              <Quote className="text-[#d4a017] w-10 h-10 mb-4" />
+              <p className="text-white/90 text-lg leading-relaxed mb-6 italic">
+                "At The Girls Gurukul, we believe every girl has the potential to achieve greatness. Our mission is not merely academic excellence but the complete development of each student — her intellect, character, creativity, and compassion."
+              </p>
+              <p className="text-white/80 leading-relaxed mb-8">
+                Our dedicated educators work tirelessly to ensure every student receives individual attention and the best possible opportunities. We invite you to be part of our family.
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-[#d4a017] rounded-full flex items-center justify-center text-[#1a2e5a] font-bold text-lg">K</div>
+                <div>
+                  <p className="font-bold text-white text-lg">Mrs. Kavita Sharma</p>
+                  <p className="text-[#d4a017] text-sm">Principal, The Girls Gurukul</p>
                 </div>
-              ))}
+              </div>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="order-1 lg:order-2 flex justify-center">
+              <div className="relative">
+                <div className="w-72 h-96 rounded-3xl overflow-hidden shadow-2xl border-4 border-[#d4a017]/30">
+                  <img src="/images/principal.png" alt="Principal" className="w-full h-full object-cover object-top" />
+                </div>
+                <div className="absolute -bottom-4 -right-4 bg-[#d4a017] rounded-2xl p-4 shadow-xl">
+                  <div className="flex items-center gap-1">{[...Array(5)].map((_, i) => <Star key={i} size={14} fill="#1a2e5a" className="text-[#1a2e5a]" />)}</div>
+                  <p className="text-[#1a2e5a] font-bold text-sm mt-1">Top Educator</p>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ── WHY CHOOSE US ── */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-12">
-            <span className="text-secondary font-semibold uppercase tracking-widest text-sm">Reasons</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mt-2">Why Choose Us</h2>
-          </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((f, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={i}
-                className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all border border-gray-100 group"
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
-                  <f.icon size={24} className="text-primary group-hover:text-white transition-colors" />
+      {/* ACHIEVEMENTS */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <SectionHeader badge="Achievements" title="Our Pride & Recognition" subtitle="Years of hard work reflected in the achievements of our students and institution." />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {achievements.map(({ icon, title, desc }, i) => (
+              <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                className="flex gap-4 p-5 rounded-2xl border border-gray-100 hover:border-[#d4a017]/30 hover:shadow-lg transition-all duration-300 bg-white card-hover">
+                <div className="text-3xl flex-shrink-0">{icon}</div>
+                <div>
+                  <h3 className="font-serif font-bold text-[#1a2e5a] mb-1">{title}</h3>
+                  <p className="text-gray-500 text-sm">{desc}</p>
                 </div>
-                <h3 className="font-bold text-primary text-lg mb-2">{f.label}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{f.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── PRINCIPAL'S MESSAGE ── */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-12">
-            <span className="text-secondary font-semibold uppercase tracking-widest text-sm">Leadership</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mt-2">Principal's Message</h2>
-          </motion.div>
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="flex flex-col md:flex-row gap-10 items-center bg-gradient-to-br from-primary/5 to-secondary/10 rounded-3xl p-8 md:p-12 border border-primary/10"
-          >
-            <div className="shrink-0">
-              <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-secondary shadow-xl">
-                <img src={principalImg} alt="Principal" className="w-full h-full object-cover" />
-              </div>
-            </div>
-            <div>
-              <p className="text-gray-600 leading-relaxed mb-4 text-lg italic">
-                "At The Girls Gurukul, we believe every girl carries within her an infinite potential. Our mission is not merely to educate, but to inspire, nurture, and empower. We stand committed to building not just academic toppers, but confident, compassionate leaders who will make a difference in this world."
-              </p>
-              <p className="font-bold text-primary text-xl">Mrs. Sunita Sharma</p>
-              <p className="text-secondary font-medium">Principal, The Girls Gurukul</p>
-              <p className="mt-3 text-gray-400 italic text-sm font-serif">— Sunita Sharma</p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── ACHIEVEMENTS ── */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-12">
-            <span className="text-secondary font-semibold uppercase tracking-widest text-sm">Pride</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mt-2">Achievements & Awards</h2>
-          </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {achievements.map((a, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={i}
-                className={`rounded-2xl bg-gradient-to-br ${a.color} border p-6 hover:scale-105 transition-transform text-center`}
-              >
-                <Trophy size={36} className="mx-auto mb-3 text-yellow-600" />
-                <h3 className="font-bold text-primary text-base mb-1">{a.title}</h3>
-                <p className="text-gray-600 text-sm">{a.sub}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── GALLERY PREVIEW ── */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-12">
-            <span className="text-secondary font-semibold uppercase tracking-widest text-sm">Moments</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mt-2">School Gallery</h2>
-          </motion.div>
+      {/* GALLERY PREVIEW */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <SectionHeader badge="Photo Gallery" title="Life at The Girls Gurukul" subtitle="A glimpse into the vibrant campus life, events and activities at our school." />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            {galleryTiles.map((tile, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={i}
-                className="relative rounded-xl overflow-hidden aspect-square group cursor-pointer shadow-sm"
-              >
-                <img src={tile.img} alt={tile.label} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                <div className={`absolute inset-0 bg-gradient-to-t ${tile.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity`} />
-                <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="text-white font-semibold text-sm">{tile.label}</p>
+            {galleryImages.map(({ src, label }, i) => (
+              <motion.div key={label} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                className="relative rounded-2xl overflow-hidden group cursor-pointer shadow-md aspect-square">
+                <img src={src} alt={label} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a2e5a]/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <span className="text-white font-semibold text-sm">{label}</span>
                 </div>
               </motion.div>
             ))}
           </div>
           <div className="text-center">
             <Link href="/gallery">
-              <Button data-testid="button-view-gallery" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-3">
-                View Full Gallery <ArrowRight className="ml-2" size={16} />
+              <Button variant="outline" className="border-2 border-[#1a2e5a] text-[#1a2e5a] hover:bg-[#1a2e5a] hover:text-white rounded-full px-8 font-semibold">
+                View Full Gallery <ChevronRight size={16} className="ml-1" />
               </Button>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── TESTIMONIALS ── */}
-      <section className="py-20 px-4 bg-primary">
-        <div className="max-w-4xl mx-auto">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-12">
-            <span className="text-secondary font-semibold uppercase tracking-widest text-sm">Voices</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-2">What People Say</h2>
-          </motion.div>
-          <div className="relative">
-            <motion.div
-              key={testimonialIdx}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.5 }}
-              className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 md:p-10 text-center border border-white/20"
-            >
-              <div className="flex justify-center mb-4 gap-1">
-                {Array.from({ length: testimonials[testimonialIdx].stars }).map((_, i) => (
-                  <Star key={i} size={18} className="text-secondary fill-secondary" />
-                ))}
-              </div>
-              <p className="text-gray-100 text-lg leading-relaxed italic mb-6">
-                "{testimonials[testimonialIdx].text}"
-              </p>
-              <p className="font-bold text-white text-xl">{testimonials[testimonialIdx].name}</p>
-              <p className="text-secondary text-sm font-medium">{testimonials[testimonialIdx].role}</p>
-            </motion.div>
-
-            <div className="flex justify-center gap-3 mt-6">
-              <button
-                onClick={() => setTestimonialIdx((i) => (i - 1 + testimonials.length) % testimonials.length)}
-                data-testid="button-prev-testimonial"
-                className="w-10 h-10 rounded-full border-2 border-white/30 text-white flex items-center justify-center hover:bg-white/10"
-              >
+      {/* TESTIMONIALS */}
+      <section className="py-20 bg-[#1a2e5a] relative overflow-hidden">
+        <div className="absolute inset-0 hero-pattern" />
+        <div className="relative container mx-auto px-4">
+          <SectionHeader badge="Testimonials" title="What Parents & Alumni Say" light />
+          <div className="max-w-3xl mx-auto">
+            <AnimatePresence mode="wait">
+              <motion.div key={currentTestimonial} initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -40 }} transition={{ duration: 0.4 }}
+                className="glass-card rounded-3xl p-8 md:p-10 text-center" onMouseEnter={() => setAutoplay(false)} onMouseLeave={() => setAutoplay(true)}>
+                <div className="flex justify-center mb-4">
+                  {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => <Star key={i} size={20} fill="#d4a017" className="text-[#d4a017]" />)}
+                </div>
+                <Quote className="text-[#d4a017]/40 w-10 h-10 mx-auto mb-4" />
+                <p className="text-white/90 text-lg leading-relaxed mb-6 italic">"{testimonials[currentTestimonial].text}"</p>
+                <div className="flex items-center justify-center gap-3">
+                  <div className="w-10 h-10 bg-[#d4a017] rounded-full flex items-center justify-center text-[#1a2e5a] font-bold">
+                    {testimonials[currentTestimonial].name[0]}
+                  </div>
+                  <div className="text-left">
+                    <p className="font-bold text-white">{testimonials[currentTestimonial].name}</p>
+                    <p className="text-[#d4a017] text-sm">{testimonials[currentTestimonial].role}</p>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+            <div className="flex justify-center items-center gap-4 mt-6">
+              <button onClick={() => { setAutoplay(false); setCurrentTestimonial((p) => (p - 1 + testimonials.length) % testimonials.length); }}
+                className="w-10 h-10 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white/10 transition-colors">
                 <ChevronLeft size={18} />
               </button>
               {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setTestimonialIdx(i)}
-                  data-testid={`button-testimonial-dot-${i}`}
-                  className={`w-2.5 h-2.5 rounded-full transition-all mt-3 ${i === testimonialIdx ? "bg-secondary w-6" : "bg-white/40"}`}
-                />
+                <button key={i} onClick={() => { setAutoplay(false); setCurrentTestimonial(i); }}
+                  className={`h-2 rounded-full transition-all ${i === currentTestimonial ? "bg-[#d4a017] w-6" : "bg-white/30 w-2"}`} />
               ))}
-              <button
-                onClick={() => setTestimonialIdx((i) => (i + 1) % testimonials.length)}
-                data-testid="button-next-testimonial"
-                className="w-10 h-10 rounded-full border-2 border-white/30 text-white flex items-center justify-center hover:bg-white/10"
-              >
+              <button onClick={() => { setAutoplay(false); setCurrentTestimonial((p) => (p + 1) % testimonials.length); }}
+                className="w-10 h-10 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white/10 transition-colors">
                 <ChevronRight size={18} />
               </button>
             </div>
@@ -392,24 +347,79 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── QUICK LINKS ── */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-8">Quick Links</h2>
-            <div className="flex flex-wrap justify-center gap-4">
-              {quickLinks.map((ql, i) => (
-                <Link key={i} href={ql.href}>
-                  <Button
-                    data-testid={`button-quick-link-${i}`}
-                    variant="outline"
-                    className="border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-full px-6 py-3 font-semibold transition-all"
-                  >
-                    <ql.icon size={16} className="mr-2" />
-                    {ql.label}
+      {/* EVENTS & NEWS */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12">
+            <div>
+              <SectionHeader badge="Events" title="Upcoming Events" center={false} />
+              <div className="space-y-4">
+                {events.map(({ date, title, time, icon }, i) => (
+                  <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                    className="flex gap-4 p-4 rounded-2xl border border-gray-100 hover:border-[#d4a017]/30 hover:shadow-md transition-all">
+                    <div className="flex-shrink-0 w-14 h-14 bg-[#1a2e5a] rounded-xl flex flex-col items-center justify-center text-white">
+                      <span className="font-bold text-lg leading-none">{date.day}</span>
+                      <span className="text-xs text-[#d4a017] uppercase">{date.month}</span>
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1"><span>{icon}</span><h4 className="font-serif font-semibold text-[#1a2e5a]">{title}</h4></div>
+                      <p className="text-gray-500 text-sm flex items-center gap-1"><Calendar size={12} /> {time}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              <div className="mt-6">
+                <Link href="/news-events">
+                  <Button variant="outline" className="border-2 border-[#1a2e5a] text-[#1a2e5a] hover:bg-[#1a2e5a] hover:text-white rounded-full px-6 font-semibold">
+                    All Events <ChevronRight size={16} className="ml-1" />
                   </Button>
                 </Link>
-              ))}
+              </div>
+            </div>
+            <div>
+              <SectionHeader badge="News" title="Latest News" center={false} />
+              <div className="space-y-4">
+                {news.map(({ date, category, title, desc }, i) => (
+                  <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                    className="p-4 rounded-2xl border border-gray-100 hover:border-[#d4a017]/30 hover:shadow-md transition-all card-hover cursor-pointer">
+                    <div className="flex gap-2 mb-2">
+                      <span className="text-xs bg-[#1a2e5a]/10 text-[#1a2e5a] font-semibold px-2 py-0.5 rounded-full">{category}</span>
+                      <span className="text-xs text-gray-400 flex items-center gap-1"><Newspaper size={10} /> {date}</span>
+                    </div>
+                    <h4 className="font-serif font-semibold text-[#1a2e5a] mb-1">{title}</h4>
+                    <p className="text-gray-500 text-sm">{desc}</p>
+                  </motion.div>
+                ))}
+              </div>
+              <div className="mt-6">
+                <Link href="/news-events">
+                  <Button variant="outline" className="border-2 border-[#1a2e5a] text-[#1a2e5a] hover:bg-[#1a2e5a] hover:text-white rounded-full px-6 font-semibold">
+                    All News <ChevronRight size={16} className="ml-1" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA BANNER */}
+      <section className="py-16 bg-gradient-to-r from-[#d4a017] via-[#f0c040] to-[#d4a017]">
+        <div className="container mx-auto px-4 text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+            <h2 className="font-serif font-bold text-3xl md:text-4xl text-[#1a2e5a] mb-4">Give Your Daughter the Best Start</h2>
+            <p className="text-[#1a2e5a]/80 text-lg max-w-xl mx-auto mb-8">Join The Girls Gurukul family. Seats are limited for 2025-26. Apply today!</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/admissions">
+                <Button size="lg" className="bg-[#1a2e5a] text-white hover:bg-[#1a2e5a]/90 font-bold rounded-full px-10">
+                  Apply for Admission <ArrowRight size={18} className="ml-2" />
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button size="lg" variant="outline" className="border-2 border-[#1a2e5a] text-[#1a2e5a] hover:bg-[#1a2e5a] hover:text-white font-semibold rounded-full px-10 bg-transparent">
+                  Contact Us
+                </Button>
+              </Link>
             </div>
           </motion.div>
         </div>

@@ -1,305 +1,304 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { BookOpen, Target, Star, Award, Clock, Filter } from "lucide-react";
-import { useState } from "react";
-const principalImg = "/images/principal.png";
-const campusImg = "/images/campus-aerial.png";
+import { CheckCircle, Target, Eye, Heart, Shield, Star, Award, Clock } from "lucide-react";
+import SectionHeader from "@/components/SectionHeader";
+import AnimatedCounter from "@/components/AnimatedCounter";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i = 0) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.6, delay: i * 0.1 },
-  }),
+  hidden: { opacity: 0, y: 30 },
+  visible: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.6, delay: i * 0.1 } }),
 };
 
-const coreValues = [
-  { icon: "🎯", label: "Discipline", desc: "Self-regulation and commitment to excellence in all pursuits" },
-  { icon: "⭐", label: "Integrity", desc: "Honesty, transparency and ethical conduct in every action" },
-  { icon: "🏆", label: "Excellence", desc: "Striving beyond expectations in academics and character" },
-  { icon: "💡", label: "Innovation", desc: "Creative thinking and modern approaches to learning" },
-  { icon: "🤝", label: "Inclusivity", desc: "Welcoming every girl regardless of background or ability" },
+const values = [
+  { icon: "🌟", title: "Excellence", desc: "We pursue academic and personal excellence in everything we do, setting the highest standards for our students and faculty." },
+  { icon: "❤️", title: "Compassion", desc: "We nurture empathy and kindness, teaching our students to care for others and contribute positively to society." },
+  { icon: "🏛️", title: "Integrity", desc: "Honesty, transparency and ethical conduct are the foundation of our institution and everything we stand for." },
+  { icon: "🌱", title: "Growth", desc: "We believe in lifelong learning and continuous improvement — for our students, teachers and institution." },
+  { icon: "🤝", title: "Community", desc: "Strong bonds between students, families and educators create a supportive learning community." },
+  { icon: "🎯", title: "Discipline", desc: "Structured routine, responsibility and self-discipline prepare our students for success in all walks of life." },
+];
+
+const timeline = [
+  { year: "2005", title: "School Founded", desc: "The Girls Gurukul was established with a vision to provide quality education to girls of rural Haryana." },
+  { year: "2008", title: "CBSE Affiliation", desc: "Received CBSE affiliation and expanded classes from Primary to Class X." },
+  { year: "2012", title: "Science Wing Expansion", desc: "Inaugurated fully equipped Science and Computer labs, expanding STEM education." },
+  { year: "2016", title: "Senior Secondary Wing", desc: "Class XI and XII added with Science and Commerce streams." },
+  { year: "2020", title: "Digital Transformation", desc: "Launched smart classrooms, e-learning infrastructure and online student portal." },
+  { year: "2024", title: "Excellence Milestone", desc: "Achieved 100% board results for 10th consecutive year. Recognised as Best School in Kaithal district." },
 ];
 
 const infrastructure = [
-  { title: "Smart Classrooms", desc: "12 digital classrooms with interactive whiteboards, projectors and internet-enabled learning stations for an engaging academic experience.", bg: "bg-blue-50 border-blue-200" },
-  { title: "Science Laboratory", desc: "Well-equipped Physics, Chemistry and Biology labs with modern apparatus allowing students to conduct hands-on experiments.", bg: "bg-green-50 border-green-200" },
-  { title: "Computer Lab", desc: "50-seat computer lab with latest hardware and software, high-speed broadband internet and coding curriculum.", bg: "bg-purple-50 border-purple-200" },
-  { title: "Library", desc: "A vast library with 5,000+ books, magazines, newspapers and a quiet reading room for self-directed learning and research.", bg: "bg-yellow-50 border-yellow-200" },
-  { title: "Sports Ground", desc: "Multi-use sports complex with athletics track, volleyball court, kabaddi ground and dedicated coaching for interschool competitions.", bg: "bg-red-50 border-red-200" },
+  { icon: "📚", title: "Library", desc: "Collection of 15,000+ books, journals, magazines and e-resources" },
+  { icon: "🔬", title: "Science Labs", desc: "Physics, Chemistry & Biology labs with latest equipment" },
+  { icon: "💻", title: "Computer Lab", desc: "100+ computers with high-speed internet and latest software" },
+  { icon: "🎵", title: "Music Room", desc: "Dedicated music room with classical and modern instruments" },
+  { icon: "🎨", title: "Art Studio", desc: "Creative arts studio with professional art supplies" },
+  { icon: "⚽", title: "Sports Ground", desc: "Large multi-sports ground for athletics, cricket, football & more" },
+  { icon: "🏊", title: "Indoor Gym", desc: "Fully equipped indoor gymnasium for physical fitness" },
+  { icon: "🍽️", title: "Cafeteria", desc: "Hygienic cafeteria serving nutritious meals at subsidised rates" },
 ];
 
 const management = [
-  { name: "Sh. Ram Kumar Sharma", designation: "Chairman, Management Committee" },
-  { name: "Sh. Mohan Lal Yadav", designation: "Secretary" },
-  { name: "Sh. Rajesh Bansal", designation: "Treasurer" },
-  { name: "Mrs. Geeta Devi", designation: "Parent Representative" },
-];
-
-const staffCategories = ["All", "Primary", "Middle", "Senior", "Non-Teaching"] as const;
-
-const staffData = [
-  { name: "Mrs. Anita Gupta", subject: "Mathematics", qual: "M.Sc., B.Ed.", exp: "15 yrs", cat: "Senior", bio: "HOD Mathematics. Expert in board exam preparation and competitive math olympiads." },
-  { name: "Mrs. Renu Sharma", subject: "Science", qual: "M.Sc., B.Ed.", exp: "12 yrs", cat: "Senior", bio: "HOD Science. Guides students for NTSE and Science Olympiad with exceptional results." },
-  { name: "Mrs. Priya Verma", subject: "English", qual: "M.A., B.Ed.", exp: "10 yrs", cat: "Middle", bio: "Specialises in communicative English and has produced top scorers in HBSE exams." },
-  { name: "Mrs. Kavita Rani", subject: "Hindi", qual: "M.A., B.Ed.", exp: "8 yrs", cat: "Middle", bio: "Passionate about literature and helps students explore Hindi poetry and prose." },
-  { name: "Mrs. Sunita Bhatt", subject: "Social Science", qual: "M.A., B.Ed.", exp: "11 yrs", cat: "Senior", bio: "Makes history and geography come alive through interactive storytelling." },
-  { name: "Mrs. Deepa Singh", subject: "Computer Science", qual: "MCA, B.Ed.", exp: "7 yrs", cat: "Senior", bio: "Teaches programming and digital literacy; coaches for coding competitions." },
-  { name: "Mrs. Meena Devi", subject: "Primary (Class I-V)", qual: "D.El.Ed.", exp: "9 yrs", cat: "Primary", bio: "Nurtures foundational literacy and numeracy with patience and creativity." },
-  { name: "Mr. Suresh Kumar", subject: "Sports Coach", qual: "B.P.Ed.", exp: "13 yrs", cat: "Non-Teaching", bio: "State-level kabaddi coach. Has led teams to multiple district championships." },
-  { name: "Mrs. Rekha Joshi", subject: "Counselor", qual: "M.A. Psychology", exp: "6 yrs", cat: "Non-Teaching", bio: "Provides academic and emotional guidance to students and parents." },
-  { name: "Mrs. Lalita Yadav", subject: "Librarian", qual: "M.Lib.Sc.", exp: "10 yrs", cat: "Non-Teaching", bio: "Manages the school library and runs the reading enrichment programme." },
-];
-
-const timings = [
-  { class: "Class I–V", summer: "7:00 AM – 12:30 PM", winter: "8:00 AM – 1:30 PM" },
-  { class: "Class VI–X", summer: "7:00 AM – 1:30 PM", winter: "8:00 AM – 2:30 PM" },
-  { class: "Class XI–XII", summer: "7:00 AM – 1:30 PM", winter: "8:00 AM – 2:30 PM" },
-  { class: "Office Hours", summer: "6:30 AM – 3:00 PM", winter: "7:30 AM – 4:00 PM" },
+  { name: "Sh. Ramesh Kumar", role: "Chairman", initial: "R" },
+  { name: "Sh. Vijay Singh", role: "Vice Chairman", initial: "V" },
+  { name: "Mrs. Anita Rani", role: "Secretary", initial: "A" },
+  { name: "Sh. Mohan Lal", role: "Treasurer", initial: "M" },
 ];
 
 export default function About() {
-  const [activeStaffCat, setActiveStaffCat] = useState<typeof staffCategories[number]>("All");
-  const filteredStaff = activeStaffCat === "All" ? staffData : staffData.filter(s => s.cat === activeStaffCat);
+  useEffect(() => {
+    document.title = "About Us – The Girls Gurukul, Kalayat";
+  }, []);
 
   return (
     <div className="overflow-x-hidden">
-
-      {/* Page Header */}
-      <section className="bg-primary py-20 px-4 text-white text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `url(${campusImg})`, backgroundSize: "cover" }} />
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="relative z-10">
-          <span className="text-secondary font-semibold uppercase tracking-widest text-sm">The Institution</span>
-          <h1 className="text-4xl md:text-5xl font-bold mt-2">About Us</h1>
-          <p className="text-gray-200 mt-3 max-w-xl mx-auto">Discover our history, values, and the people who make The Girls Gurukul extraordinary.</p>
-        </motion.div>
-      </section>
-
-      {/* History */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <span className="text-secondary font-semibold uppercase tracking-widest text-sm">Our Story</span>
-            <h2 className="text-3xl font-bold text-primary mt-2 mb-4">History & Background</h2>
-            <p className="text-gray-600 leading-relaxed mb-4">
-              The Girls Gurukul was established in 1995 by Sh. Ram Kumar Sharma with a singular vision: to provide quality education to the girls of Kalayat and surrounding villages of Haryana who lacked access to a dedicated girls' school.
+      {/* PAGE HERO */}
+      <section className="relative py-24 bg-[#1a2e5a] overflow-hidden">
+        <div className="absolute inset-0 hero-pattern" />
+        <div className="absolute inset-0" style={{ backgroundImage: "url('/images/campus-aerial.png')", backgroundSize: "cover", backgroundPosition: "center", opacity: 0.15 }} />
+        <div className="relative container mx-auto px-4 text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#d4a017]/20 text-[#d4a017] mb-4">Our Story</span>
+            <h1 className="font-serif font-bold text-4xl md:text-6xl text-white mb-4">About Our School</h1>
+            <p className="text-white/70 text-lg max-w-2xl mx-auto">
+              Discover the story, mission and values behind The Girls Gurukul — a legacy of excellence since 2005.
             </p>
-            <p className="text-gray-600 leading-relaxed mb-4">
-              What began as a small school with 3 teachers and 80 students in a rented building has grown into a thriving institution with over 1,200 students, 60+ dedicated educators, and an 8-acre campus equipped with modern infrastructure.
-            </p>
-            <p className="text-gray-600 leading-relaxed">
-              Over three decades, we have produced thousands of successful women — doctors, engineers, teachers, civil servants — who carry our values of discipline and excellence wherever they go.
-            </p>
-          </motion.div>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={2} className="rounded-3xl overflow-hidden shadow-xl">
-            <img src={campusImg} alt="School Campus" className="w-full h-72 object-cover" />
+            <div className="flex items-center justify-center gap-2 mt-4 text-sm text-white/50">
+              <span>Home</span><span>/</span><span className="text-[#d4a017]">About Us</span>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-5xl mx-auto">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary">Mission & Vision</h2>
-          </motion.div>
-          <div className="grid md:grid-cols-2 gap-8">
+      {/* QUICK STATS */}
+      <section className="py-10 bg-[#d4a017]">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
-              { icon: Target, label: "Our Mission", color: "from-blue-600 to-primary", text: "To empower every girl with quality education, life skills and values that enable her to lead a fulfilling, purposeful life and contribute meaningfully to her family, community and nation." },
-              { icon: Star, label: "Our Vision", color: "from-yellow-500 to-secondary", text: "To be the most trusted and inspiring educational institution in Haryana, where every girl realizes her full potential and steps into the world with confidence, compassion and competence." },
-            ].map((item, i) => (
-              <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i}
-                className="rounded-2xl p-8 bg-white shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
-              >
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-5`}>
-                  <item.icon size={28} className="text-white" />
+              { value: 19, suffix: "+", label: "Years of Excellence" },
+              { value: 1200, suffix: "+", label: "Students" },
+              { value: 65, suffix: "+", label: "Faculty Members" },
+              { value: 100, suffix: "%", label: "Board Pass Rate" },
+            ].map(({ value, suffix, label }, i) => (
+              <motion.div key={label} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+                <div className="font-serif font-bold text-3xl md:text-4xl text-[#1a2e5a]">
+                  <AnimatedCounter to={value} suffix={suffix} />
                 </div>
-                <h3 className="text-xl font-bold text-primary mb-3">{item.label}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.text}</p>
+                <p className="text-[#1a2e5a]/80 font-semibold text-sm">{label}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Core Values */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary">Core Values</h2>
-          </motion.div>
-          <div className="flex flex-wrap justify-center gap-6">
-            {coreValues.map((v, i) => (
-              <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i}
-                className="flex flex-col items-center text-center bg-gray-50 rounded-2xl p-6 w-44 hover:bg-primary hover:text-white group transition-all hover:shadow-lg"
-              >
-                <span className="text-4xl mb-3">{v.icon}</span>
-                <h3 className="font-bold text-primary group-hover:text-white text-lg mb-1">{v.label}</h3>
-                <p className="text-gray-500 group-hover:text-gray-100 text-xs leading-snug">{v.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Infrastructure */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary">Infrastructure</h2>
-          </motion.div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {infrastructure.map((item, i) => (
-              <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i}
-                className={`rounded-2xl border p-6 ${item.bg} hover:scale-105 transition-transform`}
-              >
-                <BookOpen size={28} className="text-primary mb-3" />
-                <h3 className="font-bold text-primary text-lg mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Affiliation */}
-      <section className="py-16 px-4 bg-primary text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <Award size={40} className="mx-auto text-secondary mb-4" />
-            <h2 className="text-3xl font-bold mb-4">Affiliation & Recognition</h2>
-            <p className="text-gray-200 max-w-xl mx-auto mb-6">
-              Affiliated with the Haryana Board of School Education (HBSE), Bhiwani. School Code: 330XXX. Recognition Certificate No.: EDN/HRY/2001-45.
-            </p>
-            <div className="inline-flex gap-8 justify-center flex-wrap">
-              {["HBSE Affiliated", "ISO Certified School", "Government Recognised", "Minority Institution"].map((label, i) => (
-                <div key={i} className="px-5 py-2 border border-secondary/50 rounded-full text-secondary font-medium text-sm">{label}</div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Management Committee */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary">Management Committee</h2>
-          </motion.div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {management.map((m, i) => (
-              <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i}
-                className="text-center bg-gray-50 rounded-2xl p-6 hover:shadow-md transition-shadow border border-gray-100"
-              >
-                <div className="w-20 h-20 rounded-full bg-primary/10 mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-3xl font-bold text-primary">{m.name.charAt(0)}</span>
-                </div>
-                <h3 className="font-bold text-primary">{m.name}</h3>
-                <p className="text-secondary text-sm mt-1 font-medium">{m.designation}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Principal's Full Message */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-5xl mx-auto">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary">Principal's Full Message</h2>
-          </motion.div>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-            className="flex flex-col md:flex-row gap-10 items-start bg-white rounded-3xl p-8 md:p-12 border border-primary/10 shadow-sm"
-          >
-            <div className="shrink-0 text-center">
-              <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-secondary shadow-lg mx-auto">
-                <img src={principalImg} alt="Principal" className="w-full h-full object-cover" />
+      {/* HISTORY */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+              <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#d4a017]/15 text-[#d4a017] mb-4">Our History</span>
+              <h2 className="font-serif font-bold text-3xl md:text-4xl text-[#1a2e5a] mb-6 leading-tight">
+                Two Decades of Shaping<br /><span className="gold-text">Young Women Leaders</span>
+              </h2>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                The Girls Gurukul was founded in 2005 by visionary educationists who believed that every girl in rural Haryana deserves access to world-class education. What started as a small primary school has grown into a full-fledged senior secondary institution serving over 1,200 students.
+              </p>
+              <p className="text-gray-600 leading-relaxed mb-6">
+                Our journey has been one of continuous growth and innovation. From establishing state-of-the-art laboratories to launching smart classrooms, we have always kept our students' needs at the forefront of every decision.
+              </p>
+              <ul className="space-y-3">
+                {["Recognised by Haryana State Government", "CBSE Affiliated (Aff. No. XXXXXXX)", "Member of CBSE School Association", "Recipient of multiple national awards"].map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-gray-700">
+                    <CheckCircle size={18} className="text-[#d4a017] flex-shrink-0" /> {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <img src="/images/campus-aerial.png" alt="Campus" className="w-full h-[480px] object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a2e5a]/60 to-transparent" />
               </div>
-              <p className="font-bold text-primary mt-3">Mrs. Sunita Sharma</p>
-              <p className="text-secondary text-sm">Principal</p>
-              <p className="text-gray-500 text-xs">M.A., M.Ed., Ph.D.</p>
-            </div>
-            <div className="space-y-4 text-gray-600 leading-relaxed">
-              <p>Dear Parents, Students and Well-wishers,</p>
-              <p>It is with immense pride and gratitude that I greet you as the Principal of The Girls Gurukul. For nearly three decades, this institution has stood as a beacon of quality education and character formation for the girls of Kalayat and neighbouring regions of Haryana.</p>
-              <p>Education, in its truest sense, goes beyond textbooks and examinations. At The Girls Gurukul, we endeavour to build complete human beings — young women who are intellectually curious, emotionally resilient, socially responsible, and spiritually grounded. We draw inspiration from the ancient gurukul tradition, where learning was holistic, and the relationship between teacher and student was one of deep respect and mentorship.</p>
-              <p>I invite you to be an active partner in your daughter's education. Together — school, family and community — we can shape a future where every girl of Haryana reaches her highest potential. Welcome to The Girls Gurukul family.</p>
-              <p className="font-semibold text-primary italic">— With blessings, Mrs. Sunita Sharma</p>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* School Timings */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-3xl mx-auto">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-10">
-            <Clock size={36} className="mx-auto text-secondary mb-3" />
-            <h2 className="text-3xl md:text-4xl font-bold text-primary">School Timings</h2>
-          </motion.div>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
-              <table className="w-full">
-                <thead>
-                  <tr className="bg-primary text-white">
-                    <th className="text-left px-6 py-4 font-semibold">Class</th>
-                    <th className="text-left px-6 py-4 font-semibold">Summer Timings</th>
-                    <th className="text-left px-6 py-4 font-semibold">Winter Timings</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {timings.map((t, i) => (
-                    <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
-                      <td className="px-6 py-4 font-medium text-primary">{t.class}</td>
-                      <td className="px-6 py-4 text-gray-600">{t.summer}</td>
-                      <td className="px-6 py-4 text-gray-600">{t.winter}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Teaching Staff */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary">Our Staff</h2>
-          </motion.div>
-          {/* Filter Tabs */}
-          <div className="flex flex-wrap justify-center gap-3 mb-10">
-            {staffCategories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveStaffCat(cat)}
-                data-testid={`button-staff-filter-${cat.toLowerCase()}`}
-                className={`px-5 py-2 rounded-full font-medium text-sm transition-all ${activeStaffCat === cat ? "bg-primary text-white shadow-md" : "bg-white text-primary border border-primary/30 hover:bg-primary/5"}`}
-              >
-                <Filter size={14} className="inline mr-1" />{cat}
-              </button>
+      {/* TIMELINE */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <SectionHeader badge="Journey" title="Our Milestones" subtitle="Key moments that have shaped The Girls Gurukul into the institution it is today." />
+          <div className="relative max-w-3xl mx-auto">
+            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[#d4a017]/30 -translate-x-1/2 hidden md:block" />
+            {timeline.map(({ year, title, desc }, i) => (
+              <motion.div key={year} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                className={`flex gap-6 mb-8 items-start ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
+                <div className={`hidden md:block flex-1 ${i % 2 === 0 ? "text-right" : "text-left"}`}>
+                  {i % 2 === 0 ? (
+                    <>
+                      <h3 className="font-serif font-bold text-lg text-[#1a2e5a] mb-1">{title}</h3>
+                      <p className="text-gray-500 text-sm">{desc}</p>
+                    </>
+                  ) : null}
+                </div>
+                <div className="flex-shrink-0 flex flex-col items-center">
+                  <div className="w-14 h-14 bg-[#1a2e5a] rounded-full flex items-center justify-center text-[#d4a017] font-bold text-sm shadow-lg z-10">
+                    {year}
+                  </div>
+                </div>
+                <div className={`flex-1 md:${i % 2 === 1 ? "text-right" : "text-left"}`}>
+                  <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                    <h3 className="font-serif font-bold text-[#1a2e5a] mb-1">{title}</h3>
+                    <p className="text-gray-500 text-sm">{desc}</p>
+                  </div>
+                </div>
+              </motion.div>
             ))}
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredStaff.map((s, i) => (
-              <motion.div key={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i}
-                className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-all group relative overflow-hidden"
-              >
-                <div className="flex items-center gap-4 mb-3">
-                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors">
-                    <span className="text-2xl font-bold text-primary group-hover:text-white transition-colors">{s.name.charAt(4)}</span>
+        </div>
+      </section>
+
+      {/* MISSION & VISION */}
+      <section className="py-20 bg-[#1a2e5a] relative overflow-hidden">
+        <div className="absolute inset-0 hero-pattern" />
+        <div className="relative container mx-auto px-4">
+          <SectionHeader badge="Our Purpose" title="Mission & Vision" light />
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+              className="glass-card rounded-3xl p-8">
+              <div className="w-14 h-14 bg-[#d4a017] rounded-2xl flex items-center justify-center mb-4">
+                <Target className="w-7 h-7 text-[#1a2e5a]" />
+              </div>
+              <h3 className="font-serif font-bold text-2xl text-white mb-4">Our Mission</h3>
+              <p className="text-white/80 leading-relaxed">
+                To provide quality, value-based education that empowers every girl to achieve her fullest potential. We are committed to creating a safe, inclusive and stimulating environment where students develop academically, spiritually and socially — preparing them to become responsible citizens and leaders of tomorrow.
+              </p>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+              className="glass-card rounded-3xl p-8">
+              <div className="w-14 h-14 bg-[#d4a017] rounded-2xl flex items-center justify-center mb-4">
+                <Eye className="w-7 h-7 text-[#1a2e5a]" />
+              </div>
+              <h3 className="font-serif font-bold text-2xl text-white mb-4">Our Vision</h3>
+              <p className="text-white/80 leading-relaxed">
+                To be the most respected and sought-after institution for girls' education in Haryana — a school where every girl finds her voice, discovers her strengths, and leaves prepared to make a meaningful difference in the world. We envision a generation of educated, confident and compassionate women leaders.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* CORE VALUES */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <SectionHeader badge="Core Values" title="What We Stand For" subtitle="Our values guide every decision, interaction and initiative at The Girls Gurukul." />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {values.map(({ icon, title, desc }, i) => (
+              <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                className="bg-gray-50 rounded-2xl p-6 hover:shadow-lg hover:bg-white transition-all duration-300 border border-transparent hover:border-[#d4a017]/20 card-hover">
+                <div className="text-4xl mb-4">{icon}</div>
+                <h3 className="font-serif font-bold text-lg text-[#1a2e5a] mb-2">{title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* INFRASTRUCTURE */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <SectionHeader badge="Infrastructure" title="World-Class Facilities" subtitle="Exceptional learning environments designed to inspire, innovate and educate." />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+            {infrastructure.map(({ icon, title, desc }, i) => (
+              <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                className="bg-white rounded-2xl p-5 text-center shadow-sm hover:shadow-md transition-all border border-gray-100 card-hover">
+                <div className="text-4xl mb-3">{icon}</div>
+                <h3 className="font-serif font-semibold text-[#1a2e5a] mb-1 text-sm">{title}</h3>
+                <p className="text-gray-400 text-xs leading-relaxed">{desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PRINCIPAL'S MESSAGE */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <SectionHeader badge="Leadership" title="From the Principal's Desk" />
+          <div className="max-w-4xl mx-auto">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
+              className="bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-100">
+              <div className="flex flex-col md:flex-row gap-8 items-start">
+                <div className="flex-shrink-0">
+                  <div className="w-32 h-40 rounded-2xl overflow-hidden shadow-lg">
+                    <img src="/images/principal.png" alt="Principal" className="w-full h-full object-cover object-top" />
                   </div>
-                  <div>
-                    <h3 className="font-bold text-primary text-base">{s.name}</h3>
-                    <p className="text-secondary text-sm font-medium">{s.subject}</p>
+                  <div className="text-center mt-3">
+                    <p className="font-bold text-[#1a2e5a] text-sm">Mrs. Kavita Sharma</p>
+                    <p className="text-[#d4a017] text-xs">M.Ed., Ph.D.</p>
+                    <p className="text-gray-400 text-xs">Principal</p>
+                    <div className="flex justify-center gap-1 mt-1">
+                      {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="#d4a017" className="text-[#d4a017]" />)}
+                    </div>
                   </div>
                 </div>
-                <div className="flex gap-2 text-xs text-gray-500 mb-3">
-                  <span className="bg-gray-100 px-2 py-0.5 rounded">{s.qual}</span>
-                  <span className="bg-gray-100 px-2 py-0.5 rounded">{s.exp}</span>
-                  <span className="bg-primary/10 text-primary px-2 py-0.5 rounded">{s.cat}</span>
+                <div className="flex-1">
+                  <p className="text-gray-600 leading-relaxed mb-4">
+                    Dear Students, Parents and Well-wishers,
+                  </p>
+                  <p className="text-gray-600 leading-relaxed mb-4">
+                    Welcome to The Girls Gurukul — a place where dreams are nurtured and futures are shaped. As Principal of this wonderful institution, I am proud to lead a team of dedicated educators who are passionate about every student's success.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed mb-4">
+                    We believe that education is not just about academic achievement, but about developing the whole person — intellectually, emotionally, socially and ethically. Our curriculum is designed to challenge students while also providing the support they need to thrive.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed mb-4">
+                    I invite every parent and student to partner with us in this journey of learning and growth. Together, we will ensure that every girl at The Girls Gurukul reaches her highest potential.
+                  </p>
+                  <p className="text-gray-600 font-semibold">With warm regards,<br />Mrs. Kavita Sharma</p>
                 </div>
-                <p className="text-gray-500 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity">{s.bio}</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* MANAGEMENT */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <SectionHeader badge="Governance" title="Management Committee" subtitle="Dedicated leaders who guide our institution's vision and strategic direction." />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+            {management.map(({ name, role, initial }, i) => (
+              <motion.div key={name} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                className="text-center bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
+                <div className="w-16 h-16 bg-[#1a2e5a] rounded-full flex items-center justify-center text-[#d4a017] font-bold text-xl mx-auto mb-3">
+                  {initial}
+                </div>
+                <h3 className="font-serif font-semibold text-[#1a2e5a] text-sm mb-1">{name}</h3>
+                <p className="text-gray-400 text-xs">{role}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SCHOOL TIMING */}
+      <section className="py-16 bg-[#1a2e5a] relative overflow-hidden">
+        <div className="absolute inset-0 hero-pattern" />
+        <div className="relative container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto text-center">
+            {[
+              { icon: "🌅", label: "School Hours", time: "8:00 AM – 2:30 PM", sub: "Monday to Saturday" },
+              { icon: "🏢", label: "Office Hours", time: "9:00 AM – 4:00 PM", sub: "Monday to Saturday" },
+              { icon: "📞", label: "Contact", time: "+91-1742-271XXX", sub: "info@girlsgurukul.edu.in" },
+            ].map(({ icon, label, time, sub }, i) => (
+              <motion.div key={label} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                className="glass-card rounded-2xl p-6">
+                <div className="text-3xl mb-3">{icon}</div>
+                <h3 className="font-serif font-semibold text-white mb-2">{label}</h3>
+                <p className="text-[#d4a017] font-bold">{time}</p>
+                <p className="text-white/60 text-sm mt-1">{sub}</p>
               </motion.div>
             ))}
           </div>

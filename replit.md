@@ -1,6 +1,6 @@
 # The Girls Gurukul — School Website
 
-A modern, interactive, fully responsive school website for "The Girls Gurukul, Kalayat (Haryana, India)". Frontend-only presentation site with 5 pages, Framer Motion animations, AI-generated images, and a navy blue (#1a2e5a) + gold (#d4a017) + white color palette.
+A premium, fully responsive school website for "The Girls Gurukul, Kalayat (Haryana, India)". Frontend-only presentation site with 10 pages, Framer Motion animations, AI-generated images, animated counters, testimonials carousel, lightbox gallery, and a navy blue (#1a2e5a) + gold (#d4a017) + white color palette.
 
 ## Run & Operate
 
@@ -21,7 +21,7 @@ A modern, interactive, fully responsive school website for "The Girls Gurukul, K
 
 - `artifacts/girls-gurukul/` — school website (main artifact)
   - `src/pages/` — Home, About, Gallery, Documents, Contact
-  - `src/components/` — Navbar, Footer, WhatsAppButton, BackToTop
+  - `src/components/` — Navbar (dropdown), Footer, WhatsAppButton, BackToTop, AnimatedCounter, SectionHeader
   - `public/images/` — AI-generated images (hero, principal, campus, gallery)
   - `src/index.css` — Tailwind v4 + CSS theme variables (primary=navy, secondary=gold)
 - `artifacts/api-server/` — Express API server (not used by website)

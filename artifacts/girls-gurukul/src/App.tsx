@@ -11,8 +11,13 @@ import BackToTop from "@/components/BackToTop";
 
 import Home from "@/pages/Home";
 import About from "@/pages/About";
+import Admissions from "@/pages/Admissions";
+import Academics from "@/pages/Academics";
+import Faculty from "@/pages/Faculty";
 import Gallery from "@/pages/Gallery";
 import Documents from "@/pages/Documents";
+import FeeStructure from "@/pages/FeeStructure";
+import NewsEvents from "@/pages/NewsEvents";
 import Contact from "@/pages/Contact";
 
 const queryClient = new QueryClient();
@@ -25,8 +30,13 @@ function Router() {
         <Switch>
           <Route path="/" component={Home} />
           <Route path="/about" component={About} />
+          <Route path="/admissions" component={Admissions} />
+          <Route path="/academics" component={Academics} />
+          <Route path="/faculty" component={Faculty} />
           <Route path="/gallery" component={Gallery} />
           <Route path="/documents" component={Documents} />
+          <Route path="/fee-structure" component={FeeStructure} />
+          <Route path="/news-events" component={NewsEvents} />
           <Route path="/contact" component={Contact} />
           <Route component={NotFound} />
         </Switch>
