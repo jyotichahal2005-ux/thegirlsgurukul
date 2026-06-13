@@ -193,8 +193,8 @@ export default function Home() {
       </section>
 
       {/* STATS */}
-      <section className="py-16 bg-[#1a5c2e] relative overflow-hidden">
-        <div className="absolute inset-0 hero-pattern opacity-30" />
+      <section className="py-16 bg-[#d4a017] relative overflow-hidden">
+        <div className="absolute inset-0 hero-pattern opacity-20" />
         <div className="relative container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map(({ label, value, suffix, icon: Icon, color }, i) => (
@@ -202,10 +202,10 @@ export default function Home() {
                 <div className={`${color} w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg`}>
                   <Icon className="w-7 h-7 text-white" />
                 </div>
-                <div className="font-serif font-bold text-4xl md:text-5xl text-white mb-1">
+                <div className="font-serif font-bold text-4xl md:text-5xl text-[#1a5c2e] mb-1">
                   <AnimatedCounter to={value} suffix={suffix} />
                 </div>
-                <p className="text-[#d4a017] font-semibold text-sm uppercase tracking-wide">{label}</p>
+                <p className="text-[#1a5c2e]/80 font-semibold text-sm uppercase tracking-wide">{label}</p>
               </motion.div>
             ))}
           </div>
