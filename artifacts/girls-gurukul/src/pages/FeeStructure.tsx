@@ -116,7 +116,7 @@ export default function FeeStructure() {
   return (
     <div className="overflow-x-hidden">
       {/* HERO */}
-      <section className="relative py-24 bg-[#1a5c2e] overflow-hidden">
+      <section className="relative py-24 bg-[#9b1c1c] overflow-hidden">
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -133,8 +133,8 @@ export default function FeeStructure() {
       {/* NOTICE */}
       <section className="py-4 bg-[#d4a017]">
         <div className="container mx-auto px-4 flex items-center gap-3">
-          <AlertCircle size={18} className="text-[#1a5c2e] flex-shrink-0" />
-          <p className="text-[#1a5c2e] font-semibold text-sm">
+          <AlertCircle size={18} className="text-[#9b1c1c] flex-shrink-0" />
+          <p className="text-[#9b1c1c] font-semibold text-sm">
             Fee structure is for Academic Year 2025-26. Fees are subject to annual revision. Amounts shown are approximate — contact school for exact details.
           </p>
         </div>
@@ -149,13 +149,13 @@ export default function FeeStructure() {
               <motion.div key={group} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 className={`rounded-2xl border-2 ${color} overflow-hidden shadow-sm hover:shadow-xl transition-all card-hover`}>
                 <div className={`${headerColor} px-6 py-4`}>
-                  <h3 className="font-serif font-bold text-[#1a5c2e] text-sm leading-tight">{group}</h3>
+                  <h3 className="font-serif font-bold text-[#9b1c1c] text-sm leading-tight">{group}</h3>
                 </div>
                 <div className="px-6 py-4 space-y-3">
                   {fees.map(({ label, amount }) => (
                     <div key={label} className="flex items-center justify-between">
                       <span className="text-gray-600 text-xs">{label}</span>
-                      <span className="font-semibold text-[#1a5c2e] text-sm">{amount}</span>
+                      <span className="font-semibold text-[#9b1c1c] text-sm">{amount}</span>
                     </div>
                   ))}
                   <div className="border-t border-gray-200 pt-3 mt-3 flex items-center justify-between">
@@ -163,7 +163,7 @@ export default function FeeStructure() {
                       <span className="text-xs text-gray-400">{note}</span>
                     </div>
                     <div className="text-right">
-                      <span className="font-serif font-bold text-xl text-[#1a5c2e]">{total}</span>
+                      <span className="font-serif font-bold text-xl text-[#9b1c1c]">{total}</span>
                     </div>
                   </div>
                 </div>
@@ -172,7 +172,7 @@ export default function FeeStructure() {
           </div>
           <div className="text-center mt-8">
             <button onClick={() => alert("Fee structure PDF download starting...")}
-              className="inline-flex items-center gap-2 bg-[#1a5c2e] text-white font-bold px-8 py-3 rounded-full hover:bg-[#1a5c2e]/90 transition-colors shadow-lg">
+              className="inline-flex items-center gap-2 bg-[#9b1c1c] text-white font-bold px-8 py-3 rounded-full hover:bg-[#9b1c1c]/90 transition-colors shadow-lg">
               <Download size={18} /> Download Complete Fee Structure PDF
             </button>
           </div>
@@ -188,7 +188,7 @@ export default function FeeStructure() {
               <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 className="bg-white rounded-2xl p-6 text-center border border-gray-100 card-hover hover:shadow-lg transition-all">
                 <div className="text-4xl mb-4">{icon}</div>
-                <h3 className="font-serif font-bold text-[#1a5c2e] text-sm mb-2">{title}</h3>
+                <h3 className="font-serif font-bold text-[#9b1c1c] text-sm mb-2">{title}</h3>
                 <p className="text-gray-500 text-xs leading-relaxed">{desc}</p>
               </motion.div>
             ))}
@@ -196,7 +196,7 @@ export default function FeeStructure() {
 
           {/* Bank Details */}
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="mt-10 max-w-2xl mx-auto bg-[#1a5c2e] rounded-2xl p-6 text-white">
+            className="mt-10 max-w-2xl mx-auto bg-[#9b1c1c] rounded-2xl p-6 text-white">
             <h3 className="font-serif font-bold text-lg mb-4 text-center flex items-center justify-center gap-2">
               <IndianRupee size={20} className="text-[#d4a017]" /> Bank Account Details
             </h3>
@@ -231,7 +231,7 @@ export default function FeeStructure() {
                   <CheckCircle size={20} className="text-[#d4a017]" />
                 </div>
                 <div>
-                  <h3 className="font-serif font-bold text-[#1a5c2e] mb-1">{type}</h3>
+                  <h3 className="font-serif font-bold text-[#9b1c1c] mb-1">{type}</h3>
                   <p className="text-green-600 font-semibold text-sm mb-1">{benefit}</p>
                   <p className="text-gray-500 text-xs">{criteria}</p>
                 </div>
@@ -242,7 +242,7 @@ export default function FeeStructure() {
       </section>
 
       {/* IMPORTANT NOTES */}
-      <section className="py-16 bg-[#1a5c2e] relative overflow-hidden">
+      <section className="py-16 bg-[#9b1c1c] relative overflow-hidden">
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4">
           <SectionHeader badge="Important" title="Fee Payment Guidelines" light />
@@ -259,7 +259,7 @@ export default function FeeStructure() {
             ].map((note, i) => (
               <div key={i} className="flex items-start gap-3 glass-card rounded-xl p-4">
                 <div className="w-5 h-5 bg-[#d4a017] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span className="text-[#1a5c2e] text-xs font-bold">{i + 1}</span>
+                  <span className="text-[#9b1c1c] text-xs font-bold">{i + 1}</span>
                 </div>
                 <p className="text-white/80 text-sm leading-relaxed">{note}</p>
               </div>

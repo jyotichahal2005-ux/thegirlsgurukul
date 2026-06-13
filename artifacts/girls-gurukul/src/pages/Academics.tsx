@@ -74,7 +74,7 @@ export default function Academics() {
   return (
     <div className="overflow-x-hidden">
       {/* HERO */}
-      <section className="relative py-24 bg-[#1a5c2e] overflow-hidden">
+      <section className="relative py-24 bg-[#9b1c1c] overflow-hidden">
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -94,9 +94,9 @@ export default function Academics() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {achievements.map(({ stat, label, sub }, i) => (
               <motion.div key={label} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-                <p className="font-serif font-bold text-3xl md:text-4xl text-[#1a5c2e]">{stat}</p>
-                <p className="text-[#1a5c2e] font-bold text-sm">{label}</p>
-                <p className="text-[#1a5c2e]/60 text-xs">{sub}</p>
+                <p className="font-serif font-bold text-3xl md:text-4xl text-[#9b1c1c]">{stat}</p>
+                <p className="text-[#9b1c1c] font-bold text-sm">{label}</p>
+                <p className="text-[#9b1c1c]/60 text-xs">{sub}</p>
               </motion.div>
             ))}
           </div>
@@ -114,7 +114,7 @@ export default function Academics() {
                 <div className="flex items-center gap-3 mb-3">
                   <div className="text-3xl">{icon}</div>
                   <div>
-                    <h3 className="font-serif font-bold text-[#1a5c2e]">{level}</h3>
+                    <h3 className="font-serif font-bold text-[#9b1c1c]">{level}</h3>
                     <span className="text-xs text-gray-500 font-medium">{classes}</span>
                   </div>
                 </div>
@@ -142,7 +142,7 @@ export default function Academics() {
                   <CheckCircle size={18} className="text-[#d4a017]" />
                 </div>
                 <div>
-                  <h3 className="font-serif font-bold text-[#1a5c2e] mb-1 text-sm">{title}</h3>
+                  <h3 className="font-serif font-bold text-[#9b1c1c] mb-1 text-sm">{title}</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
                 </div>
               </motion.div>
@@ -152,7 +152,7 @@ export default function Academics() {
       </section>
 
       {/* CO-CURRICULAR */}
-      <section className="py-20 bg-[#1a5c2e] relative overflow-hidden">
+      <section className="py-20 bg-[#9b1c1c] relative overflow-hidden">
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4">
           <SectionHeader badge="Beyond Academics" title="Co-Curricular Activities" subtitle="Developing well-rounded personalities through sports, arts, culture and community." light />
@@ -182,7 +182,7 @@ export default function Academics() {
               <motion.div key={exam} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 className="bg-gray-50 rounded-2xl p-6 border border-gray-100 text-center card-hover hover:shadow-lg transition-all">
                 <div className="text-4xl mb-4">{icon}</div>
-                <h3 className="font-serif font-bold text-[#1a5c2e] mb-2">{exam}</h3>
+                <h3 className="font-serif font-bold text-[#9b1c1c] mb-2">{exam}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
               </motion.div>
             ))}

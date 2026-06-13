@@ -42,7 +42,7 @@ export default function Faculty() {
   return (
     <div className="overflow-x-hidden">
       {/* HERO */}
-      <section className="relative py-24 bg-[#1a5c2e] overflow-hidden">
+      <section className="relative py-24 bg-[#9b1c1c] overflow-hidden">
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -62,8 +62,8 @@ export default function Faculty() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[{ val: "65+", label: "Faculty Members" }, { val: "100%", label: "Postgraduates" }, { val: "12+", label: "Avg Experience (Yrs)" }, { val: "B.Ed.", label: "All Teachers Trained" }].map(({ val, label }) => (
               <div key={label}>
-                <p className="font-serif font-bold text-3xl text-[#1a5c2e]">{val}</p>
-                <p className="text-[#1a5c2e]/80 font-semibold text-sm">{label}</p>
+                <p className="font-serif font-bold text-3xl text-[#9b1c1c]">{val}</p>
+                <p className="text-[#9b1c1c]/80 font-semibold text-sm">{label}</p>
               </div>
             ))}
           </div>
@@ -80,11 +80,11 @@ export default function Faculty() {
                 className="bg-gray-50 rounded-3xl p-8 flex gap-5 items-start border border-gray-100 card-hover hover:shadow-xl transition-all">
                 <div className={`${color} w-20 h-20 rounded-2xl flex items-center justify-center text-white font-bold text-2xl flex-shrink-0`}>{initial}</div>
                 <div>
-                  <h3 className="font-serif font-bold text-[#1a5c2e] text-lg">{name}</h3>
+                  <h3 className="font-serif font-bold text-[#9b1c1c] text-lg">{name}</h3>
                   <p className="text-[#d4a017] font-semibold text-sm mb-1">{role}</p>
                   <p className="text-gray-500 text-xs mb-1">{qual}</p>
                   <p className="text-gray-400 text-xs mb-2">Experience: {exp}</p>
-                  <span className="bg-[#1a5c2e]/10 text-[#1a5c2e] text-xs px-2 py-0.5 rounded-full">{specialty}</span>
+                  <span className="bg-[#9b1c1c]/10 text-[#9b1c1c] text-xs px-2 py-0.5 rounded-full">{specialty}</span>
                 </div>
               </motion.div>
             ))}
@@ -105,13 +105,13 @@ export default function Faculty() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search by name, subject..."
-                className="w-full pl-9 pr-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#1a5c2e] bg-white"
+                className="w-full pl-9 pr-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#9b1c1c] bg-white"
               />
             </div>
             <div className="flex gap-2 flex-wrap justify-center">
               {departments.map((d) => (
                 <button key={d} onClick={() => setDept(d)}
-                  className={`px-3 py-2 rounded-full text-xs font-semibold transition-all ${d === dept ? "bg-[#1a5c2e] text-white shadow-md" : "bg-white text-gray-600 border border-gray-200 hover:border-[#1a5c2e]"}`}>
+                  className={`px-3 py-2 rounded-full text-xs font-semibold transition-all ${d === dept ? "bg-[#9b1c1c] text-white shadow-md" : "bg-white text-gray-600 border border-gray-200 hover:border-[#9b1c1c]"}`}>
                   {d}
                 </button>
               ))}
@@ -124,11 +124,11 @@ export default function Faculty() {
                 className="bg-white rounded-2xl p-5 border border-gray-100 card-hover hover:shadow-lg transition-all flex gap-4">
                 <div className={`${color} w-14 h-14 rounded-xl flex items-center justify-center text-white font-bold text-lg flex-shrink-0`}>{initial}</div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-serif font-bold text-[#1a5c2e] text-sm truncate">{name}</h3>
+                  <h3 className="font-serif font-bold text-[#9b1c1c] text-sm truncate">{name}</h3>
                   <p className="text-[#d4a017] text-xs font-semibold">{role}</p>
                   <p className="text-gray-400 text-xs">{qual}</p>
                   <div className="flex items-center gap-2 mt-1.5 flex-wrap">
-                    <span className="bg-[#1a5c2e]/8 text-[#1a5c2e] text-xs px-2 py-0.5 rounded-full">{d}</span>
+                    <span className="bg-[#9b1c1c]/8 text-[#9b1c1c] text-xs px-2 py-0.5 rounded-full">{d}</span>
                     <span className="text-gray-400 text-xs">{exp}</span>
                   </div>
                 </div>
@@ -146,13 +146,13 @@ export default function Faculty() {
       </section>
 
       {/* JOIN CTA */}
-      <section className="py-16 bg-gradient-to-r from-[#1a5c2e] to-[#1a5c2e]/80">
+      <section className="py-16 bg-gradient-to-r from-[#9b1c1c] to-[#9b1c1c]/80">
         <div className="container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="font-serif font-bold text-3xl text-white mb-3">Join Our Teaching Family</h2>
             <p className="text-white/70 mb-6 max-w-lg mx-auto">We are always looking for passionate, qualified educators. Send your CV to us.</p>
             <a href="mailto:careers@girlsgurukul.edu.in">
-              <button className="bg-[#d4a017] text-[#1a5c2e] font-bold px-8 py-3 rounded-full hover:bg-[#d4a017]/90 transition-colors">
+              <button className="bg-[#d4a017] text-[#9b1c1c] font-bold px-8 py-3 rounded-full hover:bg-[#d4a017]/90 transition-colors">
                 Send Your Application →
               </button>
             </a>

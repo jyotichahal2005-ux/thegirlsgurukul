@@ -22,17 +22,17 @@ const resourceLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1a5c2e] text-white">
+    <footer className="bg-[#9b1c1c] text-white">
       {/* CTA strip */}
       <div className="bg-[#d4a017] py-5">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
-            <p className="font-serif font-bold text-[#1a5c2e] text-xl">Admissions Open for 2025-26</p>
-            <p className="text-[#1a5c2e]/80 text-sm">Limited seats available. Apply today!</p>
+            <p className="font-serif font-bold text-[#9b1c1c] text-xl">Admissions Open for 2025-26</p>
+            <p className="text-[#9b1c1c]/80 text-sm">Limited seats available. Apply today!</p>
           </div>
           <Link
             href="/admissions"
-            className="bg-[#1a5c2e] text-white font-bold px-8 py-3 rounded-full hover:bg-[#1a5c2e]/90 transition-colors text-sm whitespace-nowrap"
+            className="bg-[#9b1c1c] text-white font-bold px-8 py-3 rounded-full hover:bg-[#9b1c1c]/90 transition-colors text-sm whitespace-nowrap"
           >
             Apply Now →
           </Link>
@@ -65,7 +65,7 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#d4a017] hover:text-[#1a5c2e] transition-all duration-200"
+                  className="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#d4a017] hover:text-[#9b1c1c] transition-all duration-200"
                 >
                   <Icon size={16} />
                 </a>

@@ -63,7 +63,7 @@ export default function Admissions() {
   return (
     <div className="overflow-x-hidden">
       {/* HERO */}
-      <section className="relative py-24 bg-[#1a5c2e] overflow-hidden">
+      <section className="relative py-24 bg-[#9b1c1c] overflow-hidden">
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -80,8 +80,8 @@ export default function Admissions() {
       {/* NOTICE BANNER */}
       <section className="py-4 bg-[#d4a017]">
         <div className="container mx-auto px-4 flex items-center gap-3">
-          <AlertCircle className="text-[#1a5c2e] flex-shrink-0" size={20} />
-          <p className="text-[#1a5c2e] font-semibold text-sm">
+          <AlertCircle className="text-[#9b1c1c] flex-shrink-0" size={20} />
+          <p className="text-[#9b1c1c] font-semibold text-sm">
             Admissions are open for 2025-26. Limited seats available. Apply early to secure your daughter's seat.
           </p>
         </div>
@@ -95,10 +95,10 @@ export default function Admissions() {
             {steps.map(({ step, title, desc, icon }, i) => (
               <motion.div key={step} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 className="relative bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:border-[#d4a017]/30 hover:shadow-lg transition-all duration-300 card-hover">
-                <div className="absolute top-4 right-4 text-5xl font-bold text-[#1a5c2e]/5 font-serif">{step}</div>
+                <div className="absolute top-4 right-4 text-5xl font-bold text-[#9b1c1c]/5 font-serif">{step}</div>
                 <div className="text-3xl mb-4">{icon}</div>
-                <div className="inline-block bg-[#d4a017] text-[#1a5c2e] text-xs font-bold px-2 py-0.5 rounded-full mb-2">Step {step}</div>
-                <h3 className="font-serif font-bold text-lg text-[#1a5c2e] mb-2">{title}</h3>
+                <div className="inline-block bg-[#d4a017] text-[#9b1c1c] text-xs font-bold px-2 py-0.5 rounded-full mb-2">Step {step}</div>
+                <h3 className="font-serif font-bold text-lg text-[#9b1c1c] mb-2">{title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
               </motion.div>
             ))}
@@ -113,7 +113,7 @@ export default function Admissions() {
           <div className="overflow-x-auto">
             <table className="w-full bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
               <thead>
-                <tr className="bg-[#1a5c2e] text-white">
+                <tr className="bg-[#9b1c1c] text-white">
                   <th className="text-left px-6 py-4 font-semibold text-sm">Class</th>
                   <th className="text-left px-6 py-4 font-semibold text-sm">Age Requirement</th>
                   <th className="text-left px-6 py-4 font-semibold text-sm">Eligibility Criteria</th>
@@ -123,7 +123,7 @@ export default function Admissions() {
                 {eligibility.map(({ class: cls, age, criteria }, i) => (
                   <motion.tr key={cls} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                     className={`border-t border-gray-100 hover:bg-[#d4a017]/5 transition-colors ${i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}`}>
-                    <td className="px-6 py-4 font-semibold text-[#1a5c2e] text-sm">{cls}</td>
+                    <td className="px-6 py-4 font-semibold text-[#9b1c1c] text-sm">{cls}</td>
                     <td className="px-6 py-4 text-gray-600 text-sm">{age}</td>
                     <td className="px-6 py-4 text-gray-500 text-sm">{criteria}</td>
                   </motion.tr>
@@ -159,7 +159,7 @@ export default function Admissions() {
                     <div className="flex items-center gap-3">
                       <div className={`w-2 h-2 rounded-full ${status === "open" ? "bg-green-500 animate-pulse" : "bg-gray-300"}`} />
                       <div>
-                        <p className="font-semibold text-[#1a5c2e] text-sm">{event}</p>
+                        <p className="font-semibold text-[#9b1c1c] text-sm">{event}</p>
                         <p className="text-gray-400 text-xs flex items-center gap-1"><Calendar size={10} /> {date}</p>
                       </div>
                     </div>
@@ -185,9 +185,9 @@ export default function Admissions() {
                 <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="w-10 h-10 text-green-500" />
                 </div>
-                <h3 className="font-serif font-bold text-2xl text-[#1a5c2e] mb-2">Enquiry Submitted!</h3>
+                <h3 className="font-serif font-bold text-2xl text-[#9b1c1c] mb-2">Enquiry Submitted!</h3>
                 <p className="text-gray-500">Thank you for your interest. Our admissions team will contact you within 24 hours.</p>
-                <Button onClick={() => setSubmitted(false)} className="mt-6 bg-[#1a5c2e] text-white rounded-full px-8">
+                <Button onClick={() => setSubmitted(false)} className="mt-6 bg-[#9b1c1c] text-white rounded-full px-8">
                   Submit Another
                 </Button>
               </motion.div>
@@ -198,17 +198,17 @@ export default function Admissions() {
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-1.5">Student's Full Name *</label>
                     <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Enter student's name"
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1a5c2e] focus:ring-2 focus:ring-[#1a5c2e]/10 transition-all" />
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#9b1c1c] focus:ring-2 focus:ring-[#9b1c1c]/10 transition-all" />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-1.5">Date of Birth *</label>
                     <input required type="date" value={form.dob} onChange={(e) => setForm({ ...form, dob: e.target.value })}
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1a5c2e] focus:ring-2 focus:ring-[#1a5c2e]/10 transition-all" />
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#9b1c1c] focus:ring-2 focus:ring-[#9b1c1c]/10 transition-all" />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-1.5">Seeking Admission in Class *</label>
                     <select required value={form.class} onChange={(e) => setForm({ ...form, class: e.target.value })}
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1a5c2e] focus:ring-2 focus:ring-[#1a5c2e]/10 transition-all bg-white">
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#9b1c1c] focus:ring-2 focus:ring-[#9b1c1c]/10 transition-all bg-white">
                       <option value="">Select Class</option>
                       {["Nursery", "LKG", "UKG", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI (Science)", "XI (Commerce)", "XII (Science)", "XII (Commerce)"].map((c) => (
                         <option key={c} value={c}>Class {c}</option>
@@ -218,30 +218,30 @@ export default function Admissions() {
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-1.5">Father's Name *</label>
                     <input required value={form.fatherName} onChange={(e) => setForm({ ...form, fatherName: e.target.value })} placeholder="Father's name"
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1a5c2e] focus:ring-2 focus:ring-[#1a5c2e]/10 transition-all" />
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#9b1c1c] focus:ring-2 focus:ring-[#9b1c1c]/10 transition-all" />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-1.5">Mobile Number *</label>
                     <input required type="tel" value={form.mobile} onChange={(e) => setForm({ ...form, mobile: e.target.value })} placeholder="+91 XXXXX XXXXX"
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1a5c2e] focus:ring-2 focus:ring-[#1a5c2e]/10 transition-all" />
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#9b1c1c] focus:ring-2 focus:ring-[#9b1c1c]/10 transition-all" />
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-1.5">Email Address</label>
                     <input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="parent@email.com"
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1a5c2e] focus:ring-2 focus:ring-[#1a5c2e]/10 transition-all" />
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#9b1c1c] focus:ring-2 focus:ring-[#9b1c1c]/10 transition-all" />
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-1.5">Residential Address</label>
                   <textarea value={form.address} onChange={(e) => setForm({ ...form, address: e.target.value })} placeholder="Village / Town, District, State" rows={2}
-                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1a5c2e] focus:ring-2 focus:ring-[#1a5c2e]/10 transition-all resize-none" />
+                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#9b1c1c] focus:ring-2 focus:ring-[#9b1c1c]/10 transition-all resize-none" />
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-1.5">Additional Message</label>
                   <textarea value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Any specific questions or requirements?" rows={3}
-                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1a5c2e] focus:ring-2 focus:ring-[#1a5c2e]/10 transition-all resize-none" />
+                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#9b1c1c] focus:ring-2 focus:ring-[#9b1c1c]/10 transition-all resize-none" />
                 </div>
-                <Button type="submit" size="lg" className="w-full bg-[#1a5c2e] text-white hover:bg-[#1a5c2e]/90 rounded-xl font-bold py-4">
+                <Button type="submit" size="lg" className="w-full bg-[#9b1c1c] text-white hover:bg-[#9b1c1c]/90 rounded-xl font-bold py-4">
                   Submit Enquiry <ArrowRight size={18} className="ml-2" />
                 </Button>
                 <p className="text-center text-xs text-gray-400">We will contact you within 24 hours of submission.</p>
@@ -254,14 +254,14 @@ export default function Admissions() {
       {/* CTA */}
       <section className="py-16 bg-gradient-to-r from-[#d4a017] via-[#f0c040] to-[#d4a017]">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="font-serif font-bold text-3xl text-[#1a5c2e] mb-3">Have Questions About Admissions?</h2>
-          <p className="text-[#1a5c2e]/80 mb-6">Call us or visit the school office. We're happy to help!</p>
+          <h2 className="font-serif font-bold text-3xl text-[#9b1c1c] mb-3">Have Questions About Admissions?</h2>
+          <p className="text-[#9b1c1c]/80 mb-6">Call us or visit the school office. We're happy to help!</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="tel:+911742271000">
-              <Button size="lg" className="bg-[#1a5c2e] text-white hover:bg-[#1a5c2e]/90 font-bold rounded-full px-8">📞 Call Now</Button>
+              <Button size="lg" className="bg-[#9b1c1c] text-white hover:bg-[#9b1c1c]/90 font-bold rounded-full px-8">📞 Call Now</Button>
             </a>
             <a href="https://wa.me/911742271000" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" variant="outline" className="border-2 border-[#1a5c2e] text-[#1a5c2e] hover:bg-[#1a5c2e] hover:text-white font-semibold rounded-full px-8 bg-transparent">
+              <Button size="lg" variant="outline" className="border-2 border-[#9b1c1c] text-[#9b1c1c] hover:bg-[#9b1c1c] hover:text-white font-semibold rounded-full px-8 bg-transparent">
                 💬 WhatsApp Us
               </Button>
             </a>
