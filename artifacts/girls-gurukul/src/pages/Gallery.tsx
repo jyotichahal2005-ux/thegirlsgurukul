@@ -52,7 +52,7 @@ export default function Gallery() {
   return (
     <div className="overflow-x-hidden">
       {/* HERO */}
-      <section className="relative py-24 bg-[#1a2e5a] overflow-hidden">
+      <section className="relative py-24 bg-[#1a5c2e] overflow-hidden">
         <div className="absolute inset-0 hero-pattern" />
         <div className="absolute inset-0" style={{ backgroundImage: "url('/images/gallery-annual-function.png')", backgroundSize: "cover", backgroundPosition: "center", opacity: 0.15 }} />
         <div className="relative container mx-auto px-4 text-center">
@@ -77,7 +77,7 @@ export default function Gallery() {
             {categories.map((cat) => (
               <button key={cat} onClick={() => setActiveCategory(cat)}
                 className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
-                  cat === activeCategory ? "bg-[#1a2e5a] text-white shadow-lg" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  cat === activeCategory ? "bg-[#1a5c2e] text-white shadow-lg" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                 }`}>
                 {cat}
               </button>
@@ -99,7 +99,7 @@ export default function Gallery() {
                   onClick={() => setLightbox({ src, title, desc })}
                 >
                   <img src={src} alt={title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1a2e5a]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1a5c2e]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <p className="text-white font-semibold text-sm">{title}</p>
                     <span className="text-[#d4a017] text-xs">{category}</span>
@@ -125,12 +125,12 @@ export default function Gallery() {
                 <div className="aspect-video">
                   <img src={thumb} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
-                <div className="absolute inset-0 bg-[#1a2e5a]/50 group-hover:bg-[#1a2e5a]/70 transition-colors flex items-center justify-center">
+                <div className="absolute inset-0 bg-[#1a5c2e]/50 group-hover:bg-[#1a5c2e]/70 transition-colors flex items-center justify-center">
                   <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
-                    <Play size={24} fill="#1a2e5a" className="text-[#1a2e5a] ml-1" />
+                    <Play size={24} fill="#1a5c2e" className="text-[#1a5c2e] ml-1" />
                   </div>
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#1a2e5a] to-transparent">
+                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#1a5c2e] to-transparent">
                   <p className="text-white font-semibold text-sm">{title}</p>
                   <div className="flex items-center gap-2 mt-1">
                     <span className="text-[#d4a017] text-xs">{category}</span>
@@ -144,7 +144,7 @@ export default function Gallery() {
       </section>
 
       {/* ACHIEVEMENTS GALLERY */}
-      <section className="py-20 bg-[#1a2e5a] relative overflow-hidden">
+      <section className="py-20 bg-[#1a5c2e] relative overflow-hidden">
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4">
           <SectionHeader badge="Awards & Trophies" title="Our Trophy Cabinet" light />

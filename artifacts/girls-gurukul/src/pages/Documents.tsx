@@ -91,7 +91,7 @@ export default function Documents() {
   return (
     <div className="overflow-x-hidden">
       {/* HERO */}
-      <section className="relative py-24 bg-[#1a2e5a] overflow-hidden">
+      <section className="relative py-24 bg-[#1a5c2e] overflow-hidden">
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -111,7 +111,7 @@ export default function Documents() {
           <div className="flex flex-wrap justify-center gap-4">
             {["TC Form", "Admission Form", "Syllabus", "Mandatory Disclosures", "Fee Structure", "Academic Calendar"].map((item) => (
               <button key={item} onClick={() => handleDownload(item)}
-                className="bg-[#1a2e5a] text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-[#1a2e5a]/90 transition-colors flex items-center gap-2">
+                className="bg-[#1a5c2e] text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-[#1a5c2e]/90 transition-colors flex items-center gap-2">
                 <Download size={14} /> {item}
               </button>
             ))}
@@ -131,7 +131,7 @@ export default function Documents() {
                   <div className={`w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm`}>
                     <Icon size={20} className={iconColor} />
                   </div>
-                  <h3 className="font-serif font-bold text-[#1a2e5a] text-lg">{title}</h3>
+                  <h3 className="font-serif font-bold text-[#1a5c2e] text-lg">{title}</h3>
                 </div>
                 <div className="space-y-3">
                   {files.map(({ name, type, size }) => (
@@ -141,13 +141,13 @@ export default function Documents() {
                           <FileText size={14} className="text-red-500" />
                         </div>
                         <div>
-                          <p className="text-sm font-medium text-gray-700 group-hover:text-[#1a2e5a] transition-colors">{name}</p>
+                          <p className="text-sm font-medium text-gray-700 group-hover:text-[#1a5c2e] transition-colors">{name}</p>
                           <p className="text-xs text-gray-400">{type} • {size}</p>
                         </div>
                       </div>
                       <button onClick={() => handleDownload(name)}
-                        className="flex-shrink-0 w-8 h-8 bg-[#1a2e5a]/5 hover:bg-[#1a2e5a] rounded-lg flex items-center justify-center transition-all group-hover:bg-[#1a2e5a]">
-                        <Download size={14} className="text-[#1a2e5a] group-hover:text-white" />
+                        className="flex-shrink-0 w-8 h-8 bg-[#1a5c2e]/5 hover:bg-[#1a5c2e] rounded-lg flex items-center justify-center transition-all group-hover:bg-[#1a5c2e]">
+                        <Download size={14} className="text-[#1a5c2e] group-hover:text-white" />
                       </button>
                     </div>
                   ))}
@@ -165,7 +165,7 @@ export default function Documents() {
           <div className="overflow-x-auto">
             <table className="w-full bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
               <thead>
-                <tr className="bg-[#1a2e5a] text-white">
+                <tr className="bg-[#1a5c2e] text-white">
                   <th className="text-left px-6 py-4 font-semibold text-sm">Class Group</th>
                   <th className="text-left px-6 py-4 font-semibold text-sm">Board</th>
                   <th className="text-left px-6 py-4 font-semibold text-sm">No. of Subjects</th>
@@ -175,13 +175,13 @@ export default function Documents() {
               <tbody>
                 {syllabus.map(({ class: cls, board, subjects, download }, i) => (
                   <tr key={cls} className={`border-t border-gray-100 hover:bg-[#d4a017]/5 transition-colors ${i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}`}>
-                    <td className="px-6 py-4 font-semibold text-[#1a2e5a] text-sm">{cls}</td>
+                    <td className="px-6 py-4 font-semibold text-[#1a5c2e] text-sm">{cls}</td>
                     <td className="px-6 py-4 text-gray-600 text-sm">{board}</td>
                     <td className="px-6 py-4 text-gray-500 text-sm">{subjects} subjects</td>
                     <td className="px-6 py-4 text-center">
                       {download && (
                         <button onClick={() => handleDownload(`${cls} Syllabus`)}
-                          className="inline-flex items-center gap-1.5 bg-[#1a2e5a] text-white text-xs font-semibold px-3 py-1.5 rounded-full hover:bg-[#d4a017] hover:text-[#1a2e5a] transition-all">
+                          className="inline-flex items-center gap-1.5 bg-[#1a5c2e] text-white text-xs font-semibold px-3 py-1.5 rounded-full hover:bg-[#d4a017] hover:text-[#1a5c2e] transition-all">
                           <Download size={12} /> Download
                         </button>
                       )}
@@ -210,9 +210,9 @@ export default function Documents() {
                     {urgent && <span className="text-xs bg-red-100 text-red-600 font-bold px-2 py-0.5 rounded-full">URGENT</span>}
                     <span className="text-xs text-gray-400">{date}</span>
                   </div>
-                  <p className="text-gray-700 font-medium text-sm group-hover:text-[#1a2e5a] transition-colors">{title}</p>
+                  <p className="text-gray-700 font-medium text-sm group-hover:text-[#1a5c2e] transition-colors">{title}</p>
                 </div>
-                <button onClick={() => handleDownload(title)} className="flex-shrink-0 w-8 h-8 rounded-lg bg-white border border-gray-200 flex items-center justify-center hover:bg-[#1a2e5a] hover:border-[#1a2e5a] transition-all group/btn">
+                <button onClick={() => handleDownload(title)} className="flex-shrink-0 w-8 h-8 rounded-lg bg-white border border-gray-200 flex items-center justify-center hover:bg-[#1a5c2e] hover:border-[#1a5c2e] transition-all group/btn">
                   <Download size={14} className="text-gray-400 group-hover/btn:text-white" />
                 </button>
               </motion.div>
@@ -222,7 +222,7 @@ export default function Documents() {
       </section>
 
       {/* RTI & LEGAL */}
-      <section className="py-16 bg-[#1a2e5a] relative overflow-hidden">
+      <section className="py-16 bg-[#1a5c2e] relative overflow-hidden">
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto text-center">
