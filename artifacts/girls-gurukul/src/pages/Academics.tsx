@@ -78,18 +78,18 @@ export default function Academics() {
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#d4a017]/20 text-[#d4a017] mb-4">Curriculum</span>
+            <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#ffffff]/20 text-[#ffffff] mb-4">Curriculum</span>
             <h1 className="font-serif font-bold text-4xl md:text-6xl text-white mb-4">Academics</h1>
             <p className="text-white/70 text-lg max-w-2xl mx-auto">World-class CBSE curriculum designed for holistic excellence — from Nursery to Class XII.</p>
             <div className="flex items-center justify-center gap-2 mt-4 text-sm text-white/50">
-              <span>Home</span><span>/</span><span className="text-[#d4a017]">Academics</span>
+              <span>Home</span><span>/</span><span className="text-[#ffffff]">Academics</span>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* ACHIEVEMENTS STRIP */}
-      <section className="py-10 bg-[#d4a017]">
+      <section className="py-10 bg-[#ffffff]">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {achievements.map(({ stat, label, sub }, i) => (
@@ -138,8 +138,8 @@ export default function Academics() {
             {teaching.map(({ title, desc }, i) => (
               <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 className="flex gap-4 p-5 bg-white rounded-2xl border border-gray-100 hover:shadow-md transition-all card-hover">
-                <div className="flex-shrink-0 w-10 h-10 bg-[#d4a017]/15 rounded-xl flex items-center justify-center">
-                  <CheckCircle size={18} className="text-[#d4a017]" />
+                <div className="flex-shrink-0 w-10 h-10 bg-[#ffffff]/15 rounded-xl flex items-center justify-center">
+                  <CheckCircle size={18} className="text-[#ffffff]" />
                 </div>
                 <div>
                   <h3 className="font-serif font-bold text-[#9b1c1c] mb-1 text-sm">{title}</h3>

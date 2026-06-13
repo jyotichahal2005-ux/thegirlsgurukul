@@ -53,18 +53,18 @@ export default function Contact() {
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#d4a017]/20 text-[#d4a017] mb-4">Get In Touch</span>
+            <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#ffffff]/20 text-[#ffffff] mb-4">Get In Touch</span>
             <h1 className="font-serif font-bold text-4xl md:text-6xl text-white mb-4">Contact Us</h1>
             <p className="text-white/70 text-lg max-w-2xl mx-auto">We'd love to hear from you. Reach out for admissions, queries, or to schedule a school visit.</p>
             <div className="flex items-center justify-center gap-2 mt-4 text-sm text-white/50">
-              <span>Home</span><span>/</span><span className="text-[#d4a017]">Contact</span>
+              <span>Home</span><span>/</span><span className="text-[#ffffff]">Contact</span>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* QUICK CONTACT BUTTONS */}
-      <section className="py-6 bg-[#d4a017]">
+      <section className="py-6 bg-[#ffffff]">
         <div className="container mx-auto px-4 flex flex-wrap justify-center gap-4">
           <a href="tel:+911742271000" className="flex items-center gap-2 bg-[#9b1c1c] text-white font-bold px-6 py-2.5 rounded-full hover:bg-[#9b1c1c]/90 transition-colors text-sm">
             📞 Call Now
@@ -106,9 +106,9 @@ export default function Contact() {
             {/* MAP */}
             <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
               <div className="mb-6">
-                <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#d4a017]/15 text-[#d4a017] mb-3">Location</span>
+                <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#ffffff]/15 text-[#ffffff] mb-3">Location</span>
                 <h2 className="font-serif font-bold text-3xl text-[#9b1c1c]">Find Us on the Map</h2>
-                <div className="h-0.5 w-16 bg-[#d4a017] rounded-full mt-3" />
+                <div className="h-0.5 w-16 bg-[#ffffff] rounded-full mt-3" />
               </div>
               <div className="rounded-3xl overflow-hidden shadow-lg h-72 bg-gray-200 border border-gray-200 relative">
                 <iframe
@@ -119,12 +119,12 @@ export default function Contact() {
                 />
               </div>
               <div className="mt-5 p-4 bg-white rounded-2xl border border-gray-100 flex items-start gap-3 shadow-sm">
-                <MapPin size={18} className="text-[#d4a017] mt-0.5 flex-shrink-0" />
+                <MapPin size={18} className="text-[#ffffff] mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="font-semibold text-[#9b1c1c] text-sm">The Girls Gurukul, Kalayat</p>
                   <p className="text-gray-500 text-xs mt-0.5">Kaithal, Haryana – 136027, India</p>
                   <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer"
-                    className="text-[#d4a017] text-xs font-semibold mt-1 inline-block hover:underline">
+                    className="text-[#ffffff] text-xs font-semibold mt-1 inline-block hover:underline">
                     Get Directions →
                   </a>
                 </div>
@@ -134,9 +134,9 @@ export default function Contact() {
             {/* CONTACT FORM */}
             <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
               <div className="mb-6">
-                <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#d4a017]/15 text-[#d4a017] mb-3">Message Us</span>
+                <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#ffffff]/15 text-[#ffffff] mb-3">Message Us</span>
                 <h2 className="font-serif font-bold text-3xl text-[#9b1c1c]">Send Us a Message</h2>
-                <div className="h-0.5 w-16 bg-[#d4a017] rounded-full mt-3" />
+                <div className="h-0.5 w-16 bg-[#ffffff] rounded-full mt-3" />
               </div>
 
               {submitted ? (
@@ -204,14 +204,14 @@ export default function Contact() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-4xl mx-auto">
             {departments.map(({ dept, contact, email }, i) => (
               <motion.div key={dept} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                className="bg-gray-50 rounded-2xl p-5 border border-gray-100 hover:border-[#d4a017]/30 hover:shadow-md transition-all card-hover">
+                className="bg-gray-50 rounded-2xl p-5 border border-gray-100 hover:border-[#ffffff]/30 hover:shadow-md transition-all card-hover">
                 <h3 className="font-serif font-bold text-[#9b1c1c] mb-3">{dept}</h3>
                 <div className="space-y-2">
-                  <a href={`tel:${contact.replace(/\D/g, '')}`} className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#d4a017] transition-colors">
-                    <Phone size={13} className="text-[#d4a017]" /> {contact}
+                  <a href={`tel:${contact.replace(/\D/g, '')}`} className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#ffffff] transition-colors">
+                    <Phone size={13} className="text-[#ffffff]" /> {contact}
                   </a>
-                  <a href={`mailto:${email}`} className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#d4a017] transition-colors truncate">
-                    <Mail size={13} className="text-[#d4a017] flex-shrink-0" /> {email}
+                  <a href={`mailto:${email}`} className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#ffffff] transition-colors truncate">
+                    <Mail size={13} className="text-[#ffffff] flex-shrink-0" /> {email}
                   </a>
                 </div>
               </motion.div>
@@ -231,7 +231,7 @@ export default function Contact() {
                 <button className="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors"
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}>
                   <span className="font-serif font-semibold text-[#9b1c1c] text-sm pr-4">{q}</span>
-                  <span className={`flex-shrink-0 w-6 h-6 bg-[#d4a017]/15 rounded-full flex items-center justify-center text-[#d4a017] font-bold transition-transform ${openFaq === i ? "rotate-45" : ""}`}>+</span>
+                  <span className={`flex-shrink-0 w-6 h-6 bg-[#ffffff]/15 rounded-full flex items-center justify-center text-[#ffffff] font-bold transition-transform ${openFaq === i ? "rotate-45" : ""}`}>+</span>
                 </button>
                 {openFaq === i && (
                   <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}

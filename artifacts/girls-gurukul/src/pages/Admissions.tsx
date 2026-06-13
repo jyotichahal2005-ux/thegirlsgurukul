@@ -67,18 +67,18 @@ export default function Admissions() {
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#d4a017]/20 text-[#d4a017] mb-4">Enroll Today</span>
+            <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#ffffff]/20 text-[#ffffff] mb-4">Enroll Today</span>
             <h1 className="font-serif font-bold text-4xl md:text-6xl text-white mb-4">Admissions 2025-26</h1>
             <p className="text-white/70 text-lg max-w-2xl mx-auto">Begin your daughter's journey of excellence. Admissions open for Nursery to Class XII.</p>
             <div className="flex items-center justify-center gap-2 mt-4 text-sm text-white/50">
-              <span>Home</span><span>/</span><span className="text-[#d4a017]">Admissions</span>
+              <span>Home</span><span>/</span><span className="text-[#ffffff]">Admissions</span>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* NOTICE BANNER */}
-      <section className="py-4 bg-[#d4a017]">
+      <section className="py-4 bg-[#ffffff]">
         <div className="container mx-auto px-4 flex items-center gap-3">
           <AlertCircle className="text-[#9b1c1c] flex-shrink-0" size={20} />
           <p className="text-[#9b1c1c] font-semibold text-sm">
@@ -94,10 +94,10 @@ export default function Admissions() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {steps.map(({ step, title, desc, icon }, i) => (
               <motion.div key={step} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                className="relative bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:border-[#d4a017]/30 hover:shadow-lg transition-all duration-300 card-hover">
+                className="relative bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:border-[#ffffff]/30 hover:shadow-lg transition-all duration-300 card-hover">
                 <div className="absolute top-4 right-4 text-5xl font-bold text-[#9b1c1c]/5 font-serif">{step}</div>
                 <div className="text-3xl mb-4">{icon}</div>
-                <div className="inline-block bg-[#d4a017] text-[#9b1c1c] text-xs font-bold px-2 py-0.5 rounded-full mb-2">Step {step}</div>
+                <div className="inline-block bg-[#ffffff] text-[#9b1c1c] text-xs font-bold px-2 py-0.5 rounded-full mb-2">Step {step}</div>
                 <h3 className="font-serif font-bold text-lg text-[#9b1c1c] mb-2">{title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
               </motion.div>
@@ -122,7 +122,7 @@ export default function Admissions() {
               <tbody>
                 {eligibility.map(({ class: cls, age, criteria }, i) => (
                   <motion.tr key={cls} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                    className={`border-t border-gray-100 hover:bg-[#d4a017]/5 transition-colors ${i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}`}>
+                    className={`border-t border-gray-100 hover:bg-[#ffffff]/5 transition-colors ${i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}`}>
                     <td className="px-6 py-4 font-semibold text-[#9b1c1c] text-sm">{cls}</td>
                     <td className="px-6 py-4 text-gray-600 text-sm">{age}</td>
                     <td className="px-6 py-4 text-gray-500 text-sm">{criteria}</td>
@@ -143,8 +143,8 @@ export default function Admissions() {
               <div className="space-y-3">
                 {documents.map((doc, i) => (
                   <motion.div key={doc} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                    className="flex items-start gap-3 p-3 bg-gray-50 rounded-xl hover:bg-[#d4a017]/5 transition-colors">
-                    <FileText size={16} className="text-[#d4a017] mt-0.5 flex-shrink-0" />
+                    className="flex items-start gap-3 p-3 bg-gray-50 rounded-xl hover:bg-[#ffffff]/5 transition-colors">
+                    <FileText size={16} className="text-[#ffffff] mt-0.5 flex-shrink-0" />
                     <span className="text-gray-700 text-sm">{doc}</span>
                   </motion.div>
                 ))}
@@ -252,7 +252,7 @@ export default function Admissions() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-[#d4a017] via-[#f0c040] to-[#d4a017]">
+      <section className="py-16 bg-gradient-to-r from-[#ffffff] via-[#f0c040] to-[#ffffff]">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-serif font-bold text-3xl text-[#9b1c1c] mb-3">Have Questions About Admissions?</h2>
           <p className="text-[#9b1c1c]/80 mb-6">Call us or visit the school office. We're happy to help!</p>

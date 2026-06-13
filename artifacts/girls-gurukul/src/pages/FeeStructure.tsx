@@ -120,18 +120,18 @@ export default function FeeStructure() {
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#d4a017]/20 text-[#d4a017] mb-4">2025-26</span>
+            <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#ffffff]/20 text-[#ffffff] mb-4">2025-26</span>
             <h1 className="font-serif font-bold text-4xl md:text-6xl text-white mb-4">Fee Structure</h1>
             <p className="text-white/70 text-lg max-w-2xl mx-auto">Transparent and affordable fee structure for all classes. Quality education at reasonable cost.</p>
             <div className="flex items-center justify-center gap-2 mt-4 text-sm text-white/50">
-              <span>Home</span><span>/</span><span className="text-[#d4a017]">Fee Structure</span>
+              <span>Home</span><span>/</span><span className="text-[#ffffff]">Fee Structure</span>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* NOTICE */}
-      <section className="py-4 bg-[#d4a017]">
+      <section className="py-4 bg-[#ffffff]">
         <div className="container mx-auto px-4 flex items-center gap-3">
           <AlertCircle size={18} className="text-[#9b1c1c] flex-shrink-0" />
           <p className="text-[#9b1c1c] font-semibold text-sm">
@@ -198,7 +198,7 @@ export default function FeeStructure() {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             className="mt-10 max-w-2xl mx-auto bg-[#9b1c1c] rounded-2xl p-6 text-white">
             <h3 className="font-serif font-bold text-lg mb-4 text-center flex items-center justify-center gap-2">
-              <IndianRupee size={20} className="text-[#d4a017]" /> Bank Account Details
+              <IndianRupee size={20} className="text-[#ffffff]" /> Bank Account Details
             </h3>
             <div className="grid grid-cols-2 gap-4 text-sm">
               {[
@@ -226,9 +226,9 @@ export default function FeeStructure() {
           <div className="space-y-4 max-w-3xl mx-auto">
             {concessions.map(({ type, benefit, criteria }, i) => (
               <motion.div key={type} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                className="flex gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100 hover:border-[#d4a017]/30 hover:shadow-md transition-all">
-                <div className="flex-shrink-0 w-10 h-10 bg-[#d4a017]/15 rounded-xl flex items-center justify-center">
-                  <CheckCircle size={20} className="text-[#d4a017]" />
+                className="flex gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100 hover:border-[#ffffff]/30 hover:shadow-md transition-all">
+                <div className="flex-shrink-0 w-10 h-10 bg-[#ffffff]/15 rounded-xl flex items-center justify-center">
+                  <CheckCircle size={20} className="text-[#ffffff]" />
                 </div>
                 <div>
                   <h3 className="font-serif font-bold text-[#9b1c1c] mb-1">{type}</h3>
@@ -258,7 +258,7 @@ export default function FeeStructure() {
               "Scholarships require fresh application each academic year.",
             ].map((note, i) => (
               <div key={i} className="flex items-start gap-3 glass-card rounded-xl p-4">
-                <div className="w-5 h-5 bg-[#d4a017] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="w-5 h-5 bg-[#ffffff] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                   <span className="text-[#9b1c1c] text-xs font-bold">{i + 1}</span>
                 </div>
                 <p className="text-white/80 text-sm leading-relaxed">{note}</p>

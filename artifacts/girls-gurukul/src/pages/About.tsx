@@ -58,20 +58,20 @@ export default function About() {
         <div className="absolute inset-0" style={{ backgroundImage: "url('/images/campus-aerial.png')", backgroundSize: "cover", backgroundPosition: "center", opacity: 0.15 }} />
         <div className="relative container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#d4a017]/20 text-[#d4a017] mb-4">Our Story</span>
+            <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#ffffff]/20 text-[#ffffff] mb-4">Our Story</span>
             <h1 className="font-serif font-bold text-4xl md:text-6xl text-white mb-4">About Our School</h1>
             <p className="text-white/70 text-lg max-w-2xl mx-auto">
               Discover the story, mission and values behind The Girls Gurukul — a legacy of excellence since 2005.
             </p>
             <div className="flex items-center justify-center gap-2 mt-4 text-sm text-white/50">
-              <span>Home</span><span>/</span><span className="text-[#d4a017]">About Us</span>
+              <span>Home</span><span>/</span><span className="text-[#ffffff]">About Us</span>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* QUICK STATS */}
-      <section className="py-10 bg-[#d4a017]">
+      <section className="py-10 bg-[#ffffff]">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
@@ -96,7 +96,7 @@ export default function About() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-              <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#d4a017]/15 text-[#d4a017] mb-4">Our History</span>
+              <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#ffffff]/15 text-[#ffffff] mb-4">Our History</span>
               <h2 className="font-serif font-bold text-3xl md:text-4xl text-[#9b1c1c] mb-6 leading-tight">
                 Two Decades of Shaping<br /><span className="gold-text">Young Women Leaders</span>
               </h2>
@@ -109,7 +109,7 @@ export default function About() {
               <ul className="space-y-3">
                 {["Recognised by Haryana State Government", "CBSE Affiliated (Aff. No. XXXXXXX)", "Member of CBSE School Association", "Recipient of multiple national awards"].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-gray-700">
-                    <CheckCircle size={18} className="text-[#d4a017] flex-shrink-0" /> {item}
+                    <CheckCircle size={18} className="text-[#ffffff] flex-shrink-0" /> {item}
                   </li>
                 ))}
               </ul>
@@ -129,7 +129,7 @@ export default function About() {
         <div className="container mx-auto px-4">
           <SectionHeader badge="Journey" title="Our Milestones" subtitle="Key moments that have shaped The Girls Gurukul into the institution it is today." />
           <div className="relative max-w-3xl mx-auto">
-            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[#d4a017]/30 -translate-x-1/2 hidden md:block" />
+            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[#ffffff]/30 -translate-x-1/2 hidden md:block" />
             {timeline.map(({ year, title, desc }, i) => (
               <motion.div key={year} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 className={`flex gap-6 mb-8 items-start ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
@@ -142,7 +142,7 @@ export default function About() {
                   ) : null}
                 </div>
                 <div className="flex-shrink-0 flex flex-col items-center">
-                  <div className="w-14 h-14 bg-[#9b1c1c] rounded-full flex items-center justify-center text-[#d4a017] font-bold text-sm shadow-lg z-10">
+                  <div className="w-14 h-14 bg-[#9b1c1c] rounded-full flex items-center justify-center text-[#ffffff] font-bold text-sm shadow-lg z-10">
                     {year}
                   </div>
                 </div>
@@ -166,7 +166,7 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
               className="glass-card rounded-3xl p-8">
-              <div className="w-14 h-14 bg-[#d4a017] rounded-2xl flex items-center justify-center mb-4">
+              <div className="w-14 h-14 bg-[#ffffff] rounded-2xl flex items-center justify-center mb-4">
                 <Target className="w-7 h-7 text-[#9b1c1c]" />
               </div>
               <h3 className="font-serif font-bold text-2xl text-white mb-4">Our Mission</h3>
@@ -176,7 +176,7 @@ export default function About() {
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
               className="glass-card rounded-3xl p-8">
-              <div className="w-14 h-14 bg-[#d4a017] rounded-2xl flex items-center justify-center mb-4">
+              <div className="w-14 h-14 bg-[#ffffff] rounded-2xl flex items-center justify-center mb-4">
                 <Eye className="w-7 h-7 text-[#9b1c1c]" />
               </div>
               <h3 className="font-serif font-bold text-2xl text-white mb-4">Our Vision</h3>
@@ -195,7 +195,7 @@ export default function About() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {values.map(({ icon, title, desc }, i) => (
               <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                className="bg-gray-50 rounded-2xl p-6 hover:shadow-lg hover:bg-white transition-all duration-300 border border-transparent hover:border-[#d4a017]/20 card-hover">
+                className="bg-gray-50 rounded-2xl p-6 hover:shadow-lg hover:bg-white transition-all duration-300 border border-transparent hover:border-[#ffffff]/20 card-hover">
                 <div className="text-4xl mb-4">{icon}</div>
                 <h3 className="font-serif font-bold text-lg text-[#9b1c1c] mb-2">{title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
@@ -236,10 +236,10 @@ export default function About() {
                   </div>
                   <div className="text-center mt-3">
                     <p className="font-bold text-[#9b1c1c] text-sm">Mrs. Kavita Sharma</p>
-                    <p className="text-[#d4a017] text-xs">M.Ed., Ph.D.</p>
+                    <p className="text-[#ffffff] text-xs">M.Ed., Ph.D.</p>
                     <p className="text-gray-400 text-xs">Principal</p>
                     <div className="flex justify-center gap-1 mt-1">
-                      {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="#d4a017" className="text-[#d4a017]" />)}
+                      {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="#ffffff" className="text-[#ffffff]" />)}
                     </div>
                   </div>
                 </div>
@@ -272,7 +272,7 @@ export default function About() {
             {management.map(({ name, role, initial }, i) => (
               <motion.div key={name} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 className="text-center bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
-                <div className="w-16 h-16 bg-[#9b1c1c] rounded-full flex items-center justify-center text-[#d4a017] font-bold text-xl mx-auto mb-3">
+                <div className="w-16 h-16 bg-[#9b1c1c] rounded-full flex items-center justify-center text-[#ffffff] font-bold text-xl mx-auto mb-3">
                   {initial}
                 </div>
                 <h3 className="font-serif font-semibold text-[#9b1c1c] text-sm mb-1">{name}</h3>
@@ -297,7 +297,7 @@ export default function About() {
                 className="glass-card rounded-2xl p-6">
                 <div className="text-3xl mb-3">{icon}</div>
                 <h3 className="font-serif font-semibold text-white mb-2">{label}</h3>
-                <p className="text-[#d4a017] font-bold">{time}</p>
+                <p className="text-[#ffffff] font-bold">{time}</p>
                 <p className="text-white/60 text-sm mt-1">{sub}</p>
               </motion.div>
             ))}

@@ -46,18 +46,18 @@ export default function Faculty() {
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#d4a017]/20 text-[#d4a017] mb-4">Our Team</span>
+            <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#ffffff]/20 text-[#ffffff] mb-4">Our Team</span>
             <h1 className="font-serif font-bold text-4xl md:text-6xl text-white mb-4">Meet Our Faculty</h1>
             <p className="text-white/70 text-lg max-w-2xl mx-auto">Dedicated, qualified and passionate educators committed to every student's success.</p>
             <div className="flex items-center justify-center gap-2 mt-4 text-sm text-white/50">
-              <span>Home</span><span>/</span><span className="text-[#d4a017]">Faculty</span>
+              <span>Home</span><span>/</span><span className="text-[#ffffff]">Faculty</span>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* STATS STRIP */}
-      <section className="py-10 bg-[#d4a017]">
+      <section className="py-10 bg-[#ffffff]">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[{ val: "65+", label: "Faculty Members" }, { val: "100%", label: "Postgraduates" }, { val: "12+", label: "Avg Experience (Yrs)" }, { val: "B.Ed.", label: "All Teachers Trained" }].map(({ val, label }) => (
@@ -81,7 +81,7 @@ export default function Faculty() {
                 <div className={`${color} w-20 h-20 rounded-2xl flex items-center justify-center text-white font-bold text-2xl flex-shrink-0`}>{initial}</div>
                 <div>
                   <h3 className="font-serif font-bold text-[#9b1c1c] text-lg">{name}</h3>
-                  <p className="text-[#d4a017] font-semibold text-sm mb-1">{role}</p>
+                  <p className="text-[#ffffff] font-semibold text-sm mb-1">{role}</p>
                   <p className="text-gray-500 text-xs mb-1">{qual}</p>
                   <p className="text-gray-400 text-xs mb-2">Experience: {exp}</p>
                   <span className="bg-[#9b1c1c]/10 text-[#9b1c1c] text-xs px-2 py-0.5 rounded-full">{specialty}</span>
@@ -125,7 +125,7 @@ export default function Faculty() {
                 <div className={`${color} w-14 h-14 rounded-xl flex items-center justify-center text-white font-bold text-lg flex-shrink-0`}>{initial}</div>
                 <div className="flex-1 min-w-0">
                   <h3 className="font-serif font-bold text-[#9b1c1c] text-sm truncate">{name}</h3>
-                  <p className="text-[#d4a017] text-xs font-semibold">{role}</p>
+                  <p className="text-[#ffffff] text-xs font-semibold">{role}</p>
                   <p className="text-gray-400 text-xs">{qual}</p>
                   <div className="flex items-center gap-2 mt-1.5 flex-wrap">
                     <span className="bg-[#9b1c1c]/8 text-[#9b1c1c] text-xs px-2 py-0.5 rounded-full">{d}</span>
@@ -139,7 +139,7 @@ export default function Faculty() {
           {filtered.length === 0 && (
             <div className="text-center py-12 text-gray-400">
               <p className="text-lg">No faculty found matching your search.</p>
-              <button onClick={() => { setSearch(""); setDept("All"); }} className="text-[#d4a017] text-sm mt-2 underline">Clear filters</button>
+              <button onClick={() => { setSearch(""); setDept("All"); }} className="text-[#ffffff] text-sm mt-2 underline">Clear filters</button>
             </div>
           )}
         </div>
@@ -152,7 +152,7 @@ export default function Faculty() {
             <h2 className="font-serif font-bold text-3xl text-white mb-3">Join Our Teaching Family</h2>
             <p className="text-white/70 mb-6 max-w-lg mx-auto">We are always looking for passionate, qualified educators. Send your CV to us.</p>
             <a href="mailto:careers@girlsgurukul.edu.in">
-              <button className="bg-[#d4a017] text-[#9b1c1c] font-bold px-8 py-3 rounded-full hover:bg-[#d4a017]/90 transition-colors">
+              <button className="bg-[#ffffff] text-[#9b1c1c] font-bold px-8 py-3 rounded-full hover:bg-[#ffffff]/90 transition-colors">
                 Send Your Application →
               </button>
             </a>

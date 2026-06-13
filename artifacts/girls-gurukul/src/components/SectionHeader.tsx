@@ -19,7 +19,7 @@ export default function SectionHeader({ badge, title, subtitle, center = true, l
     >
       {badge && (
         <span className={`inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 ${
-          light ? "bg-white/20 text-white" : "bg-[#d4a017]/15 text-[#d4a017]"
+          light ? "bg-white/20 text-white" : "bg-[#ffffff]/15 text-[#ffffff]"
         }`}>
           {badge}
         </span>
@@ -36,7 +36,7 @@ export default function SectionHeader({ badge, title, subtitle, center = true, l
           {subtitle}
         </p>
       )}
-      <div className={`mt-4 h-1 w-16 rounded-full bg-[#d4a017] ${center ? "mx-auto" : ""}`} />
+      <div className={`mt-4 h-1 w-16 rounded-full bg-[#ffffff] ${center ? "mx-auto" : ""}`} />
     </motion.div>
   );
 }

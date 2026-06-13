@@ -63,11 +63,11 @@ export default function NewsEvents() {
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#d4a017]/20 text-[#d4a017] mb-4">Stay Updated</span>
+            <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#ffffff]/20 text-[#ffffff] mb-4">Stay Updated</span>
             <h1 className="font-serif font-bold text-4xl md:text-6xl text-white mb-4">News & Events</h1>
             <p className="text-white/70 text-lg max-w-2xl mx-auto">Stay informed with the latest news, upcoming events and achievements from The Girls Gurukul.</p>
             <div className="flex items-center justify-center gap-2 mt-4 text-sm text-white/50">
-              <span>Home</span><span>/</span><span className="text-[#d4a017]">News & Events</span>
+              <span>Home</span><span>/</span><span className="text-[#ffffff]">News & Events</span>
             </div>
           </motion.div>
         </div>
@@ -88,7 +88,7 @@ export default function NewsEvents() {
                 </div>
                 <div className="p-6">
                   <p className="text-gray-400 text-xs flex items-center gap-1 mb-2"><Calendar size={11} /> {date}</p>
-                  <h3 className="font-serif font-bold text-[#9b1c1c] text-xl mb-2 group-hover:text-[#d4a017] transition-colors">{title}</h3>
+                  <h3 className="font-serif font-bold text-[#9b1c1c] text-xl mb-2 group-hover:text-[#ffffff] transition-colors">{title}</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
                   <button className="mt-4 text-[#9b1c1c] text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
                     Read More <ArrowRight size={14} />
@@ -125,7 +125,7 @@ export default function NewsEvents() {
                 </div>
                 <div className="p-5">
                   <p className="text-gray-400 text-xs flex items-center gap-1 mb-2"><Calendar size={10} /> {date}</p>
-                  <h3 className="font-serif font-bold text-[#9b1c1c] mb-2 text-sm leading-snug group-hover:text-[#d4a017] transition-colors">{title}</h3>
+                  <h3 className="font-serif font-bold text-[#9b1c1c] mb-2 text-sm leading-snug group-hover:text-[#ffffff] transition-colors">{title}</h3>
                   <p className="text-gray-500 text-xs leading-relaxed line-clamp-2">{desc}</p>
                   <button className="mt-3 text-[#9b1c1c] text-xs font-semibold flex items-center gap-1 hover:gap-2 transition-all">
                     Read More <ArrowRight size={12} />
@@ -147,7 +147,7 @@ export default function NewsEvents() {
               <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 className="glass-card rounded-2xl p-5 hover:scale-[1.02] transition-transform">
                 <div className="flex gap-4 mb-3">
-                  <div className="flex-shrink-0 w-14 h-14 bg-[#d4a017] rounded-xl flex flex-col items-center justify-center text-[#9b1c1c]">
+                  <div className="flex-shrink-0 w-14 h-14 bg-[#ffffff] rounded-xl flex flex-col items-center justify-center text-[#9b1c1c]">
                     <span className="font-bold text-xl leading-none">{date.day}</span>
                     <span className="text-xs font-semibold uppercase leading-none">{date.month}</span>
                   </div>
@@ -160,10 +160,10 @@ export default function NewsEvents() {
                 <p className="text-white/60 text-xs mb-3 leading-relaxed">{desc}</p>
                 <div className="space-y-1">
                   <div className="flex items-center gap-2 text-white/50 text-xs">
-                    <Clock size={11} className="text-[#d4a017]" /> {time}
+                    <Clock size={11} className="text-[#ffffff]" /> {time}
                   </div>
                   <div className="flex items-center gap-2 text-white/50 text-xs">
-                    <MapPin size={11} className="text-[#d4a017]" /> {venue}
+                    <MapPin size={11} className="text-[#ffffff]" /> {venue}
                   </div>
                 </div>
               </motion.div>
@@ -178,14 +178,14 @@ export default function NewsEvents() {
           <SectionHeader badge="Archive" title="Past Events" subtitle="A look back at the wonderful events and programs we have celebrated." />
           <div className="max-w-2xl mx-auto">
             <div className="relative pl-8">
-              <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-[#d4a017]/30" />
+              <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-[#ffffff]/30" />
               {pastEvents.map(({ month, title, category }, i) => (
                 <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                  className="relative mb-5 bg-gray-50 rounded-2xl p-4 border border-gray-100 hover:border-[#d4a017]/30 hover:shadow-sm transition-all">
-                  <div className="absolute -left-5 top-1/2 -translate-y-1/2 w-4 h-4 bg-[#d4a017] rounded-full border-2 border-white shadow" />
+                  className="relative mb-5 bg-gray-50 rounded-2xl p-4 border border-gray-100 hover:border-[#ffffff]/30 hover:shadow-sm transition-all">
+                  <div className="absolute -left-5 top-1/2 -translate-y-1/2 w-4 h-4 bg-[#ffffff] rounded-full border-2 border-white shadow" />
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-[#d4a017] text-xs font-bold mb-0.5">{month}</p>
+                      <p className="text-[#ffffff] text-xs font-bold mb-0.5">{month}</p>
                       <h4 className="font-serif font-semibold text-[#9b1c1c] text-sm">{title}</h4>
                     </div>
                     <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${categoryColors[category] || "bg-gray-100"}`}>{category}</span>

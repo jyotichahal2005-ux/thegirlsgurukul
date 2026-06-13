@@ -57,11 +57,11 @@ export default function Gallery() {
         <div className="absolute inset-0" style={{ backgroundImage: "url('/images/gallery-annual-function.png')", backgroundSize: "cover", backgroundPosition: "center", opacity: 0.15 }} />
         <div className="relative container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#d4a017]/20 text-[#d4a017] mb-4">Photos & Videos</span>
+            <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#ffffff]/20 text-[#ffffff] mb-4">Photos & Videos</span>
             <h1 className="font-serif font-bold text-4xl md:text-6xl text-white mb-4">Our Gallery</h1>
             <p className="text-white/70 text-lg max-w-2xl mx-auto">A visual journey through campus life, events, achievements and the vibrant spirit of The Girls Gurukul.</p>
             <div className="flex items-center justify-center gap-2 mt-4 text-sm text-white/50">
-              <span>Home</span><span>/</span><span className="text-[#d4a017]">Gallery</span>
+              <span>Home</span><span>/</span><span className="text-[#ffffff]">Gallery</span>
             </div>
           </motion.div>
         </div>
@@ -102,7 +102,7 @@ export default function Gallery() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#9b1c1c]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <p className="text-white font-semibold text-sm">{title}</p>
-                    <span className="text-[#d4a017] text-xs">{category}</span>
+                    <span className="text-[#ffffff] text-xs">{category}</span>
                   </div>
                   <div className="absolute top-3 right-3 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                     <ZoomIn size={14} className="text-white" />
@@ -133,7 +133,7 @@ export default function Gallery() {
                 <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#9b1c1c] to-transparent">
                   <p className="text-white font-semibold text-sm">{title}</p>
                   <div className="flex items-center gap-2 mt-1">
-                    <span className="text-[#d4a017] text-xs">{category}</span>
+                    <span className="text-[#ffffff] text-xs">{category}</span>
                     <span className="text-white/50 text-xs">• {duration}</span>
                   </div>
                 </div>
@@ -163,7 +163,7 @@ export default function Gallery() {
                 className="glass-card rounded-2xl p-5 text-center hover:scale-105 transition-transform">
                 <div className="text-4xl mb-2">{icon}</div>
                 <h3 className="font-serif font-bold text-white text-sm mb-1">{title}</h3>
-                <p className="text-[#d4a017] text-xs font-semibold">{year}</p>
+                <p className="text-[#ffffff] text-xs font-semibold">{year}</p>
                 <p className="text-white/50 text-xs">{org}</p>
               </motion.div>
             ))}

@@ -95,18 +95,18 @@ export default function Documents() {
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#d4a017]/20 text-[#d4a017] mb-4">Downloads</span>
+            <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#ffffff]/20 text-[#ffffff] mb-4">Downloads</span>
             <h1 className="font-serif font-bold text-4xl md:text-6xl text-white mb-4">Documents & Forms</h1>
             <p className="text-white/70 text-lg max-w-2xl mx-auto">Download admission forms, syllabi, certificates, mandatory disclosures and important circulars.</p>
             <div className="flex items-center justify-center gap-2 mt-4 text-sm text-white/50">
-              <span>Home</span><span>/</span><span className="text-[#d4a017]">Documents</span>
+              <span>Home</span><span>/</span><span className="text-[#ffffff]">Documents</span>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* QUICK LINKS */}
-      <section className="py-10 bg-[#d4a017]">
+      <section className="py-10 bg-[#ffffff]">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-4">
             {["TC Form", "Admission Form", "Syllabus", "Mandatory Disclosures", "Fee Structure", "Academic Calendar"].map((item) => (
@@ -174,14 +174,14 @@ export default function Documents() {
               </thead>
               <tbody>
                 {syllabus.map(({ class: cls, board, subjects, download }, i) => (
-                  <tr key={cls} className={`border-t border-gray-100 hover:bg-[#d4a017]/5 transition-colors ${i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}`}>
+                  <tr key={cls} className={`border-t border-gray-100 hover:bg-[#ffffff]/5 transition-colors ${i % 2 === 0 ? "bg-white" : "bg-gray-50/50"}`}>
                     <td className="px-6 py-4 font-semibold text-[#9b1c1c] text-sm">{cls}</td>
                     <td className="px-6 py-4 text-gray-600 text-sm">{board}</td>
                     <td className="px-6 py-4 text-gray-500 text-sm">{subjects} subjects</td>
                     <td className="px-6 py-4 text-center">
                       {download && (
                         <button onClick={() => handleDownload(`${cls} Syllabus`)}
-                          className="inline-flex items-center gap-1.5 bg-[#9b1c1c] text-white text-xs font-semibold px-3 py-1.5 rounded-full hover:bg-[#d4a017] hover:text-[#9b1c1c] transition-all">
+                          className="inline-flex items-center gap-1.5 bg-[#9b1c1c] text-white text-xs font-semibold px-3 py-1.5 rounded-full hover:bg-[#ffffff] hover:text-[#9b1c1c] transition-all">
                           <Download size={12} /> Download
                         </button>
                       )}
@@ -201,9 +201,9 @@ export default function Documents() {
           <div className="max-w-3xl mx-auto space-y-3">
             {circulars.map(({ date, title, urgent }, i) => (
               <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                className="flex items-start gap-4 p-4 bg-gray-50 rounded-2xl border border-gray-100 hover:border-[#d4a017]/30 hover:shadow-sm transition-all group">
-                <div className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center ${urgent ? "bg-red-50" : "bg-[#d4a017]/10"}`}>
-                  {urgent ? <AlertCircle size={18} className="text-red-500" /> : <Bell size={18} className="text-[#d4a017]" />}
+                className="flex items-start gap-4 p-4 bg-gray-50 rounded-2xl border border-gray-100 hover:border-[#ffffff]/30 hover:shadow-sm transition-all group">
+                <div className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center ${urgent ? "bg-red-50" : "bg-[#ffffff]/10"}`}>
+                  {urgent ? <AlertCircle size={18} className="text-red-500" /> : <Bell size={18} className="text-[#ffffff]" />}
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
@@ -235,7 +235,7 @@ export default function Documents() {
                 <div className="text-3xl mb-3">{icon}</div>
                 <h3 className="font-serif font-bold text-white mb-2">{title}</h3>
                 <p className="text-white/60 text-sm mb-4 leading-relaxed">{desc}</p>
-                <button onClick={() => handleDownload(title)} className="text-[#d4a017] text-sm font-semibold underline hover:no-underline">{btn} →</button>
+                <button onClick={() => handleDownload(title)} className="text-[#ffffff] text-sm font-semibold underline hover:no-underline">{btn} →</button>
               </div>
             ))}
           </div>

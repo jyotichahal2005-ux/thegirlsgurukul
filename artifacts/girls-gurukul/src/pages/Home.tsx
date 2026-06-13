@@ -121,8 +121,8 @@ export default function Home() {
               {/* Admissions badge */}
               <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.05 }}
                 className="flex items-center gap-2 mb-4">
-                <span className="inline-flex items-center gap-2 bg-[#d4a017]/25 border border-[#d4a017]/50 text-[#d4a017] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
-                  <span className="w-2 h-2 bg-[#d4a017] rounded-full animate-pulse" /> Admissions Open 2025-26
+                <span className="inline-flex items-center gap-2 bg-[#ffffff]/25 border border-[#ffffff]/50 text-[#ffffff] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
+                  <span className="w-2 h-2 bg-[#ffffff] rounded-full animate-pulse" /> Admissions Open 2025-26
                 </span>
               </motion.div>
 
@@ -130,12 +130,12 @@ export default function Home() {
               <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
                 className="font-serif font-bold text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-3">
                 The Girls<br />
-                <span className="text-[#d4a017]">Gurukul</span>
+                <span className="text-[#ffffff]">Gurukul</span>
               </motion.h1>
 
               {/* Divider */}
               <motion.div initial={{ width: 0 }} animate={{ width: "5rem" }} transition={{ duration: 0.8, delay: 0.3 }}
-                className="h-1 bg-[#d4a017] rounded-full mb-5" />
+                className="h-1 bg-[#ffffff] rounded-full mb-5" />
 
               {/* Tagline */}
               <motion.p initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.35 }}
@@ -148,7 +148,7 @@ export default function Home() {
                 className="flex gap-6 mb-10">
                 {[{ val: "1200+", lbl: "Students" }, { val: "19+", lbl: "Years" }, { val: "100%", lbl: "Results" }].map(({ val, lbl }) => (
                   <div key={lbl} className="text-center">
-                    <p className="text-[#d4a017] font-bold text-xl leading-none">{val}</p>
+                    <p className="text-[#ffffff] font-bold text-xl leading-none">{val}</p>
                     <p className="text-white/60 text-xs mt-0.5">{lbl}</p>
                   </div>
                 ))}
@@ -158,7 +158,7 @@ export default function Home() {
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.55 }}
                 className="flex flex-wrap gap-4">
                 <Link href="/admissions">
-                  <Button size="lg" className="bg-[#d4a017] text-[#9b1c1c] hover:bg-[#d4a017]/90 font-bold px-8 py-4 rounded-full text-base shadow-2xl shadow-[#d4a017]/30">
+                  <Button size="lg" className="bg-[#ffffff] text-[#9b1c1c] hover:bg-[#ffffff]/90 font-bold px-8 py-4 rounded-full text-base shadow-2xl shadow-[#ffffff]/30">
                     Apply Now <ArrowRight size={18} className="ml-2" />
                   </Button>
                 </Link>
@@ -177,7 +177,7 @@ export default function Home() {
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-2 z-10">
           {heroSlides.map((_, i) => (
             <button key={i} onClick={() => setCurrentHeroSlide(i)}
-              className={`rounded-full transition-all duration-300 ${i === currentHeroSlide ? "w-8 h-2 bg-[#d4a017]" : "w-2 h-2 bg-white/40 hover:bg-white/70"}`} />
+              className={`rounded-full transition-all duration-300 ${i === currentHeroSlide ? "w-8 h-2 bg-[#ffffff]" : "w-2 h-2 bg-white/40 hover:bg-white/70"}`} />
           ))}
         </div>
 
@@ -193,7 +193,7 @@ export default function Home() {
       </section>
 
       {/* STATS */}
-      <section className="py-16 bg-[#d4a017] relative overflow-hidden">
+      <section className="py-16 bg-[#ffffff] relative overflow-hidden">
         <div className="absolute inset-0 hero-pattern opacity-20" />
         <div className="relative container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -227,7 +227,7 @@ export default function Home() {
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-              <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#d4a017]/15 text-[#d4a017] mb-4">About Our School</span>
+              <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#ffffff]/15 text-[#ffffff] mb-4">About Our School</span>
               <h2 className="font-serif font-bold text-3xl md:text-4xl text-[#9b1c1c] leading-tight mb-6">
                 A Legacy of Excellence in <span className="gold-text">Girls' Education</span>
               </h2>
@@ -240,7 +240,7 @@ export default function Home() {
               <ul className="space-y-3 mb-8">
                 {["CBSE Affiliated Institution", "ISO Certified School", "Smart classrooms & digital labs", "Qualified & experienced faculty"].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-gray-700">
-                    <CheckCircle size={18} className="text-[#d4a017] flex-shrink-0" />
+                    <CheckCircle size={18} className="text-[#ffffff] flex-shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -263,7 +263,7 @@ export default function Home() {
             {features.map(({ icon, title, desc }, i) => (
               <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 card-hover border border-gray-100 group">
-                <div className="w-14 h-14 bg-[#9b1c1c]/5 group-hover:bg-[#d4a017]/10 rounded-2xl flex items-center justify-center text-2xl mb-4 transition-colors">{icon}</div>
+                <div className="w-14 h-14 bg-[#9b1c1c]/5 group-hover:bg-[#ffffff]/10 rounded-2xl flex items-center justify-center text-2xl mb-4 transition-colors">{icon}</div>
                 <h3 className="font-serif font-bold text-lg text-[#9b1c1c] mb-2">{title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
               </motion.div>
@@ -278,8 +278,8 @@ export default function Home() {
         <div className="relative container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="order-2 lg:order-1">
-              <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#d4a017]/20 text-[#d4a017] mb-4">From The Principal's Desk</span>
-              <Quote className="text-[#d4a017] w-10 h-10 mb-4" />
+              <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#ffffff]/20 text-[#ffffff] mb-4">From The Principal's Desk</span>
+              <Quote className="text-[#ffffff] w-10 h-10 mb-4" />
               <p className="text-white/90 text-lg leading-relaxed mb-6 italic">
                 "At The Girls Gurukul, we believe every girl has the potential to achieve greatness. Our mission is not merely academic excellence but the complete development of each student — her intellect, character, creativity, and compassion."
               </p>
@@ -287,19 +287,19 @@ export default function Home() {
                 Our dedicated educators work tirelessly to ensure every student receives individual attention and the best possible opportunities. We invite you to be part of our family.
               </p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-[#d4a017] rounded-full flex items-center justify-center text-[#9b1c1c] font-bold text-lg">K</div>
+                <div className="w-12 h-12 bg-[#ffffff] rounded-full flex items-center justify-center text-[#9b1c1c] font-bold text-lg">K</div>
                 <div>
                   <p className="font-bold text-white text-lg">Mrs. Kavita Sharma</p>
-                  <p className="text-[#d4a017] text-sm">Principal, The Girls Gurukul</p>
+                  <p className="text-[#ffffff] text-sm">Principal, The Girls Gurukul</p>
                 </div>
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="order-1 lg:order-2 flex justify-center">
               <div className="relative">
-                <div className="w-72 h-96 rounded-3xl overflow-hidden shadow-2xl border-4 border-[#d4a017]/30">
+                <div className="w-72 h-96 rounded-3xl overflow-hidden shadow-2xl border-4 border-[#ffffff]/30">
                   <img src="/images/principal.png" alt="Principal" className="w-full h-full object-cover object-top" />
                 </div>
-                <div className="absolute -bottom-4 -right-4 bg-[#d4a017] rounded-2xl p-4 shadow-xl">
+                <div className="absolute -bottom-4 -right-4 bg-[#ffffff] rounded-2xl p-4 shadow-xl">
                   <div className="flex items-center gap-1">{[...Array(5)].map((_, i) => <Star key={i} size={14} fill="#9b1c1c" className="text-[#9b1c1c]" />)}</div>
                   <p className="text-[#9b1c1c] font-bold text-sm mt-1">Top Educator</p>
                 </div>
@@ -316,7 +316,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {achievements.map(({ icon, title, desc }, i) => (
               <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                className="flex gap-4 p-5 rounded-2xl border border-gray-100 hover:border-[#d4a017]/30 hover:shadow-lg transition-all duration-300 bg-white card-hover">
+                className="flex gap-4 p-5 rounded-2xl border border-gray-100 hover:border-[#ffffff]/30 hover:shadow-lg transition-all duration-300 bg-white card-hover">
                 <div className="text-3xl flex-shrink-0">{icon}</div>
                 <div>
                   <h3 className="font-serif font-bold text-[#9b1c1c] mb-1">{title}</h3>
@@ -363,17 +363,17 @@ export default function Home() {
               <motion.div key={currentTestimonial} initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -40 }} transition={{ duration: 0.4 }}
                 className="glass-card rounded-3xl p-8 md:p-10 text-center" onMouseEnter={() => setAutoplay(false)} onMouseLeave={() => setAutoplay(true)}>
                 <div className="flex justify-center mb-4">
-                  {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => <Star key={i} size={20} fill="#d4a017" className="text-[#d4a017]" />)}
+                  {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => <Star key={i} size={20} fill="#ffffff" className="text-[#ffffff]" />)}
                 </div>
-                <Quote className="text-[#d4a017]/40 w-10 h-10 mx-auto mb-4" />
+                <Quote className="text-[#ffffff]/40 w-10 h-10 mx-auto mb-4" />
                 <p className="text-white/90 text-lg leading-relaxed mb-6 italic">"{testimonials[currentTestimonial].text}"</p>
                 <div className="flex items-center justify-center gap-3">
-                  <div className="w-10 h-10 bg-[#d4a017] rounded-full flex items-center justify-center text-[#9b1c1c] font-bold">
+                  <div className="w-10 h-10 bg-[#ffffff] rounded-full flex items-center justify-center text-[#9b1c1c] font-bold">
                     {testimonials[currentTestimonial].name[0]}
                   </div>
                   <div className="text-left">
                     <p className="font-bold text-white">{testimonials[currentTestimonial].name}</p>
-                    <p className="text-[#d4a017] text-sm">{testimonials[currentTestimonial].role}</p>
+                    <p className="text-[#ffffff] text-sm">{testimonials[currentTestimonial].role}</p>
                   </div>
                 </div>
               </motion.div>
@@ -385,7 +385,7 @@ export default function Home() {
               </button>
               {testimonials.map((_, i) => (
                 <button key={i} onClick={() => { setAutoplay(false); setCurrentTestimonial(i); }}
-                  className={`h-2 rounded-full transition-all ${i === currentTestimonial ? "bg-[#d4a017] w-6" : "bg-white/30 w-2"}`} />
+                  className={`h-2 rounded-full transition-all ${i === currentTestimonial ? "bg-[#ffffff] w-6" : "bg-white/30 w-2"}`} />
               ))}
               <button onClick={() => { setAutoplay(false); setCurrentTestimonial((p) => (p + 1) % testimonials.length); }}
                 className="w-10 h-10 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white/10 transition-colors">
@@ -405,10 +405,10 @@ export default function Home() {
               <div className="space-y-4">
                 {events.map(({ date, title, time, icon }, i) => (
                   <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                    className="flex gap-4 p-4 rounded-2xl border border-gray-100 hover:border-[#d4a017]/30 hover:shadow-md transition-all">
+                    className="flex gap-4 p-4 rounded-2xl border border-gray-100 hover:border-[#ffffff]/30 hover:shadow-md transition-all">
                     <div className="flex-shrink-0 w-14 h-14 bg-[#9b1c1c] rounded-xl flex flex-col items-center justify-center text-white">
                       <span className="font-bold text-lg leading-none">{date.day}</span>
-                      <span className="text-xs text-[#d4a017] uppercase">{date.month}</span>
+                      <span className="text-xs text-[#ffffff] uppercase">{date.month}</span>
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1"><span>{icon}</span><h4 className="font-serif font-semibold text-[#9b1c1c]">{title}</h4></div>
@@ -430,7 +430,7 @@ export default function Home() {
               <div className="space-y-4">
                 {news.map(({ date, category, title, desc }, i) => (
                   <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                    className="p-4 rounded-2xl border border-gray-100 hover:border-[#d4a017]/30 hover:shadow-md transition-all card-hover cursor-pointer">
+                    className="p-4 rounded-2xl border border-gray-100 hover:border-[#ffffff]/30 hover:shadow-md transition-all card-hover cursor-pointer">
                     <div className="flex gap-2 mb-2">
                       <span className="text-xs bg-[#9b1c1c]/10 text-[#9b1c1c] font-semibold px-2 py-0.5 rounded-full">{category}</span>
                       <span className="text-xs text-gray-400 flex items-center gap-1"><Newspaper size={10} /> {date}</span>
@@ -453,7 +453,7 @@ export default function Home() {
       </section>
 
       {/* CTA BANNER */}
-      <section className="py-16 bg-gradient-to-r from-[#d4a017] via-[#f0c040] to-[#d4a017]">
+      <section className="py-16 bg-gradient-to-r from-[#ffffff] via-[#f0c040] to-[#ffffff]">
         <div className="container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <h2 className="font-serif font-bold text-3xl md:text-4xl text-[#9b1c1c] mb-4">Give Your Daughter the Best Start</h2>

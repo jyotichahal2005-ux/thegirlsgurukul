@@ -24,7 +24,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#9b1c1c] text-white">
       {/* CTA strip */}
-      <div className="bg-[#d4a017] py-5">
+      <div className="bg-[#ffffff] py-5">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
             <p className="font-serif font-bold text-[#9b1c1c] text-xl">Admissions Open for 2025-26</p>
@@ -46,7 +46,7 @@ export default function Footer() {
           <div className="space-y-5">
             <div>
               <h3 className="font-serif font-bold text-2xl text-white">The Girls Gurukul</h3>
-              <p className="text-[#d4a017] font-semibold uppercase tracking-widest text-xs mt-1">
+              <p className="text-[#ffffff] font-semibold uppercase tracking-widest text-xs mt-1">
                 Kalayat, Haryana
               </p>
             </div>
@@ -65,7 +65,7 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#d4a017] hover:text-[#9b1c1c] transition-all duration-200"
+                  className="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#ffffff] hover:text-[#9b1c1c] transition-all duration-200"
                 >
                   <Icon size={16} />
                 </a>
@@ -87,9 +87,9 @@ export default function Footer() {
                 <li key={label}>
                   <Link
                     href={href}
-                    className="text-gray-300 hover:text-[#d4a017] transition-colors text-sm flex items-center gap-2 group"
+                    className="text-gray-300 hover:text-[#ffffff] transition-colors text-sm flex items-center gap-2 group"
                   >
-                    <span className="text-[#d4a017] group-hover:translate-x-1 transition-transform text-xs">›</span>
+                    <span className="text-[#ffffff] group-hover:translate-x-1 transition-transform text-xs">›</span>
                     {label}
                   </Link>
                 </li>
@@ -107,9 +107,9 @@ export default function Footer() {
                 <li key={label}>
                   <Link
                     href={href}
-                    className="text-gray-300 hover:text-[#d4a017] transition-colors text-sm flex items-center gap-2 group"
+                    className="text-gray-300 hover:text-[#ffffff] transition-colors text-sm flex items-center gap-2 group"
                   >
-                    <span className="text-[#d4a017] group-hover:translate-x-1 transition-transform text-xs">›</span>
+                    <span className="text-[#ffffff] group-hover:translate-x-1 transition-transform text-xs">›</span>
                     {label}
                   </Link>
                 </li>
@@ -124,23 +124,23 @@ export default function Footer() {
             </h4>
             <ul className="space-y-4 text-sm text-gray-300">
               <li className="flex items-start gap-3">
-                <MapPin size={16} className="text-[#d4a017] mt-0.5 flex-shrink-0" />
+                <MapPin size={16} className="text-[#ffffff] mt-0.5 flex-shrink-0" />
                 <span>The Girls Gurukul, Kalayat,<br />Kaithal, Haryana - 136027</span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone size={16} className="text-[#d4a017] flex-shrink-0" />
-                <a href="tel:+911742271000" className="hover:text-[#d4a017] transition-colors">
+                <Phone size={16} className="text-[#ffffff] flex-shrink-0" />
+                <a href="tel:+911742271000" className="hover:text-[#ffffff] transition-colors">
                   +91-1742-271XXX
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail size={16} className="text-[#d4a017] flex-shrink-0" />
-                <a href="mailto:info@girlsgurukul.edu.in" className="hover:text-[#d4a017] transition-colors">
+                <Mail size={16} className="text-[#ffffff] flex-shrink-0" />
+                <a href="mailto:info@girlsgurukul.edu.in" className="hover:text-[#ffffff] transition-colors">
                   info@girlsgurukul.edu.in
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Clock size={16} className="text-[#d4a017] mt-0.5 flex-shrink-0" />
+                <Clock size={16} className="text-[#ffffff] mt-0.5 flex-shrink-0" />
                 <span>Mon–Sat: 8:00 AM – 2:30 PM<br />Office: 9:00 AM – 4:00 PM</span>
               </li>
             </ul>

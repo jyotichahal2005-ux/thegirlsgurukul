@@ -87,17 +87,17 @@ export default function Navbar() {
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex gap-6 items-center">
             <span className="flex items-center gap-1.5">
-              <span className="text-[#d4a017]">📍</span> Kalayat, Haryana - 136027
+              <span className="text-[#ffffff]">📍</span> Kalayat, Haryana - 136027
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="text-[#d4a017]">📞</span> +91-1742-271XXX
+              <span className="text-[#ffffff]">📞</span> +91-1742-271XXX
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="text-[#d4a017]">✉️</span> info@girlsgurukul.edu.in
+              <span className="text-[#ffffff]">✉️</span> info@girlsgurukul.edu.in
             </span>
           </div>
           <div className="flex gap-4 items-center">
-            <span className="text-[#d4a017] font-medium animate-pulse">🎓 Admissions Open 2025-26</span>
+            <span className="text-[#ffffff] font-medium animate-pulse">🎓 Admissions Open 2025-26</span>
           </div>
         </div>
       </div>
@@ -113,7 +113,7 @@ export default function Navbar() {
             <span className="font-serif font-bold text-lg md:text-xl text-[#9b1c1c] leading-tight">
               The Girls Gurukul
             </span>
-            <span className="text-xs text-[#d4a017] font-semibold tracking-widest uppercase">
+            <span className="text-xs text-[#ffffff] font-semibold tracking-widest uppercase">
               Kalayat, Haryana
             </span>
           </div>
@@ -125,7 +125,7 @@ export default function Navbar() {
             <div key={item.href} className="relative">
               {item.children ? (
                 <button
-                  className={`flex items-center gap-1 px-3 py-2 rounded-lg font-medium text-sm transition-all hover:text-[#d4a017] hover:bg-[#9b1c1c]/5 ${
+                  className={`flex items-center gap-1 px-3 py-2 rounded-lg font-medium text-sm transition-all hover:text-[#ffffff] hover:bg-[#9b1c1c]/5 ${
                     isActive(item) ? "text-[#9b1c1c] font-semibold" : "text-gray-600"
                   }`}
                   onMouseEnter={() => setOpenDropdown(item.name)}
@@ -140,14 +140,14 @@ export default function Navbar() {
                   {isActive(item) && (
                     <motion.div
                       layoutId="navbar-indicator"
-                      className="absolute bottom-0 left-2 right-2 h-0.5 bg-[#d4a017] rounded-full"
+                      className="absolute bottom-0 left-2 right-2 h-0.5 bg-[#ffffff] rounded-full"
                     />
                   )}
                 </button>
               ) : (
                 <Link
                   href={item.href}
-                  className={`relative block px-3 py-2 rounded-lg font-medium text-sm transition-all hover:text-[#d4a017] hover:bg-[#9b1c1c]/5 ${
+                  className={`relative block px-3 py-2 rounded-lg font-medium text-sm transition-all hover:text-[#ffffff] hover:bg-[#9b1c1c]/5 ${
                     isActive(item) ? "text-[#9b1c1c] font-semibold" : "text-gray-600"
                   }`}
                 >
@@ -155,7 +155,7 @@ export default function Navbar() {
                   {isActive(item) && (
                     <motion.div
                       layoutId="navbar-indicator"
-                      className="absolute bottom-0 left-2 right-2 h-0.5 bg-[#d4a017] rounded-full"
+                      className="absolute bottom-0 left-2 right-2 h-0.5 bg-[#ffffff] rounded-full"
                     />
                   )}
                 </Link>
@@ -178,8 +178,8 @@ export default function Navbar() {
                         <Link
                           key={child.href}
                           href={child.href}
-                          className={`block px-4 py-2.5 text-sm transition-colors hover:bg-[#9b1c1c]/5 hover:text-[#d4a017] ${
-                            location === child.href ? "text-[#d4a017] font-medium bg-[#9b1c1c]/5" : "text-gray-700"
+                          className={`block px-4 py-2.5 text-sm transition-colors hover:bg-[#9b1c1c]/5 hover:text-[#ffffff] ${
+                            location === child.href ? "text-[#ffffff] font-medium bg-[#9b1c1c]/5" : "text-gray-700"
                           }`}
                         >
                           {child.name}
@@ -192,7 +192,7 @@ export default function Navbar() {
             </div>
           ))}
           <Link href="/admissions" className="ml-2">
-            <Button className="bg-[#d4a017] text-[#9b1c1c] hover:bg-[#d4a017]/90 font-bold rounded-full px-5 py-2 text-sm shadow-md">
+            <Button className="bg-[#ffffff] text-[#9b1c1c] hover:bg-[#ffffff]/90 font-bold rounded-full px-5 py-2 text-sm shadow-md">
               Apply Now
             </Button>
           </Link>
@@ -244,7 +244,7 @@ export default function Navbar() {
                               <Link
                                 key={child.href}
                                 href={child.href}
-                                className="block py-2 px-3 text-sm text-gray-600 hover:text-[#d4a017]"
+                                className="block py-2 px-3 text-sm text-gray-600 hover:text-[#ffffff]"
                               >
                                 {child.name}
                               </Link>
@@ -257,7 +257,7 @@ export default function Navbar() {
                     <Link
                       href={item.href}
                       className={`block py-2.5 px-3 rounded-lg font-medium transition-colors ${
-                        isActive(item) ? "text-[#d4a017] bg-[#9b1c1c]/5" : "text-[#9b1c1c] hover:bg-gray-50"
+                        isActive(item) ? "text-[#ffffff] bg-[#9b1c1c]/5" : "text-[#9b1c1c] hover:bg-gray-50"
                       }`}
                     >
                       {item.name}
@@ -267,7 +267,7 @@ export default function Navbar() {
               ))}
               <div className="pt-4 border-t border-gray-100">
                 <Link href="/admissions" className="block w-full">
-                  <Button className="w-full bg-[#d4a017] text-[#9b1c1c] hover:bg-[#d4a017]/90 font-bold rounded-full">
+                  <Button className="w-full bg-[#ffffff] text-[#9b1c1c] hover:bg-[#ffffff]/90 font-bold rounded-full">
                     Apply Now
                   </Button>
                 </Link>
