@@ -42,7 +42,7 @@ const navItems: NavItem[] = [
 ];
 
 export default function Navbar() {
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -83,7 +83,7 @@ export default function Navbar() {
       }`}
     >
       {/* Top bar */}
-      <div className="hidden lg:block bg-[#1a2e5a] text-white text-xs py-1.5">
+      <div className="hidden lg:block bg-[#1a5c2e] text-white text-xs py-1.5">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex gap-6 items-center">
             <span className="flex items-center gap-1.5">
@@ -110,7 +110,7 @@ export default function Navbar() {
             className="w-12 h-12 object-contain flex-shrink-0 drop-shadow-sm"
           />
           <div className="flex flex-col">
-            <span className="font-serif font-bold text-lg md:text-xl text-[#1a2e5a] leading-tight">
+            <span className="font-serif font-bold text-lg md:text-xl text-[#1a5c2e] leading-tight">
               The Girls Gurukul
             </span>
             <span className="text-xs text-[#ffffff] font-semibold tracking-widest uppercase">
@@ -125,12 +125,12 @@ export default function Navbar() {
             <div key={item.href} className="relative">
               {item.children ? (
                 <button
-                  className={`flex items-center gap-1 px-3 py-2 rounded-lg font-medium text-sm transition-all hover:text-[#ffffff] hover:bg-[#1a2e5a]/5 ${
-                    isActive(item) ? "text-[#1a2e5a] font-semibold" : "text-gray-600"
+                  className={`flex items-center gap-1 px-3 py-2 rounded-lg font-medium text-sm transition-all hover:text-[#ffffff] hover:bg-[#1a5c2e]/5 ${
+                    isActive(item) ? "text-[#1a5c2e] font-semibold" : "text-gray-600"
                   }`}
                   onMouseEnter={() => setOpenDropdown(item.name)}
                   onMouseLeave={() => setOpenDropdown(null)}
-                  onClick={() => setOpenDropdown(openDropdown === item.name ? null : item.name)}
+                  onClick={() => setLocation(item.href)}
                 >
                   {item.name}
                   <ChevronDown
@@ -147,8 +147,8 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={item.href}
-                  className={`relative block px-3 py-2 rounded-lg font-medium text-sm transition-all hover:text-[#ffffff] hover:bg-[#1a2e5a]/5 ${
-                    isActive(item) ? "text-[#1a2e5a] font-semibold" : "text-gray-600"
+                  className={`relative block px-3 py-2 rounded-lg font-medium text-sm transition-all hover:text-[#ffffff] hover:bg-[#1a5c2e]/5 ${
+                    isActive(item) ? "text-[#1a5c2e] font-semibold" : "text-gray-600"
                   }`}
                 >
                   {item.name}
@@ -178,8 +178,8 @@ export default function Navbar() {
                         <Link
                           key={child.href}
                           href={child.href}
-                          className={`block px-4 py-2.5 text-sm transition-colors hover:bg-[#1a2e5a]/5 hover:text-[#ffffff] ${
-                            location === child.href ? "text-[#ffffff] font-medium bg-[#1a2e5a]/5" : "text-gray-700"
+                          className={`block px-4 py-2.5 text-sm transition-colors hover:bg-[#1a5c2e]/5 hover:text-[#ffffff] ${
+                            location === child.href ? "text-[#ffffff] font-medium bg-[#1a5c2e]/5" : "text-gray-700"
                           }`}
                         >
                           {child.name}
@@ -192,7 +192,7 @@ export default function Navbar() {
             </div>
           ))}
           <Link href="/admissions" className="ml-2">
-            <Button className="bg-[#ffffff] text-[#1a2e5a] hover:bg-[#ffffff]/90 font-bold rounded-full px-5 py-2 text-sm shadow-md">
+            <Button className="bg-[#ffffff] text-[#1a5c2e] hover:bg-[#ffffff]/90 font-bold rounded-full px-5 py-2 text-sm shadow-md">
               Apply Now
             </Button>
           </Link>
@@ -200,7 +200,7 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <button
-          className="lg:hidden text-[#1a2e5a] p-2 -mr-2"
+          className="lg:hidden text-[#1a5c2e] p-2 -mr-2"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -223,7 +223,7 @@ export default function Navbar() {
                   {item.children ? (
                     <>
                       <button
-                        className="w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-medium text-[#1a2e5a] hover:bg-gray-50"
+                        className="w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-medium text-[#1a5c2e] hover:bg-gray-50"
                         onClick={() => setMobileExpanded(mobileExpanded === item.name ? null : item.name)}
                       >
                         {item.name}
@@ -257,7 +257,7 @@ export default function Navbar() {
                     <Link
                       href={item.href}
                       className={`block py-2.5 px-3 rounded-lg font-medium transition-colors ${
-                        isActive(item) ? "text-[#ffffff] bg-[#1a2e5a]/5" : "text-[#1a2e5a] hover:bg-gray-50"
+                        isActive(item) ? "text-[#ffffff] bg-[#1a5c2e]/5" : "text-[#1a5c2e] hover:bg-gray-50"
                       }`}
                     >
                       {item.name}
@@ -267,7 +267,7 @@ export default function Navbar() {
               ))}
               <div className="pt-4 border-t border-gray-100">
                 <Link href="/admissions" className="block w-full">
-                  <Button className="w-full bg-[#ffffff] text-[#1a2e5a] hover:bg-[#ffffff]/90 font-bold rounded-full">
+                  <Button className="w-full bg-[#ffffff] text-[#1a5c2e] hover:bg-[#ffffff]/90 font-bold rounded-full">
                     Apply Now
                   </Button>
                 </Link>

@@ -59,7 +59,7 @@ export default function NewsEvents() {
   return (
     <div className="overflow-x-hidden">
       {/* HERO */}
-      <section className="relative py-24 bg-[#1a2e5a] overflow-hidden">
+      <section className="relative py-24 bg-[#1a5c2e] overflow-hidden">
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -83,14 +83,14 @@ export default function NewsEvents() {
                 className="rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all card-hover border border-gray-100 group">
                 <div className="relative h-52 overflow-hidden">
                   <img src={img} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1a2e5a]/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1a5c2e]/60 to-transparent" />
                   <span className={`absolute top-4 left-4 text-xs font-bold px-3 py-1 rounded-full ${categoryColors[category] || "bg-gray-100 text-gray-700"}`}>{category}</span>
                 </div>
                 <div className="p-6">
                   <p className="text-gray-400 text-xs flex items-center gap-1 mb-2"><Calendar size={11} /> {date}</p>
-                  <h3 className="font-serif font-bold text-[#1a2e5a] text-xl mb-2 group-hover:text-[#ffffff] transition-colors">{title}</h3>
+                  <h3 className="font-serif font-bold text-[#1a5c2e] text-xl mb-2 group-hover:text-[#ffffff] transition-colors">{title}</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
-                  <button className="mt-4 text-[#1a2e5a] text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
+                  <button className="mt-4 text-[#1a5c2e] text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
                     Read More <ArrowRight size={14} />
                   </button>
                 </div>
@@ -109,7 +109,7 @@ export default function NewsEvents() {
           <div className="flex flex-wrap justify-center gap-3 mb-10">
             {newsCategories.map((cat) => (
               <button key={cat} onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${cat === activeCategory ? "bg-[#1a2e5a] text-white shadow-md" : "bg-white text-gray-600 border border-gray-200 hover:border-[#1a2e5a]"}`}>
+                className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${cat === activeCategory ? "bg-[#1a5c2e] text-white shadow-md" : "bg-white text-gray-600 border border-gray-200 hover:border-[#1a5c2e]"}`}>
                 {cat}
               </button>
             ))}
@@ -125,9 +125,9 @@ export default function NewsEvents() {
                 </div>
                 <div className="p-5">
                   <p className="text-gray-400 text-xs flex items-center gap-1 mb-2"><Calendar size={10} /> {date}</p>
-                  <h3 className="font-serif font-bold text-[#1a2e5a] mb-2 text-sm leading-snug group-hover:text-[#ffffff] transition-colors">{title}</h3>
+                  <h3 className="font-serif font-bold text-[#1a5c2e] mb-2 text-sm leading-snug group-hover:text-[#ffffff] transition-colors">{title}</h3>
                   <p className="text-gray-500 text-xs leading-relaxed line-clamp-2">{desc}</p>
-                  <button className="mt-3 text-[#1a2e5a] text-xs font-semibold flex items-center gap-1 hover:gap-2 transition-all">
+                  <button className="mt-3 text-[#1a5c2e] text-xs font-semibold flex items-center gap-1 hover:gap-2 transition-all">
                     Read More <ArrowRight size={12} />
                   </button>
                 </div>
@@ -138,7 +138,7 @@ export default function NewsEvents() {
       </section>
 
       {/* UPCOMING EVENTS */}
-      <section className="py-20 bg-[#1a2e5a] relative overflow-hidden">
+      <section className="py-20 bg-[#1a5c2e] relative overflow-hidden">
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4">
           <SectionHeader badge="Events Calendar" title="Upcoming Events" subtitle="Mark your calendars for these exciting upcoming events and activities." light />
@@ -147,7 +147,7 @@ export default function NewsEvents() {
               <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 className="glass-card rounded-2xl p-5 hover:scale-[1.02] transition-transform">
                 <div className="flex gap-4 mb-3">
-                  <div className="flex-shrink-0 w-14 h-14 bg-[#ffffff] rounded-xl flex flex-col items-center justify-center text-[#1a2e5a]">
+                  <div className="flex-shrink-0 w-14 h-14 bg-[#ffffff] rounded-xl flex flex-col items-center justify-center text-[#1a5c2e]">
                     <span className="font-bold text-xl leading-none">{date.day}</span>
                     <span className="text-xs font-semibold uppercase leading-none">{date.month}</span>
                   </div>
@@ -186,7 +186,7 @@ export default function NewsEvents() {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-[#ffffff] text-xs font-bold mb-0.5">{month}</p>
-                      <h4 className="font-serif font-semibold text-[#1a2e5a] text-sm">{title}</h4>
+                      <h4 className="font-serif font-semibold text-[#1a5c2e] text-sm">{title}</h4>
                     </div>
                     <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${categoryColors[category] || "bg-gray-100"}`}>{category}</span>
                   </div>

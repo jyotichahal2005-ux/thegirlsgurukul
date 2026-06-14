@@ -53,7 +53,7 @@ export default function About() {
   return (
     <div className="overflow-x-hidden">
       {/* PAGE HERO */}
-      <section className="relative py-24 bg-[#1a2e5a] overflow-hidden">
+      <section className="relative py-24 bg-[#1a5c2e] overflow-hidden">
         <div className="absolute inset-0 hero-pattern" />
         <div className="absolute inset-0" style={{ backgroundImage: "url('/images/campus-aerial.png')", backgroundSize: "cover", backgroundPosition: "center", opacity: 0.15 }} />
         <div className="relative container mx-auto px-4 text-center">
@@ -81,10 +81,10 @@ export default function About() {
               { value: 100, suffix: "%", label: "Board Pass Rate" },
             ].map(({ value, suffix, label }, i) => (
               <motion.div key={label} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-                <div className="font-serif font-bold text-3xl md:text-4xl text-[#1a2e5a]">
+                <div className="font-serif font-bold text-3xl md:text-4xl text-[#1a5c2e]">
                   <AnimatedCounter to={value} suffix={suffix} />
                 </div>
-                <p className="text-[#1a2e5a]/80 font-semibold text-sm">{label}</p>
+                <p className="text-[#1a5c2e]/80 font-semibold text-sm">{label}</p>
               </motion.div>
             ))}
           </div>
@@ -97,7 +97,7 @@ export default function About() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
               <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#ffffff]/15 text-[#ffffff] mb-4">Our History</span>
-              <h2 className="font-serif font-bold text-3xl md:text-4xl text-[#1a2e5a] mb-6 leading-tight">
+              <h2 className="font-serif font-bold text-3xl md:text-4xl text-[#1a5c2e] mb-6 leading-tight">
                 Two Decades of Shaping<br /><span className="gold-text">Young Women Leaders</span>
               </h2>
               <p className="text-gray-600 leading-relaxed mb-4">
@@ -117,7 +117,7 @@ export default function About() {
             <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <img src="/images/campus-aerial.png" alt="Campus" className="w-full h-[480px] object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1a2e5a]/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a5c2e]/60 to-transparent" />
               </div>
             </motion.div>
           </div>
@@ -136,19 +136,19 @@ export default function About() {
                 <div className={`hidden md:block flex-1 ${i % 2 === 0 ? "text-right" : "text-left"}`}>
                   {i % 2 === 0 ? (
                     <>
-                      <h3 className="font-serif font-bold text-lg text-[#1a2e5a] mb-1">{title}</h3>
+                      <h3 className="font-serif font-bold text-lg text-[#1a5c2e] mb-1">{title}</h3>
                       <p className="text-gray-500 text-sm">{desc}</p>
                     </>
                   ) : null}
                 </div>
                 <div className="flex-shrink-0 flex flex-col items-center">
-                  <div className="w-14 h-14 bg-[#1a2e5a] rounded-full flex items-center justify-center text-[#ffffff] font-bold text-sm shadow-lg z-10">
+                  <div className="w-14 h-14 bg-[#1a5c2e] rounded-full flex items-center justify-center text-[#ffffff] font-bold text-sm shadow-lg z-10">
                     {year}
                   </div>
                 </div>
                 <div className={`flex-1 md:${i % 2 === 1 ? "text-right" : "text-left"}`}>
                   <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-                    <h3 className="font-serif font-bold text-[#1a2e5a] mb-1">{title}</h3>
+                    <h3 className="font-serif font-bold text-[#1a5c2e] mb-1">{title}</h3>
                     <p className="text-gray-500 text-sm">{desc}</p>
                   </div>
                 </div>
@@ -159,7 +159,7 @@ export default function About() {
       </section>
 
       {/* MISSION & VISION */}
-      <section className="py-20 bg-[#1a2e5a] relative overflow-hidden">
+      <section className="py-20 bg-[#1a5c2e] relative overflow-hidden">
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4">
           <SectionHeader badge="Our Purpose" title="Mission & Vision" light />
@@ -167,7 +167,7 @@ export default function About() {
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
               className="glass-card rounded-3xl p-8">
               <div className="w-14 h-14 bg-[#ffffff] rounded-2xl flex items-center justify-center mb-4">
-                <Target className="w-7 h-7 text-[#1a2e5a]" />
+                <Target className="w-7 h-7 text-[#1a5c2e]" />
               </div>
               <h3 className="font-serif font-bold text-2xl text-white mb-4">Our Mission</h3>
               <p className="text-white/80 leading-relaxed">
@@ -177,7 +177,7 @@ export default function About() {
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
               className="glass-card rounded-3xl p-8">
               <div className="w-14 h-14 bg-[#ffffff] rounded-2xl flex items-center justify-center mb-4">
-                <Eye className="w-7 h-7 text-[#1a2e5a]" />
+                <Eye className="w-7 h-7 text-[#1a5c2e]" />
               </div>
               <h3 className="font-serif font-bold text-2xl text-white mb-4">Our Vision</h3>
               <p className="text-white/80 leading-relaxed">
@@ -197,7 +197,7 @@ export default function About() {
               <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 className="bg-gray-50 rounded-2xl p-6 hover:shadow-lg hover:bg-white transition-all duration-300 border border-transparent hover:border-[#ffffff]/20 card-hover">
                 <div className="text-4xl mb-4">{icon}</div>
-                <h3 className="font-serif font-bold text-lg text-[#1a2e5a] mb-2">{title}</h3>
+                <h3 className="font-serif font-bold text-lg text-[#1a5c2e] mb-2">{title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
               </motion.div>
             ))}
@@ -214,7 +214,7 @@ export default function About() {
               <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 className="bg-white rounded-2xl p-5 text-center shadow-sm hover:shadow-md transition-all border border-gray-100 card-hover">
                 <div className="text-4xl mb-3">{icon}</div>
-                <h3 className="font-serif font-semibold text-[#1a2e5a] mb-1 text-sm">{title}</h3>
+                <h3 className="font-serif font-semibold text-[#1a5c2e] mb-1 text-sm">{title}</h3>
                 <p className="text-gray-400 text-xs leading-relaxed">{desc}</p>
               </motion.div>
             ))}
@@ -235,7 +235,7 @@ export default function About() {
                     <img src="/images/principal.png" alt="Principal" className="w-full h-full object-cover object-top" />
                   </div>
                   <div className="text-center mt-3">
-                    <p className="font-bold text-[#1a2e5a] text-sm">Mrs. Kavita Sharma</p>
+                    <p className="font-bold text-[#1a5c2e] text-sm">Mrs. Kavita Sharma</p>
                     <p className="text-[#ffffff] text-xs">M.Ed., Ph.D.</p>
                     <p className="text-gray-400 text-xs">Principal</p>
                     <div className="flex justify-center gap-1 mt-1">
@@ -272,10 +272,10 @@ export default function About() {
             {management.map(({ name, role, initial }, i) => (
               <motion.div key={name} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 className="text-center bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
-                <div className="w-16 h-16 bg-[#1a2e5a] rounded-full flex items-center justify-center text-[#ffffff] font-bold text-xl mx-auto mb-3">
+                <div className="w-16 h-16 bg-[#1a5c2e] rounded-full flex items-center justify-center text-[#ffffff] font-bold text-xl mx-auto mb-3">
                   {initial}
                 </div>
-                <h3 className="font-serif font-semibold text-[#1a2e5a] text-sm mb-1">{name}</h3>
+                <h3 className="font-serif font-semibold text-[#1a5c2e] text-sm mb-1">{name}</h3>
                 <p className="text-gray-400 text-xs">{role}</p>
               </motion.div>
             ))}
@@ -284,7 +284,7 @@ export default function About() {
       </section>
 
       {/* SCHOOL TIMING */}
-      <section className="py-16 bg-[#1a2e5a] relative overflow-hidden">
+      <section className="py-16 bg-[#1a5c2e] relative overflow-hidden">
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto text-center">

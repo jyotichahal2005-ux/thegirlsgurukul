@@ -49,7 +49,7 @@ export default function Contact() {
   return (
     <div className="overflow-x-hidden">
       {/* HERO */}
-      <section className="relative py-24 bg-[#1a2e5a] overflow-hidden">
+      <section className="relative py-24 bg-[#1a5c2e] overflow-hidden">
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -66,13 +66,13 @@ export default function Contact() {
       {/* QUICK CONTACT BUTTONS */}
       <section className="py-6 bg-[#ffffff]">
         <div className="container mx-auto px-4 flex flex-wrap justify-center gap-4">
-          <a href="tel:+911742271000" className="flex items-center gap-2 bg-[#1a2e5a] text-white font-bold px-6 py-2.5 rounded-full hover:bg-[#1a2e5a]/90 transition-colors text-sm">
+          <a href="tel:+911742271000" className="flex items-center gap-2 bg-[#1a5c2e] text-white font-bold px-6 py-2.5 rounded-full hover:bg-[#1a5c2e]/90 transition-colors text-sm">
             📞 Call Now
           </a>
           <a href="https://wa.me/911742271000" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 bg-green-600 text-white font-bold px-6 py-2.5 rounded-full hover:bg-green-700 transition-colors text-sm">
             💬 WhatsApp
           </a>
-          <a href="mailto:info@girlsgurukul.edu.in" className="flex items-center gap-2 bg-white text-[#1a2e5a] font-bold px-6 py-2.5 rounded-full hover:bg-white/90 transition-colors text-sm">
+          <a href="mailto:info@girlsgurukul.edu.in" className="flex items-center gap-2 bg-white text-[#1a5c2e] font-bold px-6 py-2.5 rounded-full hover:bg-white/90 transition-colors text-sm">
             ✉️ Send Email
           </a>
         </div>
@@ -89,7 +89,7 @@ export default function Contact() {
                 <div className={`${iconBg} w-12 h-12 rounded-xl flex items-center justify-center mb-4 shadow-md`}>
                   <Icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="font-serif font-bold text-[#1a2e5a] mb-3">{title}</h3>
+                <h3 className="font-serif font-bold text-[#1a5c2e] mb-3">{title}</h3>
                 {lines.map((line, j) => (
                   <p key={j} className="text-gray-600 text-sm leading-relaxed">{line}</p>
                 ))}
@@ -107,7 +107,7 @@ export default function Contact() {
             <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
               <div className="mb-6">
                 <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#ffffff]/15 text-[#ffffff] mb-3">Location</span>
-                <h2 className="font-serif font-bold text-3xl text-[#1a2e5a]">Find Us on the Map</h2>
+                <h2 className="font-serif font-bold text-3xl text-[#1a5c2e]">Find Us on the Map</h2>
                 <div className="h-0.5 w-16 bg-[#ffffff] rounded-full mt-3" />
               </div>
               <div className="rounded-3xl overflow-hidden shadow-lg h-72 bg-gray-200 border border-gray-200 relative">
@@ -121,7 +121,7 @@ export default function Contact() {
               <div className="mt-5 p-4 bg-white rounded-2xl border border-gray-100 flex items-start gap-3 shadow-sm">
                 <MapPin size={18} className="text-[#ffffff] mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-semibold text-[#1a2e5a] text-sm">The Girls Gurukul, Kalayat</p>
+                  <p className="font-semibold text-[#1a5c2e] text-sm">The Girls Gurukul, Kalayat</p>
                   <p className="text-gray-500 text-xs mt-0.5">Kaithal, Haryana – 136027, India</p>
                   <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer"
                     className="text-[#ffffff] text-xs font-semibold mt-1 inline-block hover:underline">
@@ -135,7 +135,7 @@ export default function Contact() {
             <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
               <div className="mb-6">
                 <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#ffffff]/15 text-[#ffffff] mb-3">Message Us</span>
-                <h2 className="font-serif font-bold text-3xl text-[#1a2e5a]">Send Us a Message</h2>
+                <h2 className="font-serif font-bold text-3xl text-[#1a5c2e]">Send Us a Message</h2>
                 <div className="h-0.5 w-16 bg-[#ffffff] rounded-full mt-3" />
               </div>
 
@@ -145,9 +145,9 @@ export default function Contact() {
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <CheckCircle className="w-8 h-8 text-green-500" />
                   </div>
-                  <h3 className="font-serif font-bold text-2xl text-[#1a2e5a] mb-2">Message Sent!</h3>
+                  <h3 className="font-serif font-bold text-2xl text-[#1a5c2e] mb-2">Message Sent!</h3>
                   <p className="text-gray-500 text-sm mb-4">Thank you for contacting us. We will respond within 24 hours.</p>
-                  <Button onClick={() => setSubmitted(false)} className="bg-[#1a2e5a] text-white rounded-full px-6 text-sm">Send Another</Button>
+                  <Button onClick={() => setSubmitted(false)} className="bg-[#1a5c2e] text-white rounded-full px-6 text-sm">Send Another</Button>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 space-y-4">
@@ -155,23 +155,23 @@ export default function Contact() {
                     <div>
                       <label className="block text-xs font-semibold text-gray-700 mb-1.5">Full Name *</label>
                       <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Your name"
-                        className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#1a2e5a] focus:ring-2 focus:ring-[#1a2e5a]/10 transition-all" />
+                        className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#1a5c2e] focus:ring-2 focus:ring-[#1a5c2e]/10 transition-all" />
                     </div>
                     <div>
                       <label className="block text-xs font-semibold text-gray-700 mb-1.5">Phone Number</label>
                       <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="+91 XXXXX XXXXX"
-                        className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#1a2e5a] focus:ring-2 focus:ring-[#1a2e5a]/10 transition-all" />
+                        className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#1a5c2e] focus:ring-2 focus:ring-[#1a5c2e]/10 transition-all" />
                     </div>
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-gray-700 mb-1.5">Email Address *</label>
                     <input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="your@email.com"
-                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#1a2e5a] focus:ring-2 focus:ring-[#1a2e5a]/10 transition-all" />
+                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#1a5c2e] focus:ring-2 focus:ring-[#1a5c2e]/10 transition-all" />
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-gray-700 mb-1.5">Subject *</label>
                     <select required value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#1a2e5a] focus:ring-2 focus:ring-[#1a2e5a]/10 transition-all bg-white">
+                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#1a5c2e] focus:ring-2 focus:ring-[#1a5c2e]/10 transition-all bg-white">
                       <option value="">Select a subject</option>
                       <option>Admission Enquiry</option>
                       <option>Fee Related Query</option>
@@ -185,9 +185,9 @@ export default function Contact() {
                   <div>
                     <label className="block text-xs font-semibold text-gray-700 mb-1.5">Message *</label>
                     <textarea required value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Write your message here..." rows={4}
-                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#1a2e5a] focus:ring-2 focus:ring-[#1a2e5a]/10 transition-all resize-none" />
+                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#1a5c2e] focus:ring-2 focus:ring-[#1a5c2e]/10 transition-all resize-none" />
                   </div>
-                  <Button type="submit" size="lg" className="w-full bg-[#1a2e5a] text-white hover:bg-[#1a2e5a]/90 rounded-xl font-bold">
+                  <Button type="submit" size="lg" className="w-full bg-[#1a5c2e] text-white hover:bg-[#1a5c2e]/90 rounded-xl font-bold">
                     Send Message <ArrowRight size={16} className="ml-2" />
                   </Button>
                 </form>
@@ -205,7 +205,7 @@ export default function Contact() {
             {departments.map(({ dept, contact, email }, i) => (
               <motion.div key={dept} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 className="bg-gray-50 rounded-2xl p-5 border border-gray-100 hover:border-[#ffffff]/30 hover:shadow-md transition-all card-hover">
-                <h3 className="font-serif font-bold text-[#1a2e5a] mb-3">{dept}</h3>
+                <h3 className="font-serif font-bold text-[#1a5c2e] mb-3">{dept}</h3>
                 <div className="space-y-2">
                   <a href={`tel:${contact.replace(/\D/g, '')}`} className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#ffffff] transition-colors">
                     <Phone size={13} className="text-[#ffffff]" /> {contact}
@@ -230,7 +230,7 @@ export default function Contact() {
                 className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
                 <button className="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors"
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}>
-                  <span className="font-serif font-semibold text-[#1a2e5a] text-sm pr-4">{q}</span>
+                  <span className="font-serif font-semibold text-[#1a5c2e] text-sm pr-4">{q}</span>
                   <span className={`flex-shrink-0 w-6 h-6 bg-[#ffffff]/15 rounded-full flex items-center justify-center text-[#ffffff] font-bold transition-transform ${openFaq === i ? "rotate-45" : ""}`}>+</span>
                 </button>
                 {openFaq === i && (
@@ -246,7 +246,7 @@ export default function Contact() {
       </section>
 
       {/* SOCIAL + FOLLOW US */}
-      <section className="py-16 bg-[#1a2e5a] relative overflow-hidden">
+      <section className="py-16 bg-[#1a5c2e] relative overflow-hidden">
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>

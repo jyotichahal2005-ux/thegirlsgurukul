@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import {
   ChevronRight, Star, Award, BookOpen, Users, Trophy,
-  ArrowRight, CheckCircle, Quote, Calendar, Newspaper, ChevronLeft
+  ArrowRight, CheckCircle, Quote, ChevronLeft
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AnimatedCounter from "@/components/AnimatedCounter";
@@ -46,26 +46,15 @@ const achievements = [
   { icon: "💡", title: "Innovation Award", desc: "Recognised for science innovation projects at NCERT" },
 ];
 
-const news = [
-  { date: "June 10, 2025", category: "Academic", title: "Annual Prize Distribution Ceremony 2025", desc: "Celebrating excellence with our top performers and achievers across all classes." },
-  { date: "May 28, 2025", category: "Sports", title: "Inter-School Athletics Championship Victory", desc: "Our students won 8 gold medals at the district-level sports meet." },
-  { date: "May 15, 2025", category: "Admissions", title: "Admissions Open for Academic Year 2025-26", desc: "Enroll now for Nursery to Class XII. Limited seats available." },
-];
-
-const events = [
-  { date: { day: "25", month: "Jun" }, title: "Parent-Teacher Meeting", time: "9:00 AM – 12:00 PM", icon: "👨‍👩‍👧" },
-  { date: { day: "15", month: "Jul" }, title: "Independence Day Celebration", time: "8:00 AM – 11:00 AM", icon: "🇮🇳" },
-  { date: { day: "05", month: "Aug" }, title: "Science Exhibition 2025", time: "10:00 AM – 4:00 PM", icon: "🔬" },
-  { date: { day: "20", month: "Aug" }, title: "Annual Sports Day", time: "8:00 AM – 2:00 PM", icon: "⚽" },
-];
-
 const galleryImages = [
-  { src: "/images/school-gate.png", label: "Our School Gate" },
-  { src: "/images/school-building.png", label: "School Building" },
-  { src: "/images/gallery-annual-function.png", label: "Annual Function" },
-  { src: "/images/gallery-sports-day.png", label: "Sports Day" },
-  { src: "/images/gallery-science-fair.png", label: "Science Fair" },
-  { src: "/images/campus-aerial.png", label: "Our Campus" },
+  { src: "/images/gallery-1.jpg", label: "Assembly Hall" },
+  { src: "/images/gallery-5.jpg", label: "Diwali Celebration" },
+  { src: "/images/gallery-6.jpg", label: "Educational Trip" },
+  { src: "/images/gallery-7.jpg", label: "Zoo Visit" },
+  { src: "/images/gallery-10.jpg", label: "Classroom Learning" },
+  { src: "/images/gallery-12.jpg", label: "Result Ceremony" },
+  { src: "/images/gallery-14.jpg", label: "Sports Facilities" },
+  { src: "/images/gallery-17.jpg", label: "School Students" },
 ];
 
 const heroSlides = [
@@ -103,9 +92,9 @@ export default function Home() {
             style={{ backgroundImage: `url('${slide.src}')`, opacity: i === currentHeroSlide ? 1 : 0 }} />
         ))}
         {/* Strong left gradient so left side is readable, right side shows photo */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1a2e5a] via-[#1a2e5a]/85 to-[#1a2e5a]/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1a5c2e]/80 via-[#1a5c2e]/50 to-[#1a5c2e]/10" />
         {/* Bottom fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1a2e5a]/60 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1a5c2e]/30 to-transparent" />
 
         <div className="relative z-10 container mx-auto px-6 lg:px-12 py-32">
           <div className="max-w-2xl">
@@ -158,12 +147,12 @@ export default function Home() {
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.55 }}
                 className="flex flex-wrap gap-4">
                 <Link href="/admissions">
-                  <Button size="lg" className="bg-[#ffffff] text-[#1a2e5a] hover:bg-[#ffffff]/90 font-bold px-8 py-4 rounded-full text-base shadow-2xl shadow-[#ffffff]/30">
+                  <Button size="lg" className="bg-[#ffffff] text-[#1a5c2e] hover:bg-[#ffffff]/90 font-bold px-8 py-4 rounded-full text-base shadow-2xl shadow-[#ffffff]/30">
                     Apply Now <ArrowRight size={18} className="ml-2" />
                   </Button>
                 </Link>
                 <Link href="/about">
-                  <Button size="lg" variant="outline" className="border-2 border-white/60 text-white hover:bg-white hover:text-[#1a2e5a] font-semibold px-8 py-4 rounded-full text-base bg-transparent">
+                  <Button size="lg" variant="outline" className="border-2 border-white/60 text-white hover:bg-white hover:text-[#1a5c2e] font-semibold px-8 py-4 rounded-full text-base bg-transparent">
                     Explore School <ChevronRight size={18} className="ml-2" />
                   </Button>
                 </Link>
@@ -202,10 +191,10 @@ export default function Home() {
                 <div className={`${color} w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg`}>
                   <Icon className="w-7 h-7 text-white" />
                 </div>
-                <div className="font-serif font-bold text-4xl md:text-5xl text-[#1a2e5a] mb-1">
+                <div className="font-serif font-bold text-4xl md:text-5xl text-[#1a5c2e] mb-1">
                   <AnimatedCounter to={value} suffix={suffix} />
                 </div>
-                <p className="text-[#1a2e5a]/80 font-semibold text-sm uppercase tracking-wide">{label}</p>
+                <p className="text-[#1a5c2e]/80 font-semibold text-sm uppercase tracking-wide">{label}</p>
               </motion.div>
             ))}
           </div>
@@ -219,7 +208,7 @@ export default function Home() {
             <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="relative">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <img src="/images/campus-aerial.png" alt="Our Campus" className="w-full h-[420px] object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1a2e5a]/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a5c2e]/60 to-transparent" />
                 <div className="absolute bottom-6 left-6 glass-card rounded-2xl p-4 text-white">
                   <p className="font-bold text-lg">Est. 2005</p>
                   <p className="text-sm text-white/80">19+ Years of Excellence</p>
@@ -228,7 +217,7 @@ export default function Home() {
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
               <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#ffffff]/15 text-[#ffffff] mb-4">About Our School</span>
-              <h2 className="font-serif font-bold text-3xl md:text-4xl text-[#1a2e5a] leading-tight mb-6">
+              <h2 className="font-serif font-bold text-3xl md:text-4xl text-[#1a5c2e] leading-tight mb-6">
                 A Legacy of Excellence in <span className="gold-text">Girls' Education</span>
               </h2>
               <p className="text-gray-600 leading-relaxed mb-4">
@@ -246,7 +235,7 @@ export default function Home() {
                 ))}
               </ul>
               <Link href="/about">
-                <Button className="bg-[#1a2e5a] text-white hover:bg-[#1a2e5a]/90 rounded-full px-8 font-semibold">
+                <Button className="bg-[#1a5c2e] text-white hover:bg-[#1a5c2e]/90 rounded-full px-8 font-semibold">
                   Learn More <ChevronRight size={16} className="ml-1" />
                 </Button>
               </Link>
@@ -263,8 +252,8 @@ export default function Home() {
             {features.map(({ icon, title, desc }, i) => (
               <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 card-hover border border-gray-100 group">
-                <div className="w-14 h-14 bg-[#1a2e5a]/5 group-hover:bg-[#ffffff]/10 rounded-2xl flex items-center justify-center text-2xl mb-4 transition-colors">{icon}</div>
-                <h3 className="font-serif font-bold text-lg text-[#1a2e5a] mb-2">{title}</h3>
+                <div className="w-14 h-14 bg-[#1a5c2e]/5 group-hover:bg-[#ffffff]/10 rounded-2xl flex items-center justify-center text-2xl mb-4 transition-colors">{icon}</div>
+                <h3 className="font-serif font-bold text-lg text-[#1a5c2e] mb-2">{title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
               </motion.div>
             ))}
@@ -273,7 +262,7 @@ export default function Home() {
       </section>
 
       {/* PRINCIPAL'S MESSAGE */}
-      <section className="py-20 bg-[#1a2e5a] relative overflow-hidden">
+      <section className="py-20 bg-[#1a5c2e] relative overflow-hidden">
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -287,7 +276,7 @@ export default function Home() {
                 Our dedicated educators work tirelessly to ensure every student receives individual attention and the best possible opportunities. We invite you to be part of our family.
               </p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-[#ffffff] rounded-full flex items-center justify-center text-[#1a2e5a] font-bold text-lg">K</div>
+                <div className="w-12 h-12 bg-[#ffffff] rounded-full flex items-center justify-center text-[#1a5c2e] font-bold text-lg">K</div>
                 <div>
                   <p className="font-bold text-white text-lg">Mrs. Kavita Sharma</p>
                   <p className="text-[#ffffff] text-sm">Principal, The Girls Gurukul</p>
@@ -300,8 +289,8 @@ export default function Home() {
                   <img src="/images/principal.png" alt="Principal" className="w-full h-full object-cover object-top" />
                 </div>
                 <div className="absolute -bottom-4 -right-4 bg-[#ffffff] rounded-2xl p-4 shadow-xl">
-                  <div className="flex items-center gap-1">{[...Array(5)].map((_, i) => <Star key={i} size={14} fill="#1a2e5a" className="text-[#1a2e5a]" />)}</div>
-                  <p className="text-[#1a2e5a] font-bold text-sm mt-1">Top Educator</p>
+                  <div className="flex items-center gap-1">{[...Array(5)].map((_, i) => <Star key={i} size={14} fill="#1a5c2e" className="text-[#1a5c2e]" />)}</div>
+                  <p className="text-[#1a5c2e] font-bold text-sm mt-1">Top Educator</p>
                 </div>
               </div>
             </motion.div>
@@ -319,7 +308,7 @@ export default function Home() {
                 className="flex gap-4 p-5 rounded-2xl border border-gray-100 hover:border-[#ffffff]/30 hover:shadow-lg transition-all duration-300 bg-white card-hover">
                 <div className="text-3xl flex-shrink-0">{icon}</div>
                 <div>
-                  <h3 className="font-serif font-bold text-[#1a2e5a] mb-1">{title}</h3>
+                  <h3 className="font-serif font-bold text-[#1a5c2e] mb-1">{title}</h3>
                   <p className="text-gray-500 text-sm">{desc}</p>
                 </div>
               </motion.div>
@@ -337,7 +326,7 @@ export default function Home() {
               <motion.div key={label} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 className="relative rounded-2xl overflow-hidden group cursor-pointer shadow-md aspect-square">
                 <img src={src} alt={label} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1a2e5a]/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a5c2e]/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                   <span className="text-white font-semibold text-sm">{label}</span>
                 </div>
               </motion.div>
@@ -345,7 +334,7 @@ export default function Home() {
           </div>
           <div className="text-center">
             <Link href="/gallery">
-              <Button variant="outline" className="border-2 border-[#1a2e5a] text-[#1a2e5a] hover:bg-[#1a2e5a] hover:text-white rounded-full px-8 font-semibold">
+              <Button variant="outline" className="border-2 border-[#1a5c2e] text-[#1a5c2e] hover:bg-[#1a5c2e] hover:text-white rounded-full px-8 font-semibold">
                 View Full Gallery <ChevronRight size={16} className="ml-1" />
               </Button>
             </Link>
@@ -354,7 +343,7 @@ export default function Home() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="py-20 bg-[#1a2e5a] relative overflow-hidden">
+      <section className="py-20 bg-[#1a5c2e] relative overflow-hidden">
         <div className="absolute inset-0 hero-pattern" />
         <div className="relative container mx-auto px-4">
           <SectionHeader badge="Testimonials" title="What Parents & Alumni Say" light />
@@ -368,7 +357,7 @@ export default function Home() {
                 <Quote className="text-[#ffffff]/40 w-10 h-10 mx-auto mb-4" />
                 <p className="text-white/90 text-lg leading-relaxed mb-6 italic">"{testimonials[currentTestimonial].text}"</p>
                 <div className="flex items-center justify-center gap-3">
-                  <div className="w-10 h-10 bg-[#ffffff] rounded-full flex items-center justify-center text-[#1a2e5a] font-bold">
+                  <div className="w-10 h-10 bg-[#ffffff] rounded-full flex items-center justify-center text-[#1a5c2e] font-bold">
                     {testimonials[currentTestimonial].name[0]}
                   </div>
                   <div className="text-left">
@@ -396,76 +385,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* EVENTS & NEWS */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <SectionHeader badge="Events" title="Upcoming Events" center={false} />
-              <div className="space-y-4">
-                {events.map(({ date, title, time, icon }, i) => (
-                  <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                    className="flex gap-4 p-4 rounded-2xl border border-gray-100 hover:border-[#ffffff]/30 hover:shadow-md transition-all">
-                    <div className="flex-shrink-0 w-14 h-14 bg-[#1a2e5a] rounded-xl flex flex-col items-center justify-center text-white">
-                      <span className="font-bold text-lg leading-none">{date.day}</span>
-                      <span className="text-xs text-[#ffffff] uppercase">{date.month}</span>
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1"><span>{icon}</span><h4 className="font-serif font-semibold text-[#1a2e5a]">{title}</h4></div>
-                      <p className="text-gray-500 text-sm flex items-center gap-1"><Calendar size={12} /> {time}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-              <div className="mt-6">
-                <Link href="/news-events">
-                  <Button variant="outline" className="border-2 border-[#1a2e5a] text-[#1a2e5a] hover:bg-[#1a2e5a] hover:text-white rounded-full px-6 font-semibold">
-                    All Events <ChevronRight size={16} className="ml-1" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-            <div>
-              <SectionHeader badge="News" title="Latest News" center={false} />
-              <div className="space-y-4">
-                {news.map(({ date, category, title, desc }, i) => (
-                  <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                    className="p-4 rounded-2xl border border-gray-100 hover:border-[#ffffff]/30 hover:shadow-md transition-all card-hover cursor-pointer">
-                    <div className="flex gap-2 mb-2">
-                      <span className="text-xs bg-[#1a2e5a]/10 text-[#1a2e5a] font-semibold px-2 py-0.5 rounded-full">{category}</span>
-                      <span className="text-xs text-gray-400 flex items-center gap-1"><Newspaper size={10} /> {date}</span>
-                    </div>
-                    <h4 className="font-serif font-semibold text-[#1a2e5a] mb-1">{title}</h4>
-                    <p className="text-gray-500 text-sm">{desc}</p>
-                  </motion.div>
-                ))}
-              </div>
-              <div className="mt-6">
-                <Link href="/news-events">
-                  <Button variant="outline" className="border-2 border-[#1a2e5a] text-[#1a2e5a] hover:bg-[#1a2e5a] hover:text-white rounded-full px-6 font-semibold">
-                    All News <ChevronRight size={16} className="ml-1" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA BANNER */}
       <section className="py-16 bg-gradient-to-r from-[#ffffff] via-[#f0c040] to-[#ffffff]">
         <div className="container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <h2 className="font-serif font-bold text-3xl md:text-4xl text-[#1a2e5a] mb-4">Give Your Daughter the Best Start</h2>
-            <p className="text-[#1a2e5a]/80 text-lg max-w-xl mx-auto mb-8">Join The Girls Gurukul family. Seats are limited for 2025-26. Apply today!</p>
+            <h2 className="font-serif font-bold text-3xl md:text-4xl text-[#1a5c2e] mb-4">Give Your Daughter the Best Start</h2>
+            <p className="text-[#1a5c2e]/80 text-lg max-w-xl mx-auto mb-8">Join The Girls Gurukul family. Seats are limited for 2025-26. Apply today!</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/admissions">
-                <Button size="lg" className="bg-[#1a2e5a] text-white hover:bg-[#1a2e5a]/90 font-bold rounded-full px-10">
+                <Button size="lg" className="bg-[#1a5c2e] text-white hover:bg-[#1a5c2e]/90 font-bold rounded-full px-10">
                   Apply for Admission <ArrowRight size={18} className="ml-2" />
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button size="lg" variant="outline" className="border-2 border-[#1a2e5a] text-[#1a2e5a] hover:bg-[#1a2e5a] hover:text-white font-semibold rounded-full px-10 bg-transparent">
+                <Button size="lg" variant="outline" className="border-2 border-[#1a5c2e] text-[#1a5c2e] hover:bg-[#1a5c2e] hover:text-white font-semibold rounded-full px-10 bg-transparent">
                   Contact Us
                 </Button>
               </Link>
