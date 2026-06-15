@@ -145,6 +145,80 @@ export default function Faculty() {
         </div>
       </section>
 
+      {/* TEACHING PHILOSOPHY */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <SectionHeader badge="Our Approach" title="Teaching Philosophy" subtitle="We believe in a student-centred approach that nurtures curiosity, critical thinking and character." />
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {[
+              { icon: "🎯", title: "Student-Centred Learning", desc: "Every lesson is designed keeping individual student's pace, learning style and potential in mind. No student is left behind." },
+              { icon: "🔬", title: "Inquiry-Based Education", desc: "We encourage students to ask questions, explore concepts and discover answers through hands-on experiments and activities." },
+              { icon: "🌱", title: "Holistic Development", desc: "Beyond academics, we focus on emotional intelligence, social skills, physical fitness and moral values." },
+              { icon: "💬", title: "Open Communication", desc: "Teachers maintain open, respectful communication with students and parents to ensure transparency and trust." },
+              { icon: "🏆", title: "Excellence & Accountability", desc: "High expectations for both teachers and students, with regular self-assessment and accountability mechanisms." },
+              { icon: "🤝", title: "Collaborative Spirit", desc: "Team teaching, peer learning and collaborative projects prepare students for real-world teamwork." },
+            ].map(({ icon, title, desc }, i) => (
+              <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                className="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:shadow-lg transition-all card-hover">
+                <div className="text-3xl mb-3">{icon}</div>
+                <h3 className="font-serif font-bold text-[#1a5c2e] mb-2">{title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PROFESSIONAL DEVELOPMENT */}
+      <section className="py-20 bg-[#1a5c2e] relative overflow-hidden">
+        <div className="absolute inset-0 hero-pattern" />
+        <div className="relative container mx-auto px-4">
+          <SectionHeader badge="Growth" title="Professional Development" subtitle="Our faculty continuously upgrades their skills through workshops, training and research." light />
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { icon: "📚", title: "Annual Training Workshop", desc: "3-day workshop every summer on pedagogy, technology and student counselling." },
+              { icon: "🖥️", title: "Digital Teaching Tools", desc: "All teachers trained in smart board technology, e-learning platforms and digital assessment." },
+              { icon: "🎓", title: "Higher Education Support", desc: "School supports teachers pursuing M.Ed., Ph.D. and specialised certifications." },
+              { icon: "🌐", title: "CBSE Orientation Programs", desc: "Regular participation in CBSE-organised Sahodaya cluster workshops and seminars." },
+            ].map(({ icon, title, desc }, i) => (
+              <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                className="glass-card rounded-2xl p-6 text-center">
+                <div className="text-3xl mb-3">{icon}</div>
+                <h3 className="font-serif font-bold text-white mb-2">{title}</h3>
+                <p className="text-white/60 text-sm leading-relaxed">{desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* AWARDS & RECOGNITION */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <SectionHeader badge="Achievements" title="Faculty Awards & Recognition" subtitle="Our dedicated teachers have been honoured at state and national levels." />
+          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-5">
+            {[
+              { icon: "🥇", name: "Mrs. Kavita Sharma", award: "Best Principal Award", org: "Haryana Education Department, 2024", color: "bg-yellow-50 border-yellow-200" },
+              { icon: "🏅", name: "Dr. Rekha Singh", award: "Outstanding Science Teacher", org: "CBSE Regional Award, 2023", color: "bg-blue-50 border-blue-200" },
+              { icon: "🏆", name: "Mrs. Priya Sharma", award: "Best English Teacher Award", org: "Kaithal District Education Board, 2024", color: "bg-green-50 border-green-200" },
+              { icon: "⭐", name: "Mr. Rajesh Kumar", award: "Mathematics Olympiad Mentor Award", org: "NCERT Recognition, 2022", color: "bg-purple-50 border-purple-200" },
+              { icon: "🌟", name: "Mrs. Neha Singh", award: "State Sports Coach Award", org: "Haryana Sports Council, 2023", color: "bg-pink-50 border-pink-200" },
+              { icon: "🎖️", name: "Mrs. Sunita Verma", award: "Academic Administration Excellence", org: "CBSE Vice-Principal Award, 2024", color: "bg-amber-50 border-amber-200" },
+            ].map(({ icon, name, award, org, color }, i) => (
+              <motion.div key={name} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                className={`flex gap-4 p-5 rounded-2xl border ${color} card-hover hover:shadow-md transition-all`}>
+                <div className="text-3xl flex-shrink-0">{icon}</div>
+                <div>
+                  <h3 className="font-serif font-bold text-[#1a5c2e] mb-0.5">{name}</h3>
+                  <p className="text-gray-700 font-semibold text-sm">{award}</p>
+                  <p className="text-gray-400 text-xs mt-0.5">{org}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* JOIN CTA */}
       <section className="py-16 bg-gradient-to-r from-[#1a5c2e] to-[#1a5c2e]/80">
         <div className="container mx-auto px-4 text-center">

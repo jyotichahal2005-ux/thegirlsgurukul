@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { Download, FileText, AlertCircle, Bell, BookOpen, Award, Shield } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Download, FileText, BookOpen, Award, Shield } from "lucide-react";
 import SectionHeader from "@/components/SectionHeader";
 
 const fadeUp = {
@@ -61,15 +60,6 @@ const downloadCategories = [
   },
 ];
 
-const circulars = [
-  { date: "June 5, 2025", title: "Summer Vacation Homework Instructions", urgent: false },
-  { date: "May 28, 2025", title: "Annual Examination Timetable Class IX & XI", urgent: true },
-  { date: "May 20, 2025", title: "Parent-Teacher Meeting – June 25, 2025", urgent: false },
-  { date: "May 15, 2025", title: "Fee Submission Reminder – Last Date June 30", urgent: true },
-  { date: "May 10, 2025", title: "Sports Day Registration Open – June 20 Deadline", urgent: false },
-  { date: "April 30, 2025", title: "New Academic Year 2025-26 School Uniform Guidelines", urgent: false },
-  { date: "April 20, 2025", title: "Digital Portal Login Instructions for Parents", urgent: false },
-];
 
 const syllabus = [
   { class: "Nursery – UKG", board: "School Curriculum", subjects: 6, download: true },
@@ -194,29 +184,53 @@ export default function Documents() {
         </div>
       </section>
 
-      {/* CIRCULARS */}
+      {/* HOLIDAY LIST */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <SectionHeader badge="Notices" title="Latest Circulars & Notices" subtitle="Stay updated with the latest school notifications and announcements." />
-          <div className="max-w-3xl mx-auto space-y-3">
-            {circulars.map(({ date, title, urgent }, i) => (
-              <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                className="flex items-start gap-4 p-4 bg-gray-50 rounded-2xl border border-gray-100 hover:border-[#ffffff]/30 hover:shadow-sm transition-all group">
-                <div className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center ${urgent ? "bg-red-50" : "bg-[#ffffff]/10"}`}>
-                  {urgent ? <AlertCircle size={18} className="text-red-500" /> : <Bell size={18} className="text-[#ffffff]" />}
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    {urgent && <span className="text-xs bg-red-100 text-red-600 font-bold px-2 py-0.5 rounded-full">URGENT</span>}
-                    <span className="text-xs text-gray-400">{date}</span>
+          <SectionHeader badge="Academic Calendar" title="Holiday & Exam Schedule 2025-26" subtitle="Important dates, holidays, examinations and school events for the academic year." />
+          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="font-serif font-bold text-[#1a5c2e] text-lg mb-4 flex items-center gap-2">📅 Public Holidays</h3>
+              <div className="space-y-2">
+                {[
+                  { date: "15 Aug 2025", title: "Independence Day", type: "National" },
+                  { date: "02 Oct 2025", title: "Gandhi Jayanti", type: "National" },
+                  { date: "02 Nov 2025", title: "Diwali", type: "Festival" },
+                  { date: "25 Dec 2025", title: "Christmas", type: "Festival" },
+                  { date: "26 Jan 2026", title: "Republic Day", type: "National" },
+                  { date: "14 Mar 2026", title: "Holi", type: "Festival" },
+                ].map(({ date, title, type }) => (
+                  <div key={title} className="flex items-center justify-between p-3 bg-gray-50 rounded-xl border border-gray-100 hover:border-[#1a5c2e]/20 transition-all">
+                    <div className="flex items-center gap-3">
+                      <span className="text-xs font-bold text-[#1a5c2e] bg-[#1a5c2e]/10 px-2 py-0.5 rounded-full w-24 text-center">{date}</span>
+                      <span className="text-sm font-medium text-gray-700">{title}</span>
+                    </div>
+                    <span className="text-xs text-gray-400">{type}</span>
                   </div>
-                  <p className="text-gray-700 font-medium text-sm group-hover:text-[#1a5c2e] transition-colors">{title}</p>
-                </div>
-                <button onClick={() => handleDownload(title)} className="flex-shrink-0 w-8 h-8 rounded-lg bg-white border border-gray-200 flex items-center justify-center hover:bg-[#1a5c2e] hover:border-[#1a5c2e] transition-all group/btn">
-                  <Download size={14} className="text-gray-400 group-hover/btn:text-white" />
-                </button>
-              </motion.div>
-            ))}
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="font-serif font-bold text-[#1a5c2e] text-lg mb-4 flex items-center gap-2">📝 Examination Schedule</h3>
+              <div className="space-y-2">
+                {[
+                  { date: "Jul 2025", title: "Unit Test – I (All Classes)", type: "Exam" },
+                  { date: "Sep 2025", title: "Half-Yearly Examinations", type: "Exam" },
+                  { date: "Nov 2025", title: "Unit Test – II (All Classes)", type: "Exam" },
+                  { date: "Dec 2025", title: "Pre-Board Examinations (IX–XII)", type: "Exam" },
+                  { date: "Feb 2026", title: "Annual Examinations (I–VIII)", type: "Exam" },
+                  { date: "Mar 2026", title: "CBSE Board Examinations (X, XII)", type: "Board" },
+                ].map(({ date, title, type }) => (
+                  <div key={title} className="flex items-center justify-between p-3 bg-gray-50 rounded-xl border border-gray-100 hover:border-[#1a5c2e]/20 transition-all">
+                    <div className="flex items-center gap-3">
+                      <span className="text-xs font-bold text-white bg-[#1a5c2e] px-2 py-0.5 rounded-full w-24 text-center">{date}</span>
+                      <span className="text-sm font-medium text-gray-700">{title}</span>
+                    </div>
+                    <span className={`text-xs font-semibold ${type === "Board" ? "text-red-500" : "text-gray-400"}`}>{type}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

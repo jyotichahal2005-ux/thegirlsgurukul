@@ -29,14 +29,7 @@ const navItems: NavItem[] = [
       { name: "Fee Structure", href: "/fee-structure" },
     ],
   },
-  {
-    name: "Student Life",
-    href: "/gallery",
-    children: [
-      { name: "Gallery", href: "/gallery" },
-      { name: "News & Events", href: "/news-events" },
-    ],
-  },
+  { name: "Student Life", href: "/gallery" },
   { name: "Documents", href: "/documents" },
   { name: "Contact", href: "/contact" },
 ];
@@ -125,7 +118,7 @@ export default function Navbar() {
             <div key={item.href} className="relative">
               {item.children ? (
                 <button
-                  className={`flex items-center gap-1 px-3 py-2 rounded-lg font-medium text-sm transition-all hover:text-[#ffffff] hover:bg-[#1a5c2e]/5 ${
+                  className={`flex items-center gap-1 px-3 py-2 rounded-lg font-medium text-sm transition-all hover:text-[#1a5c2e] hover:bg-[#1a5c2e]/10 ${
                     isActive(item) ? "text-[#1a5c2e] font-semibold" : "text-gray-600"
                   }`}
                   onMouseEnter={() => setOpenDropdown(item.name)}
@@ -147,7 +140,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={item.href}
-                  className={`relative block px-3 py-2 rounded-lg font-medium text-sm transition-all hover:text-[#ffffff] hover:bg-[#1a5c2e]/5 ${
+                  className={`relative block px-3 py-2 rounded-lg font-medium text-sm transition-all hover:text-[#1a5c2e] hover:bg-[#1a5c2e]/10 ${
                     isActive(item) ? "text-[#1a5c2e] font-semibold" : "text-gray-600"
                   }`}
                 >
@@ -178,8 +171,8 @@ export default function Navbar() {
                         <Link
                           key={child.href}
                           href={child.href}
-                          className={`block px-4 py-2.5 text-sm transition-colors hover:bg-[#1a5c2e]/5 hover:text-[#ffffff] ${
-                            location === child.href ? "text-[#ffffff] font-medium bg-[#1a5c2e]/5" : "text-gray-700"
+                          className={`block px-4 py-2.5 text-sm transition-colors hover:bg-[#1a5c2e]/10 hover:text-[#1a5c2e] ${
+                            location === child.href ? "text-[#1a5c2e] font-medium bg-[#1a5c2e]/10" : "text-gray-700"
                           }`}
                         >
                           {child.name}
@@ -244,7 +237,7 @@ export default function Navbar() {
                               <Link
                                 key={child.href}
                                 href={child.href}
-                                className="block py-2 px-3 text-sm text-gray-600 hover:text-[#ffffff]"
+                                className="block py-2 px-3 text-sm text-gray-600 hover:text-[#1a5c2e]"
                               >
                                 {child.name}
                               </Link>
@@ -257,7 +250,7 @@ export default function Navbar() {
                     <Link
                       href={item.href}
                       className={`block py-2.5 px-3 rounded-lg font-medium transition-colors ${
-                        isActive(item) ? "text-[#ffffff] bg-[#1a5c2e]/5" : "text-[#1a5c2e] hover:bg-gray-50"
+                        isActive(item) ? "text-[#1a5c2e] font-semibold bg-[#1a5c2e]/10" : "text-[#1a5c2e] hover:bg-gray-50"
                       }`}
                     >
                       {item.name}
