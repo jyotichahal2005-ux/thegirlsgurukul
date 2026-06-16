@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ZoomIn, Play } from "lucide-react";
+import { X, ZoomIn, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import SectionHeader from "@/components/SectionHeader";
 
 const fadeUp = {
@@ -42,20 +42,34 @@ const videos = [
 export default function Gallery() {
   useEffect(() => { document.title = "Gallery – The Girls Gurukul, Kalayat"; }, []);
   const [activeCategory, setActiveCategory] = useState("All");
-  const [lightbox, setLightbox] = useState<null | { src: string; title: string; desc: string }>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const filtered = photos.filter((p) => activeCategory === "All" || p.category === activeCategory);
+  const lightbox = lightboxIndex !== null ? filtered[lightboxIndex] : null;
+
+  const goPrev = () => {
+    if (lightboxIndex === null) return;
+    setLightboxIndex((lightboxIndex - 1 + filtered.length) % filtered.length);
+  };
+  const goNext = () => {
+    if (lightboxIndex === null) return;
+    setLightboxIndex((lightboxIndex + 1) % filtered.length);
+  };
 
   useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => { if (e.key === "Escape") setLightbox(null); };
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightboxIndex(null);
+      if (e.key === "ArrowLeft") setLightboxIndex((idx) => idx === null ? null : (idx - 1 + filtered.length) % filtered.length);
+      if (e.key === "ArrowRight") setLightboxIndex((idx) => idx === null ? null : (idx + 1) % filtered.length);
+    };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, []);
+  }, [filtered.length]);
 
   useEffect(() => {
-    document.body.style.overflow = lightbox ? "hidden" : "";
+    document.body.style.overflow = lightboxIndex !== null ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
-  }, [lightbox]);
+  }, [lightboxIndex]);
 
   return (
     <div className="overflow-x-hidden">
@@ -104,7 +118,7 @@ export default function Gallery() {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3, delay: i * 0.05 }}
                   className={`relative rounded-2xl overflow-hidden group cursor-pointer shadow-sm hover:shadow-xl transition-all duration-300 ${i % 5 === 0 ? "md:col-span-2 aspect-video" : "aspect-square"}`}
-                  onClick={() => setLightbox({ src, title, desc })}
+                  onClick={() => setLightboxIndex(i)}
                 >
                   <img src={src} alt={title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1a5c2e]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -181,22 +195,37 @@ export default function Gallery() {
 
       {/* LIGHTBOX */}
       <AnimatePresence>
-        {lightbox && (
+        {lightbox && lightboxIndex !== null && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] lightbox-overlay flex items-center justify-center p-4"
-            onClick={() => setLightbox(null)}
+            onClick={() => setLightboxIndex(null)}
           >
+            {/* Close */}
             <button className="absolute top-4 right-4 w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-colors z-10"
-              onClick={() => setLightbox(null)}>
+              onClick={() => setLightboxIndex(null)}>
               <X size={20} />
             </button>
+            {/* Prev */}
+            <button
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center text-white transition-all z-10 hover:scale-110"
+              onClick={(e) => { e.stopPropagation(); goPrev(); }}>
+              <ChevronLeft size={24} />
+            </button>
+            {/* Next */}
+            <button
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center text-white transition-all z-10 hover:scale-110"
+              onClick={(e) => { e.stopPropagation(); goNext(); }}>
+              <ChevronRight size={24} />
+            </button>
+
             <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
+              key={lightboxIndex}
+              initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
+              exit={{ scale: 0.9, opacity: 0 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               className="max-w-4xl w-full"
               onClick={(e) => e.stopPropagation()}
@@ -205,6 +234,7 @@ export default function Gallery() {
               <div className="text-center mt-4">
                 <h3 className="text-white font-serif font-bold text-xl">{lightbox.title}</h3>
                 <p className="text-white/60 text-sm mt-1">{lightbox.desc}</p>
+                <p className="text-white/40 text-xs mt-2">{lightboxIndex + 1} / {filtered.length}</p>
               </div>
             </motion.div>
           </motion.div>

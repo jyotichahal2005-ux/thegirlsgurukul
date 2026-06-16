@@ -68,7 +68,7 @@ export default function Admissions() {
         <div className="relative container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full bg-[#ffffff]/20 text-[#ffffff] mb-4">Enroll Today</span>
-            <h1 className="font-serif font-bold text-4xl md:text-6xl text-white mb-4">Admissions 2025-26</h1>
+            <h1 className="font-serif font-bold text-4xl md:text-6xl text-white mb-4">Admissions 2026-27</h1>
             <p className="text-white/70 text-lg max-w-2xl mx-auto">Begin your daughter's journey of excellence. Admissions open for Nursery to Class XII.</p>
             <div className="flex items-center justify-center gap-2 mt-4 text-sm text-white/50">
               <span>Home</span><span>/</span><span className="text-[#ffffff]">Admissions</span>
@@ -82,7 +82,7 @@ export default function Admissions() {
         <div className="container mx-auto px-4 flex items-center gap-3">
           <AlertCircle className="text-[#1a5c2e] flex-shrink-0" size={20} />
           <p className="text-[#1a5c2e] font-semibold text-sm">
-            Admissions are open for 2025-26. Limited seats available. Apply early to secure your daughter's seat.
+            Admissions are open for 2026-27. Limited seats available. Apply early to secure your daughter's seat.
           </p>
         </div>
       </section>

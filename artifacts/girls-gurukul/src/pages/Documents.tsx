@@ -10,27 +10,16 @@ const fadeUp = {
 
 const downloadCategories = [
   {
-    title: "Admission Forms",
-    icon: FileText,
-    color: "bg-blue-50 border-blue-200",
-    iconColor: "text-blue-600",
-    files: [
-      { name: "Admission Form 2025-26", type: "PDF", size: "245 KB" },
-      { name: "Re-Admission Form", type: "PDF", size: "180 KB" },
-      { name: "Transfer Certificate (TC) Request Form", type: "PDF", size: "120 KB" },
-    ],
-  },
-  {
     title: "Syllabus & Books",
     icon: BookOpen,
     color: "bg-green-50 border-green-200",
     iconColor: "text-green-600",
     files: [
-      { name: "Class I–V Syllabus 2025-26", type: "PDF", size: "380 KB" },
-      { name: "Class VI–VIII Syllabus 2025-26", type: "PDF", size: "420 KB" },
-      { name: "Class IX–X Syllabus 2025-26", type: "PDF", size: "510 KB" },
-      { name: "Class XI–XII Syllabus 2025-26", type: "PDF", size: "580 KB" },
-      { name: "Booklist 2025-26 (All Classes)", type: "PDF", size: "290 KB" },
+      { name: "Class I–V Syllabus 2026-27", type: "PDF", size: "380 KB" },
+      { name: "Class VI–VIII Syllabus 2026-27", type: "PDF", size: "420 KB" },
+      { name: "Class IX–X Syllabus 2026-27", type: "PDF", size: "510 KB" },
+      { name: "Class XI–XII Syllabus 2026-27", type: "PDF", size: "580 KB" },
+      { name: "Booklist 2026-27 (All Classes)", type: "PDF", size: "290 KB" },
     ],
   },
   {
@@ -55,7 +44,7 @@ const downloadCategories = [
       { name: "School Self Declaration Form", type: "PDF", size: "340 KB" },
       { name: "Fee & Charges Structure", type: "PDF", size: "280 KB" },
       { name: "School Safety Audit Report", type: "PDF", size: "450 KB" },
-      { name: "Academic Calendar 2025-26", type: "PDF", size: "310 KB" },
+      { name: "Academic Calendar 2026-27", type: "PDF", size: "310 KB" },
     ],
   },
 ];
@@ -99,7 +88,7 @@ export default function Documents() {
       <section className="py-10 bg-[#ffffff]">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-4">
-            {["TC Form", "Admission Form", "Syllabus", "Mandatory Disclosures", "Fee Structure", "Academic Calendar"].map((item) => (
+            {["TC Form", "Syllabus", "Mandatory Disclosures", "Fee Structure", "Academic Calendar"].map((item) => (
               <button key={item} onClick={() => handleDownload(item)}
                 className="bg-[#1a5c2e] text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-[#1a5c2e]/90 transition-colors flex items-center gap-2">
                 <Download size={14} /> {item}
@@ -187,7 +176,7 @@ export default function Documents() {
       {/* HOLIDAY LIST */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <SectionHeader badge="Academic Calendar" title="Holiday & Exam Schedule 2025-26" subtitle="Important dates, holidays, examinations and school events for the academic year." />
+          <SectionHeader badge="Academic Calendar" title="Holiday & Exam Schedule 2026-27" subtitle="Important dates, holidays, examinations and school events for the academic year." />
           <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
             <div>
               <h3 className="font-serif font-bold text-[#1a5c2e] text-lg mb-4 flex items-center gap-2">📅 Public Holidays</h3>

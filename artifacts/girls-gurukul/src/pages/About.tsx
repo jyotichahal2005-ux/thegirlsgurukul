@@ -128,28 +128,48 @@ export default function About() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <SectionHeader badge="Journey" title="Our Milestones" subtitle="Key moments that have shaped The Girls Gurukul into the institution it is today." />
-          <div className="relative max-w-3xl mx-auto">
-            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[#ffffff]/30 -translate-x-1/2 hidden md:block" />
+          <div className="relative max-w-4xl mx-auto">
+            {/* Center vertical line */}
+            <div className="absolute left-1/2 top-4 bottom-4 w-0.5 bg-[#1a5c2e]/20 -translate-x-1/2 hidden md:block" />
             {timeline.map(({ year, title, desc }, i) => (
               <motion.div key={year} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                className={`flex gap-6 mb-8 items-start ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
-                <div className={`hidden md:block flex-1 ${i % 2 === 0 ? "text-right" : "text-left"}`}>
+                className="relative flex items-center mb-10 gap-0">
+                {/* LEFT side */}
+                <div className="flex-1 pr-10 flex justify-end">
                   {i % 2 === 0 ? (
-                    <>
-                      <h3 className="font-serif font-bold text-lg text-[#1a5c2e] mb-1">{title}</h3>
-                      <p className="text-gray-500 text-sm">{desc}</p>
-                    </>
-                  ) : null}
+                    <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
+                      className="bg-white rounded-2xl p-5 shadow-md border border-gray-100 max-w-xs w-full text-right">
+                      <span className="inline-block text-xs font-bold text-[#1a5c2e] bg-[#1a5c2e]/10 px-2 py-0.5 rounded-full mb-2">{year}</span>
+                      <h3 className="font-serif font-bold text-[#1a5c2e] mb-1">{title}</h3>
+                      <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+                    </motion.div>
+                  ) : <div className="hidden md:block" />}
                 </div>
-                <div className="flex-shrink-0 flex flex-col items-center">
-                  <div className="w-14 h-14 bg-[#1a5c2e] rounded-full flex items-center justify-center text-[#ffffff] font-bold text-sm shadow-lg z-10">
-                    {year}
+                {/* Center badge */}
+                <div className="flex-shrink-0 z-10 hidden md:flex">
+                  <div className="w-14 h-14 bg-[#1a5c2e] rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg border-4 border-gray-50">
+                    {year.slice(-2)}
                   </div>
                 </div>
-                <div className={`flex-1 md:${i % 2 === 1 ? "text-right" : "text-left"}`}>
-                  <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-                    <h3 className="font-serif font-bold text-[#1a5c2e] mb-1">{title}</h3>
-                    <p className="text-gray-500 text-sm">{desc}</p>
+                {/* RIGHT side */}
+                <div className="flex-1 pl-10 flex justify-start">
+                  {i % 2 === 1 ? (
+                    <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
+                      className="bg-white rounded-2xl p-5 shadow-md border border-gray-100 max-w-xs w-full text-left">
+                      <span className="inline-block text-xs font-bold text-[#1a5c2e] bg-[#1a5c2e]/10 px-2 py-0.5 rounded-full mb-2">{year}</span>
+                      <h3 className="font-serif font-bold text-[#1a5c2e] mb-1">{title}</h3>
+                      <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+                    </motion.div>
+                  ) : <div className="hidden md:block" />}
+                </div>
+                {/* Mobile: full-width card */}
+                <div className="md:hidden flex-1">
+                  <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex gap-3 items-start">
+                    <div className="w-12 h-12 bg-[#1a5c2e] rounded-full flex-shrink-0 flex items-center justify-center text-white font-bold text-xs">{year}</div>
+                    <div>
+                      <h3 className="font-serif font-bold text-[#1a5c2e] text-sm mb-1">{title}</h3>
+                      <p className="text-gray-500 text-xs leading-relaxed">{desc}</p>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -272,7 +292,7 @@ export default function About() {
             {management.map(({ name, role, initial }, i) => (
               <motion.div key={name} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 className="text-center bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
-                <div className="w-16 h-16 bg-[#1a5c2e] rounded-full flex items-center justify-center text-[#ffffff] font-bold text-xl mx-auto mb-3">
+                <div className="w-16 h-16 bg-[#1a5c2e] rounded-xl flex items-center justify-center text-[#ffffff] font-bold text-xl mx-auto mb-3">
                   {initial}
                 </div>
                 <h3 className="font-serif font-semibold text-[#1a5c2e] text-sm mb-1">{name}</h3>

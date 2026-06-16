@@ -97,48 +97,48 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#1a5c2e]/30 to-transparent" />
 
         <div className="relative z-10 container mx-auto px-6 lg:px-12 py-32">
-          <div className="max-w-2xl">
+          <div className="max-w-3xl">
 
             {/* Text Content */}
             <div>
               {/* Location badge */}
               <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-sm text-white/80 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-5">
+                className="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-sm text-white/90 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-5">
                 📍 Kalayat, Kaithal, Haryana
               </motion.div>
 
               {/* Admissions badge */}
               <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.05 }}
-                className="flex items-center gap-2 mb-4">
-                <span className="inline-flex items-center gap-2 bg-[#ffffff]/25 border border-[#ffffff]/50 text-[#ffffff] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
-                  <span className="w-2 h-2 bg-[#ffffff] rounded-full animate-pulse" /> Admissions Open 2025-26
+                className="flex items-center gap-2 mb-5">
+                <span className="inline-flex items-center gap-2 bg-[#ffffff]/25 border border-[#ffffff]/60 text-[#ffffff] text-sm font-bold uppercase tracking-widest px-5 py-2 rounded-full shadow-lg">
+                  <span className="w-2.5 h-2.5 bg-[#ffffff] rounded-full animate-pulse" /> Admissions Open 2026-27
                 </span>
               </motion.div>
 
               {/* School Name */}
               <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
-                className="font-serif font-bold text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-3">
+                className="font-serif font-bold text-6xl md:text-7xl lg:text-8xl text-white leading-tight mb-3">
                 The Girls<br />
-                <span className="text-[#ffffff]">Gurukul</span>
+                <span className="text-[#ffffff] drop-shadow-lg">Gurukul</span>
               </motion.h1>
 
               {/* Divider */}
-              <motion.div initial={{ width: 0 }} animate={{ width: "5rem" }} transition={{ duration: 0.8, delay: 0.3 }}
-                className="h-1 bg-[#ffffff] rounded-full mb-5" />
+              <motion.div initial={{ width: 0 }} animate={{ width: "6rem" }} transition={{ duration: 0.8, delay: 0.3 }}
+                className="h-1.5 bg-[#ffffff] rounded-full mb-6" />
 
               {/* Tagline */}
               <motion.p initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.35 }}
-                className="text-white/75 text-base md:text-lg max-w-md mb-8 leading-relaxed italic">
+                className="text-white/90 text-lg md:text-xl max-w-lg mb-10 leading-relaxed font-medium">
                 "Shaping Futures, Building Characters — Where Ancient Wisdom Meets Modern Excellence"
               </motion.p>
 
               {/* Quick stats row */}
               <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.45 }}
-                className="flex gap-6 mb-10">
-                {[{ val: "1200+", lbl: "Students" }, { val: "19+", lbl: "Years" }, { val: "100%", lbl: "Results" }].map(({ val, lbl }) => (
+                className="flex gap-8 mb-12">
+                {[{ val: "1200+", lbl: "Students" }, { val: "19+", lbl: "Years" }, { val: "100%", lbl: "Board Results" }].map(({ val, lbl }) => (
                   <div key={lbl} className="text-center">
-                    <p className="text-[#ffffff] font-bold text-xl leading-none">{val}</p>
-                    <p className="text-white/60 text-xs mt-0.5">{lbl}</p>
+                    <p className="text-[#ffffff] font-bold text-2xl md:text-3xl leading-none drop-shadow">{val}</p>
+                    <p className="text-white/70 text-sm mt-1 font-medium">{lbl}</p>
                   </div>
                 ))}
               </motion.div>
@@ -147,12 +147,12 @@ export default function Home() {
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.55 }}
                 className="flex flex-wrap gap-4">
                 <Link href="/admissions">
-                  <Button size="lg" className="bg-[#ffffff] text-[#1a5c2e] hover:bg-[#ffffff]/90 font-bold px-8 py-4 rounded-full text-base shadow-2xl shadow-[#ffffff]/30">
+                  <Button size="lg" className="bg-[#ffffff] text-[#1a5c2e] hover:bg-[#ffffff]/90 font-bold px-10 py-5 rounded-full text-base shadow-2xl shadow-[#ffffff]/30 h-auto">
                     Apply Now <ArrowRight size={18} className="ml-2" />
                   </Button>
                 </Link>
                 <Link href="/about">
-                  <Button size="lg" variant="outline" className="border-2 border-white/60 text-white hover:bg-white hover:text-[#1a5c2e] font-semibold px-8 py-4 rounded-full text-base bg-transparent">
+                  <Button size="lg" variant="outline" className="border-2 border-white/70 text-white hover:bg-white hover:text-[#1a5c2e] font-semibold px-10 py-5 rounded-full text-base bg-transparent h-auto">
                     Explore School <ChevronRight size={18} className="ml-2" />
                   </Button>
                 </Link>
@@ -390,7 +390,7 @@ export default function Home() {
         <div className="container mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <h2 className="font-serif font-bold text-3xl md:text-4xl text-[#1a5c2e] mb-4">Give Your Daughter the Best Start</h2>
-            <p className="text-[#1a5c2e]/80 text-lg max-w-xl mx-auto mb-8">Join The Girls Gurukul family. Seats are limited for 2025-26. Apply today!</p>
+            <p className="text-[#1a5c2e]/80 text-lg max-w-xl mx-auto mb-8">Join The Girls Gurukul family. Seats are limited for 2026-27. Apply today!</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/admissions">
                 <Button size="lg" className="bg-[#1a5c2e] text-white hover:bg-[#1a5c2e]/90 font-bold rounded-full px-10">

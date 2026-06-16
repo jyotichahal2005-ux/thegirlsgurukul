@@ -27,7 +27,7 @@ export default function Footer() {
       <div className="bg-[#ffffff] py-5">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
-            <p className="font-serif font-bold text-[#1a5c2e] text-xl">Admissions Open for 2025-26</p>
+            <p className="font-serif font-bold text-[#1a5c2e] text-xl">Admissions Open for 2026-27</p>
             <p className="text-[#1a5c2e]/80 text-sm">Limited seats available. Apply today!</p>
           </div>
           <Link

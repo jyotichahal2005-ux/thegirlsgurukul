@@ -90,7 +90,7 @@ export default function Navbar() {
             </span>
           </div>
           <div className="flex gap-4 items-center">
-            <span className="text-[#ffffff] font-medium animate-pulse">🎓 Admissions Open 2025-26</span>
+            <span className="text-[#ffffff] font-medium animate-pulse">🎓 Admissions Open 2026-27</span>
           </div>
         </div>
       </div>

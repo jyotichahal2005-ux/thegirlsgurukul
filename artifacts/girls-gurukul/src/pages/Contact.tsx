@@ -110,7 +110,7 @@ export default function Contact() {
                 <h2 className="font-serif font-bold text-3xl text-[#1a5c2e]">Find Us on the Map</h2>
                 <div className="h-0.5 w-16 bg-[#ffffff] rounded-full mt-3" />
               </div>
-              <div className="rounded-3xl overflow-hidden shadow-lg h-80 bg-gray-200 border border-gray-200 relative">
+              <div className="rounded-3xl overflow-hidden shadow-lg h-[480px] bg-gray-200 border border-gray-200 relative">
                 <iframe
                   src="https://maps.google.com/maps?q=The+Girls+Gurukul+Kalayat+Kaithal+Haryana+136027&output=embed&z=15"
                   width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy"
