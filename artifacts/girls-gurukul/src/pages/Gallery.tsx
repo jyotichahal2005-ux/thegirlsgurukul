@@ -31,6 +31,31 @@ const photos = [
   { src: "/images/gallery-19.jpg", title: "Yoga Practice", category: "Sports", desc: "Yoga and wellness session for students" },
   { src: "/images/school-gate.png", title: "School Gate", category: "Campus", desc: "The beautiful entrance gate of The Girls Gurukul" },
   { src: "/images/school-building.png", title: "School Building", category: "Campus", desc: "Our modern school building and campus" },
+
+  { src: "/images/new-hostel-room.jpg", title: "Hostel Rooms", category: "Campus", desc: "Clean and comfortable hostel rooms for residential students" },
+  { src: "/images/new-school-batch.jpg", title: "School Batch 2025", category: "Campus", desc: "Students proudly posing in front of The Girls Gurukul building" },
+  { src: "/images/new-cafeteria-meal.jpg", title: "Cafeteria Dining", category: "Campus", desc: "Students enjoying nutritious meals in the school cafeteria" },
+  { src: "/images/new-hostel-students.webp", title: "Hostel Life", category: "Campus", desc: "Students celebrating together in the hostel corridor" },
+  { src: "/images/new-campus-walk.webp", title: "Campus Walk", category: "Campus", desc: "Students arriving at school — a day in campus life" },
+
+  { src: "/images/new-sprint-race.jpg", title: "Sprint Race", category: "Sports", desc: "Students competing in a sprint race on the school grounds" },
+  { src: "/images/new-medals-team.jpg", title: "Annual Sports Meet", category: "Sports", desc: "Medal winners celebrating at The Girls Gurukul Annual Sports 2025-26" },
+  { src: "/images/new-awards-podium.jpg", title: "Sports Podium", category: "Sports", desc: "Students on the podium receiving gold, silver and bronze medals" },
+  { src: "/images/new-yoga-session.jpg", title: "Yoga Morning Session", category: "Sports", desc: "Students practicing tree pose (Vrikshasana) during yoga class" },
+
+  { src: "/images/new-haryanvi-dance.jpg", title: "Haryanvi Folk Dance", category: "Cultural", desc: "Students performing vibrant Haryanvi folk dance on stage" },
+  { src: "/images/new-lamp-lighting.webp", title: "Lamp Lighting Ceremony", category: "Cultural", desc: "Traditional lamp lighting ceremony to inaugurate a school event" },
+  { src: "/images/new-krishna-dance.webp", title: "Krishna Dance Performance", category: "Cultural", desc: "Students performing a classical Krishna-themed dance" },
+  { src: "/images/new-folk-costumes.webp", title: "Folk Costumes Showcase", category: "Cultural", desc: "Students dressed in colourful regional folk costumes at a competition" },
+  { src: "/images/new-award-ceremony.webp", title: "Cultural Award", category: "Cultural", desc: "School receiving an award for outstanding cultural contribution" },
+
+  { src: "/images/new-shaheed-smarak.webp", title: "Shaheed Smarak Visit", category: "Events", desc: "Students on an educational visit to the Shaheed Smarak memorial" },
+  { src: "/images/new-wagah-border.webp", title: "Wagah Border Excursion", category: "Events", desc: "Students at the Wagah-Attari Border ceremony — a patriotic field trip" },
+  { src: "/images/new-dining-trip.webp", title: "School Picnic Outing", category: "Events", desc: "Students enjoying a meal together on a school picnic trip" },
+  { src: "/images/new-water-park.webp", title: "Water Park Trip", category: "Events", desc: "Students having fun at a water park on a school excursion" },
+  { src: "/images/new-tree-plantation.webp", title: "Tree Plantation Drive", category: "Events", desc: "Students planting saplings as part of the Green School initiative" },
+
+  { src: "/images/new-science-lab.jpg", title: "Physics Lab Experiment", category: "Academic", desc: "Students conducting experiments using microscopes in the science lab" },
 ];
 
 const videos = [
