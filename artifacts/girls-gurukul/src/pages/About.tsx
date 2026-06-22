@@ -229,18 +229,7 @@ export default function About() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <SectionHeader badge="Infrastructure" title="World-Class Facilities" subtitle="Exceptional learning environments designed to inspire, innovate and educate." />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-            {infrastructure.map(({ icon, title, desc }, i) => (
-              <motion.div key={title} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                className="bg-white rounded-2xl p-5 text-center shadow-sm hover:shadow-md transition-all border border-gray-100 card-hover">
-                <div className="text-4xl mb-3">{icon}</div>
-                <h3 className="font-serif font-semibold text-[#1a5c2e] mb-1 text-sm">{title}</h3>
-                <p className="text-gray-400 text-xs leading-relaxed">{desc}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
               { src: "/images/fac-cafeteria.jpg", label: "Cafeteria & Dining" },
               { src: "/images/fac-archery.webp", label: "Archery Range" },
@@ -270,7 +259,7 @@ export default function About() {
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 <div className="flex-shrink-0">
                   <div className="w-32 h-40 rounded-2xl overflow-hidden shadow-lg">
-                    <img src="/images/principal.png" alt="Principal" className="w-full h-full object-cover object-top" />
+                    <img src="/images/principal-photo.png" alt="Principal" className="w-full h-full object-cover object-top" />
                   </div>
                   <div className="text-center mt-3">
                     <p className="font-bold text-[#1a5c2e] text-sm">Mrs. Kavita Sharma</p>
@@ -315,6 +304,27 @@ export default function About() {
                 </div>
                 <h3 className="font-serif font-semibold text-[#1a5c2e] text-sm mb-1">{name}</h3>
                 <p className="text-gray-400 text-xs">{role}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* OUR FACULTY */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <SectionHeader badge="Our Team" title="Meet Our Faculty" subtitle="Dedicated and qualified educators shaping the future of every student at The Girls Gurukul." />
+          <div className="flex flex-col gap-6 max-w-4xl mx-auto">
+            {[
+              { src: "/images/staff-group-1.png", label: "PGT Faculty — Physics, Geography & Hindi" },
+              { src: "/images/staff-group-2.png", label: "PGT Faculty — Mathematics, Chemistry & Biology" },
+              { src: "/images/staff-group-3.png", label: "Support Staff — Primary, Receptionist & Dance" },
+              { src: "/images/staff-group-4.png", label: "Faculty — Physical Training, Political Science & Primary" },
+              { src: "/images/staff-group-5.png", label: "Primary Resource Teachers" },
+            ].map(({ src, label }, i) => (
+              <motion.div key={label} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                className="rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+                <img src={src} alt={label} className="w-full object-cover" />
               </motion.div>
             ))}
           </div>
