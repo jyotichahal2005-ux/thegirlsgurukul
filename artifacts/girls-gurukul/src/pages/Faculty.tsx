@@ -8,24 +8,24 @@ const fadeUp = {
   visible: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.6, delay: i * 0.1 } }),
 };
 
-const departments = ["All", "Leadership", "Science", "Mathematics", "Languages", "Social Studies", "Arts & Sports"];
+const departments = ["All", "Science", "Mathematics", "Languages", "Social Studies", "Arts & Sports", "Primary", "Admin"];
 
 const faculty = [
-  { name: "Mrs. Kavita Sharma", role: "Principal", dept: "Leadership", qual: "M.Ed., Ph.D.", exp: "22 years", initial: "K", color: "bg-purple-500", specialty: "Educational Leadership" },
-  { name: "Mrs. Sunita Verma", role: "Vice Principal", dept: "Leadership", qual: "M.Sc., B.Ed.", exp: "18 years", initial: "S", color: "bg-blue-500", specialty: "Academic Administration" },
-  { name: "Dr. Rekha Singh", role: "HOD – Science", dept: "Science", qual: "M.Sc. Physics, Ph.D.", exp: "15 years", initial: "R", color: "bg-green-500", specialty: "Physics & Research" },
-  { name: "Mrs. Anita Rani", role: "Chemistry Teacher", dept: "Science", qual: "M.Sc. Chemistry, B.Ed.", exp: "12 years", initial: "A", color: "bg-teal-500", specialty: "Organic Chemistry" },
-  { name: "Mrs. Pooja Devi", role: "Biology Teacher", dept: "Science", qual: "M.Sc. Biology, B.Ed.", exp: "10 years", initial: "P", color: "bg-emerald-500", specialty: "Botany & Zoology" },
-  { name: "Mr. Rajesh Kumar", role: "HOD – Mathematics", dept: "Mathematics", qual: "M.Sc. Mathematics, B.Ed.", exp: "14 years", initial: "R", color: "bg-amber-500", specialty: "Algebra & Calculus" },
-  { name: "Mrs. Meena Gupta", role: "Mathematics Teacher", dept: "Mathematics", qual: "M.Sc., B.Ed.", exp: "9 years", initial: "M", color: "bg-orange-500", specialty: "Statistics & Geometry" },
-  { name: "Mrs. Priya Sharma", role: "HOD – English", dept: "Languages", qual: "M.A. English, B.Ed.", exp: "16 years", initial: "P", color: "bg-rose-500", specialty: "Literature & Communication" },
-  { name: "Mrs. Geeta Rani", role: "Hindi Teacher", dept: "Languages", qual: "M.A. Hindi, B.Ed.", exp: "11 years", initial: "G", color: "bg-red-500", specialty: "Hindi Literature" },
-  { name: "Mrs. Usha Kumari", role: "Sanskrit Teacher", dept: "Languages", qual: "M.A. Sanskrit, B.Ed.", exp: "13 years", initial: "U", color: "bg-yellow-600", specialty: "Sanskrit Grammar" },
-  { name: "Mrs. Sonia Devi", role: "HOD – Social Studies", dept: "Social Studies", qual: "M.A. History, B.Ed.", exp: "12 years", initial: "S", color: "bg-indigo-500", specialty: "History & Geography" },
-  { name: "Mr. Amit Yadav", role: "Computer Science", dept: "Social Studies", qual: "M.Sc. CS, B.Ed.", exp: "8 years", initial: "A", color: "bg-cyan-500", specialty: "Programming & IT" },
-  { name: "Mrs. Kiran Bala", role: "Art Teacher", dept: "Arts & Sports", qual: "B.F.A., M.A. Fine Arts", exp: "10 years", initial: "K", color: "bg-pink-500", specialty: "Painting & Crafts" },
-  { name: "Miss. Deepa Sharma", role: "Music Teacher", dept: "Arts & Sports", qual: "M.A. Music (Classical)", exp: "7 years", initial: "D", color: "bg-violet-500", specialty: "Classical Vocals" },
-  { name: "Mrs. Neha Singh", role: "Physical Education", dept: "Arts & Sports", qual: "M.P.Ed.", exp: "9 years", initial: "N", color: "bg-lime-500", specialty: "Athletics & Kabaddi" },
+  { name: "Bharat", role: "PGT Physics", dept: "Science", img: "/images/staff-group-1.png", pos: "10% 25%" },
+  { name: "Satish", role: "PGT Geography", dept: "Social Studies", img: "/images/staff-group-1.png", pos: "50% 25%" },
+  { name: "Jangeer Singh", role: "PGT Hindi", dept: "Languages", img: "/images/staff-group-1.png", pos: "90% 25%" },
+  { name: "Nisha Atri", role: "PGT Mathematics", dept: "Mathematics", img: "/images/staff-group-2.png", pos: "10% 25%" },
+  { name: "Kajal", role: "PGT Chemistry", dept: "Science", img: "/images/staff-group-2.png", pos: "50% 25%" },
+  { name: "Ritu", role: "PGT Biology", dept: "Science", img: "/images/staff-group-2.png", pos: "90% 25%" },
+  { name: "Jyoti", role: "PRT", dept: "Primary", img: "/images/staff-group-3.png", pos: "10% 25%" },
+  { name: "Priyanka", role: "Receptionist", dept: "Admin", img: "/images/staff-group-3.png", pos: "50% 25%" },
+  { name: "Tannu", role: "Dance Teacher", dept: "Arts & Sports", img: "/images/staff-group-3.png", pos: "90% 25%" },
+  { name: "Monika", role: "PTI", dept: "Arts & Sports", img: "/images/staff-group-4.png", pos: "10% 25%" },
+  { name: "Tannu", role: "PGT Political Science", dept: "Social Studies", img: "/images/staff-group-4.png", pos: "50% 25%" },
+  { name: "Shweta", role: "PRT", dept: "Primary", img: "/images/staff-group-4.png", pos: "90% 25%" },
+  { name: "Mamta", role: "PRT", dept: "Primary", img: "/images/staff-group-5.png", pos: "10% 25%" },
+  { name: "Ruma Rana", role: "PRT", dept: "Primary", img: "/images/staff-group-5.png", pos: "50% 25%" },
+  { name: "Neha Rana", role: "PRT", dept: "Primary", img: "/images/staff-group-5.png", pos: "90% 25%" },
 ];
 
 export default function Faculty() {
@@ -35,7 +35,7 @@ export default function Faculty() {
 
   const filtered = faculty.filter((f) => {
     const matchesDept = dept === "All" || f.dept === dept;
-    const matchesSearch = f.name.toLowerCase().includes(search.toLowerCase()) || f.role.toLowerCase().includes(search.toLowerCase()) || f.specialty.toLowerCase().includes(search.toLowerCase());
+    const matchesSearch = f.name.toLowerCase().includes(search.toLowerCase()) || f.role.toLowerCase().includes(search.toLowerCase());
     return matchesDept && matchesSearch;
   });
 
@@ -74,20 +74,18 @@ export default function Faculty() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <SectionHeader badge="Leadership" title="School Leadership" subtitle="Experienced leaders guiding our school towards excellence and innovation." />
-          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-            {faculty.filter((f) => f.dept === "Leadership").map(({ name, role, qual, exp, initial, color, specialty }, i) => (
-              <motion.div key={name} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                className="bg-gray-50 rounded-3xl p-8 flex gap-5 items-start border border-gray-100 card-hover hover:shadow-xl transition-all">
-                <div className={`${color} w-20 h-20 rounded-2xl flex items-center justify-center text-white font-bold text-2xl flex-shrink-0`}>{initial}</div>
-                <div>
-                  <h3 className="font-serif font-bold text-[#1a5c2e] text-lg">{name}</h3>
-                  <p className="text-[#ffffff] font-semibold text-sm mb-1">{role}</p>
-                  <p className="text-gray-500 text-xs mb-1">{qual}</p>
-                  <p className="text-gray-400 text-xs mb-2">Experience: {exp}</p>
-                  <span className="bg-[#1a5c2e]/10 text-[#1a5c2e] text-xs px-2 py-0.5 rounded-full">{specialty}</span>
-                </div>
-              </motion.div>
-            ))}
+          <div className="max-w-sm mx-auto">
+            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+              className="bg-gray-50 rounded-3xl p-8 flex gap-5 items-start border border-gray-100 card-hover hover:shadow-xl transition-all">
+              <div className="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0 shadow-md">
+                <img src="/images/principal-photo.webp" alt="Principal" className="w-full h-full object-cover object-top" />
+              </div>
+              <div>
+                <h3 className="font-serif font-bold text-[#1a5c2e] text-lg">Principal</h3>
+                <p className="text-gray-500 font-semibold text-sm mb-1">The Girls Gurukul, Kalayat</p>
+                <span className="bg-[#1a5c2e]/10 text-[#1a5c2e] text-xs px-2 py-0.5 rounded-full">School Leadership</span>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -118,20 +116,16 @@ export default function Faculty() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {filtered.map(({ name, role, qual, exp, initial, color, specialty, dept: d }, i) => (
-              <motion.div key={name} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                className="bg-white rounded-2xl p-5 border border-gray-100 card-hover hover:shadow-lg transition-all flex gap-4">
-                <div className={`${color} w-14 h-14 rounded-xl flex items-center justify-center text-white font-bold text-lg flex-shrink-0`}>{initial}</div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-serif font-bold text-[#1a5c2e] text-sm truncate">{name}</h3>
-                  <p className="text-[#ffffff] text-xs font-semibold">{role}</p>
-                  <p className="text-gray-400 text-xs">{qual}</p>
-                  <div className="flex items-center gap-2 mt-1.5 flex-wrap">
-                    <span className="bg-[#1a5c2e]/8 text-[#1a5c2e] text-xs px-2 py-0.5 rounded-full">{d}</span>
-                    <span className="text-gray-400 text-xs">{exp}</span>
-                  </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+            {filtered.map(({ name, role, img, pos, dept: d }, i) => (
+              <motion.div key={`${name}-${i}`} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                className="bg-white rounded-2xl p-4 border border-gray-100 card-hover hover:shadow-lg transition-all text-center">
+                <div className="w-20 h-20 rounded-xl overflow-hidden mx-auto mb-3 shadow-sm">
+                  <img src={img} alt={name} className="w-full h-full" style={{ objectFit: "cover", objectPosition: pos }} />
                 </div>
+                <h3 className="font-serif font-bold text-[#1a5c2e] text-sm">{name}</h3>
+                <p className="text-gray-500 text-xs font-semibold mt-0.5">{role}</p>
+                <span className="inline-block bg-[#1a5c2e]/10 text-[#1a5c2e] text-xs px-2 py-0.5 rounded-full mt-1.5">{d}</span>
               </motion.div>
             ))}
           </div>
@@ -192,32 +186,6 @@ export default function Faculty() {
         </div>
       </section>
 
-      {/* AWARDS & RECOGNITION */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <SectionHeader badge="Achievements" title="Faculty Awards & Recognition" subtitle="Our dedicated teachers have been honoured at state and national levels." />
-          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-5">
-            {[
-              { icon: "🥇", name: "Mrs. Kavita Sharma", award: "Best Principal Award", org: "Haryana Education Department, 2024", color: "bg-yellow-50 border-yellow-200" },
-              { icon: "🏅", name: "Dr. Rekha Singh", award: "Outstanding Science Teacher", org: "CBSE Regional Award, 2023", color: "bg-blue-50 border-blue-200" },
-              { icon: "🏆", name: "Mrs. Priya Sharma", award: "Best English Teacher Award", org: "Kaithal District Education Board, 2024", color: "bg-green-50 border-green-200" },
-              { icon: "⭐", name: "Mr. Rajesh Kumar", award: "Mathematics Olympiad Mentor Award", org: "NCERT Recognition, 2022", color: "bg-purple-50 border-purple-200" },
-              { icon: "🌟", name: "Mrs. Neha Singh", award: "State Sports Coach Award", org: "Haryana Sports Council, 2023", color: "bg-pink-50 border-pink-200" },
-              { icon: "🎖️", name: "Mrs. Sunita Verma", award: "Academic Administration Excellence", org: "CBSE Vice-Principal Award, 2024", color: "bg-amber-50 border-amber-200" },
-            ].map(({ icon, name, award, org, color }, i) => (
-              <motion.div key={name} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                className={`flex gap-4 p-5 rounded-2xl border ${color} card-hover hover:shadow-md transition-all`}>
-                <div className="text-3xl flex-shrink-0">{icon}</div>
-                <div>
-                  <h3 className="font-serif font-bold text-[#1a5c2e] mb-0.5">{name}</h3>
-                  <p className="text-gray-700 font-semibold text-sm">{award}</p>
-                  <p className="text-gray-400 text-xs mt-0.5">{org}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* JOIN CTA */}
       <section className="py-16 bg-gradient-to-r from-[#1a5c2e] to-[#1a5c2e]/80">

@@ -276,17 +276,19 @@ export default function Home() {
                 Our dedicated educators work tirelessly to ensure every student receives individual attention and the best possible opportunities. We invite you to be part of our family.
               </p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-[#ffffff] rounded-full flex items-center justify-center text-[#1a5c2e] font-bold text-lg">K</div>
+                <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-white/40">
+                  <img src="/images/principal-photo.webp" alt="Principal" className="w-full h-full object-cover object-top" />
+                </div>
                 <div>
-                  <p className="font-bold text-white text-lg">Mrs. Kavita Sharma</p>
-                  <p className="text-[#ffffff] text-sm">Principal, The Girls Gurukul</p>
+                  <p className="font-bold text-white text-lg">Principal</p>
+                  <p className="text-[#ffffff] text-sm">The Girls Gurukul, Kalayat</p>
                 </div>
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="order-1 lg:order-2 flex justify-center">
               <div className="relative">
                 <div className="w-72 h-96 rounded-3xl overflow-hidden shadow-2xl border-4 border-[#ffffff]/30">
-                  <img src="/images/principal.png" alt="Principal" className="w-full h-full object-cover object-top" />
+                  <img src="/images/principal-photo.webp" alt="Principal" className="w-full h-full object-cover object-top" />
                 </div>
                 <div className="absolute -bottom-4 -right-4 bg-[#ffffff] rounded-2xl p-4 shadow-xl">
                   <div className="flex items-center gap-1">{[...Array(5)].map((_, i) => <Star key={i} size={14} fill="#1a5c2e" className="text-[#1a5c2e]" />)}</div>

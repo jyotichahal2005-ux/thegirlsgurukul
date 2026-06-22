@@ -259,7 +259,7 @@ export default function About() {
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 <div className="flex-shrink-0">
                   <div className="w-32 h-40 rounded-2xl overflow-hidden shadow-lg">
-                    <img src="/images/principal-photo.png" alt="Principal" className="w-full h-full object-cover object-top" />
+                    <img src="/images/principal-photo.webp" alt="Principal" className="w-full h-full object-cover object-top" />
                   </div>
                   <div className="text-center mt-3">
                     <p className="font-bold text-[#1a5c2e] text-sm">Mrs. Kavita Sharma</p>
@@ -291,40 +291,35 @@ export default function About() {
         </div>
       </section>
 
-      {/* MANAGEMENT */}
+      {/* MANAGEMENT / STAFF */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <SectionHeader badge="Governance" title="Management Committee" subtitle="Dedicated leaders who guide our institution's vision and strategic direction." />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
-            {management.map(({ name, role, initial }, i) => (
-              <motion.div key={name} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                className="text-center bg-white rounded-2xl p-6 shadow-sm border border-gray-100 card-hover">
-                <div className="w-16 h-16 bg-[#1a5c2e] rounded-xl flex items-center justify-center text-[#ffffff] font-bold text-xl mx-auto mb-3">
-                  {initial}
-                </div>
-                <h3 className="font-serif font-semibold text-[#1a5c2e] text-sm mb-1">{name}</h3>
-                <p className="text-gray-400 text-xs">{role}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* OUR FACULTY */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <SectionHeader badge="Our Team" title="Meet Our Faculty" subtitle="Dedicated and qualified educators shaping the future of every student at The Girls Gurukul." />
-          <div className="flex flex-col gap-6 max-w-4xl mx-auto">
+          <SectionHeader badge="Our Team" title="Our Staff" subtitle="Dedicated and qualified educators shaping the future of every student at The Girls Gurukul." />
+          <div className="grid grid-cols-3 md:grid-cols-5 gap-5 max-w-4xl mx-auto">
             {[
-              { src: "/images/staff-group-1.png", label: "PGT Faculty — Physics, Geography & Hindi" },
-              { src: "/images/staff-group-2.png", label: "PGT Faculty — Mathematics, Chemistry & Biology" },
-              { src: "/images/staff-group-3.png", label: "Support Staff — Primary, Receptionist & Dance" },
-              { src: "/images/staff-group-4.png", label: "Faculty — Physical Training, Political Science & Primary" },
-              { src: "/images/staff-group-5.png", label: "Primary Resource Teachers" },
-            ].map(({ src, label }, i) => (
-              <motion.div key={label} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                className="rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-                <img src={src} alt={label} className="w-full object-cover" />
+              { name: "Bharat", role: "PGT Physics", img: "/images/staff-group-1.png", pos: "10% 25%" },
+              { name: "Satish", role: "PGT Geography", img: "/images/staff-group-1.png", pos: "50% 25%" },
+              { name: "Jangeer Singh", role: "PGT Hindi", img: "/images/staff-group-1.png", pos: "90% 25%" },
+              { name: "Nisha Atri", role: "PGT Maths", img: "/images/staff-group-2.png", pos: "10% 25%" },
+              { name: "Kajal", role: "PGT Chemistry", img: "/images/staff-group-2.png", pos: "50% 25%" },
+              { name: "Ritu", role: "PGT Biology", img: "/images/staff-group-2.png", pos: "90% 25%" },
+              { name: "Jyoti", role: "PRT", img: "/images/staff-group-3.png", pos: "10% 25%" },
+              { name: "Priyanka", role: "Receptionist", img: "/images/staff-group-3.png", pos: "50% 25%" },
+              { name: "Tannu", role: "Dance Teacher", img: "/images/staff-group-3.png", pos: "90% 25%" },
+              { name: "Monika", role: "PTI", img: "/images/staff-group-4.png", pos: "10% 25%" },
+              { name: "Tannu", role: "PGT Pol. Science", img: "/images/staff-group-4.png", pos: "50% 25%" },
+              { name: "Shweta", role: "PRT", img: "/images/staff-group-4.png", pos: "90% 25%" },
+              { name: "Mamta", role: "PRT", img: "/images/staff-group-5.png", pos: "10% 25%" },
+              { name: "Ruma Rana", role: "PRT", img: "/images/staff-group-5.png", pos: "50% 25%" },
+              { name: "Neha Rana", role: "PRT", img: "/images/staff-group-5.png", pos: "90% 25%" },
+            ].map(({ name, role, img, pos }, i) => (
+              <motion.div key={`${name}-${i}`} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                className="text-center bg-white rounded-2xl p-4 shadow-sm border border-gray-100 card-hover">
+                <div className="w-16 h-16 rounded-xl overflow-hidden mx-auto mb-3 shadow-sm">
+                  <img src={img} alt={name} className="w-full h-full" style={{ objectFit: "cover", objectPosition: pos }} />
+                </div>
+                <h3 className="font-serif font-semibold text-[#1a5c2e] text-xs mb-0.5">{name}</h3>
+                <p className="text-gray-400 text-xs">{role}</p>
               </motion.div>
             ))}
           </div>
