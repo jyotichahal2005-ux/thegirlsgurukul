@@ -239,6 +239,24 @@ export default function About() {
               </motion.div>
             ))}
           </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-10">
+            {[
+              { src: "/images/fac-cafeteria.jpg", label: "Cafeteria & Dining" },
+              { src: "/images/fac-archery.webp", label: "Archery Range" },
+              { src: "/images/fac-physics-lab.webp", label: "Physics Laboratory" },
+              { src: "/images/fac-smart-class.jpg", label: "Smart Classrooms" },
+              { src: "/images/fac-sports-ground.webp", label: "Sports Ground" },
+              { src: "/images/fac-classroom.jpg", label: "Classrooms" },
+            ].map(({ src, label }, i) => (
+              <motion.div key={label} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
+                className="relative rounded-2xl overflow-hidden shadow-sm group h-52">
+                <img src={src} alt={label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <p className="absolute bottom-3 left-3 text-white font-semibold text-sm drop-shadow">{label}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
