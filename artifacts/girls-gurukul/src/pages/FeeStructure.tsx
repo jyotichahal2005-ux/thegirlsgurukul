@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle, IndianRupee, AlertCircle, Download } from "lucide-react";
+import { CheckCircle, AlertCircle, Download } from "lucide-react";
 import SectionHeader from "@/components/SectionHeader";
 
 const fadeUp = {
@@ -194,28 +194,6 @@ export default function FeeStructure() {
             ))}
           </div>
 
-          {/* Bank Details */}
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="mt-10 max-w-2xl mx-auto bg-[#1a5c2e] rounded-2xl p-6 text-white">
-            <h3 className="font-serif font-bold text-lg mb-4 text-center flex items-center justify-center gap-2">
-              <IndianRupee size={20} className="text-[#ffffff]" /> Bank Account Details
-            </h3>
-            <div className="grid grid-cols-2 gap-4 text-sm">
-              {[
-                { label: "Account Name", value: "The Girls Gurukul" },
-                { label: "Account Number", value: "XXXX XXXX XXXX" },
-                { label: "Bank", value: "HDFC Bank" },
-                { label: "Branch", value: "Kalayat, Kaithal" },
-                { label: "IFSC Code", value: "HDFC0XXXXXX" },
-                { label: "Account Type", value: "Current Account" },
-              ].map(({ label, value }) => (
-                <div key={label}>
-                  <p className="text-white/50 text-xs">{label}</p>
-                  <p className="text-white font-semibold">{value}</p>
-                </div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </section>
 
