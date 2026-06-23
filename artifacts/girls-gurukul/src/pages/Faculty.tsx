@@ -114,14 +114,14 @@ export default function Faculty() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             {filtered.map(({ name, role, img, pos, dept: d }, i) => (
               <motion.div key={`${name}-${i}`} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex card-hover hover:shadow-lg transition-all">
-                <div className="w-24 h-32 flex-shrink-0">
+                <div className="w-28 h-36 flex-shrink-0">
                   <img src={img} alt={name} className="w-full h-full" style={{ objectFit: "cover", objectPosition: pos }} />
                 </div>
-                <div className="flex flex-col justify-center px-3 py-2">
+                <div className="flex flex-col justify-center px-4 py-3">
                   <h3 className="font-serif font-bold text-[#1a5c2e] text-sm leading-tight">{name}</h3>
                   <p className="text-gray-500 text-xs font-semibold mt-0.5">{role}</p>
                   <span className="inline-block bg-[#1a5c2e]/10 text-[#1a5c2e] text-xs px-2 py-0.5 rounded-full mt-1.5 w-fit">{d}</span>
