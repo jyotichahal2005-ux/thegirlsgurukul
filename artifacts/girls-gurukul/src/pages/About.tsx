@@ -295,10 +295,9 @@ export default function About() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <SectionHeader badge="Our Team" title="Our Staff" subtitle="Dedicated and qualified educators shaping the future of every student at The Girls Gurukul." />
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
             {[
               { name: "Bharat", role: "PGT Physics", img: "/images/teacher-bharat.webp", pos: "center top" },
-              { name: "Satish", role: "PGT Geography", img: "/images/staff-group-1.png", pos: "50% 25%" },
               { name: "Jangeer Singh", role: "PGT Hindi", img: "/images/teacher-jangeer.webp", pos: "center top" },
               { name: "Nisha Atri", role: "PGT Maths", img: "/images/teacher-nisha-arti.webp", pos: "center top" },
               { name: "Kajal", role: "PGT Chemistry", img: "/images/teacher-kajal.webp", pos: "center top" },
@@ -310,17 +309,16 @@ export default function About() {
               { name: "Tannu", role: "PGT Pol. Science", img: "/images/teacher-tannu.webp", pos: "center top" },
               { name: "Shweta", role: "PRT", img: "/images/teacher-shweta.webp", pos: "center top" },
               { name: "Mamta", role: "PRT", img: "/images/teacher-mamta.webp", pos: "center top" },
-              { name: "Ruma Rana", role: "PRT", img: "/images/staff-group-5.png", pos: "50% 25%" },
               { name: "Neha Rana", role: "PRT", img: "/images/teacher-neha-rana.webp", pos: "center top" },
               { name: "Gourav Bharti", role: "Teacher", img: "/images/teacher-gourav.webp", pos: "center top" },
               { name: "Ranjeet", role: "Teacher", img: "/images/teacher-ranjeet.webp", pos: "center top" },
             ].map(({ name, role, img, pos }, i) => (
               <motion.div key={`${name}-${i}`} custom={i} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
                 className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex card-hover hover:shadow-md transition-all">
-                <div className="w-24 h-32 flex-shrink-0">
+                <div className="w-28 h-36 flex-shrink-0">
                   <img src={img} alt={name} className="w-full h-full" style={{ objectFit: "cover", objectPosition: pos }} />
                 </div>
-                <div className="flex flex-col justify-center px-3 py-2">
+                <div className="flex flex-col justify-center px-4 py-3">
                   <h3 className="font-serif font-bold text-[#1a5c2e] text-sm leading-tight">{name}</h3>
                   <p className="text-gray-400 text-xs mt-1">{role}</p>
                 </div>

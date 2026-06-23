@@ -12,7 +12,6 @@ const departments = ["All", "Science", "Mathematics", "Languages", "Social Studi
 
 const faculty = [
   { name: "Bharat", role: "PGT Physics", dept: "Science", img: "/images/teacher-bharat.webp", pos: "center top" },
-  { name: "Satish", role: "PGT Geography", dept: "Social Studies", img: "/images/staff-group-1.png", pos: "50% 25%" },
   { name: "Jangeer Singh", role: "PGT Hindi", dept: "Languages", img: "/images/teacher-jangeer.webp", pos: "center top" },
   { name: "Nisha Atri", role: "PGT Mathematics", dept: "Mathematics", img: "/images/teacher-nisha-arti.webp", pos: "center top" },
   { name: "Kajal", role: "PGT Chemistry", dept: "Science", img: "/images/teacher-kajal.webp", pos: "center top" },
@@ -24,10 +23,9 @@ const faculty = [
   { name: "Tannu", role: "PGT Political Science", dept: "Social Studies", img: "/images/teacher-tannu.webp", pos: "center top" },
   { name: "Shweta", role: "PRT", dept: "Primary", img: "/images/teacher-shweta.webp", pos: "center top" },
   { name: "Mamta", role: "PRT", dept: "Primary", img: "/images/teacher-mamta.webp", pos: "center top" },
-  { name: "Ruma Rana", role: "PRT", dept: "Primary", img: "/images/staff-group-5.png", pos: "50% 25%" },
   { name: "Neha Rana", role: "PRT", dept: "Primary", img: "/images/teacher-neha-rana.webp", pos: "center top" },
-  { name: "Gourav Bharti", role: "Teacher", dept: "All", img: "/images/teacher-gourav.webp", pos: "center top" },
-  { name: "Ranjeet", role: "Teacher", dept: "All", img: "/images/teacher-ranjeet.webp", pos: "center top" },
+  { name: "Gourav Bharti", role: "Teacher", dept: "Social Studies", img: "/images/teacher-gourav.webp", pos: "center top" },
+  { name: "Ranjeet", role: "Teacher", dept: "Admin", img: "/images/teacher-ranjeet.webp", pos: "center top" },
 ];
 
 export default function Faculty() {

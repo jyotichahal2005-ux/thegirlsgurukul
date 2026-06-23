@@ -61,7 +61,12 @@ const syllabus = [
 ];
 
 function handleDownload(name: string) {
-  alert(`Download starting for: ${name}\n\nNote: This is a demo. In production, the actual file will be downloaded.`);
+  const lower = name.toLowerCase();
+  if (lower.includes("syllabus") || lower.includes("booklist") || lower.includes("book")) {
+    window.open("/syllabus-2026-27.pdf", "_blank");
+  } else {
+    alert(`Document: ${name}\n\nPlease contact the school office to obtain this document.\nPhone: +91-1742-271XXX\nEmail: info@girlsgurukul.edu.in`);
+  }
 }
 
 export default function Documents() {
