@@ -54,10 +54,43 @@ export default function Admissions() {
 
   const [form, setForm] = useState({ name: "", dob: "", class: "", fatherName: "", motherName: "", mobile: "", email: "", address: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setError("");
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/jyotichahal2005@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          _subject: `New Admission Enquiry – ${form.name} (Class ${form.class})`,
+          _captcha: "false",
+          "Student Name": form.name,
+          "Date of Birth": form.dob,
+          "Class Seeking": form.class,
+          "Father's Name": form.fatherName,
+          "Mother's Name": form.motherName,
+          "Mobile Number": form.mobile,
+          "Email": form.email,
+          "Address": form.address,
+          "Message": form.message,
+        }),
+      });
+      const data = await res.json();
+      if (data.success === "true" || data.success === true) {
+        setSubmitted(true);
+        setForm({ name: "", dob: "", class: "", fatherName: "", motherName: "", mobile: "", email: "", address: "", message: "" });
+      } else {
+        setError("Something went wrong. Please call us directly at +91-1742-271XXX.");
+      }
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -241,8 +274,13 @@ export default function Admissions() {
                   <textarea value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Any specific questions or requirements?" rows={3}
                     className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1a5c2e] focus:ring-2 focus:ring-[#1a5c2e]/10 transition-all resize-none" />
                 </div>
-                <Button type="submit" size="lg" className="w-full bg-[#1a5c2e] text-white hover:bg-[#1a5c2e]/90 rounded-xl font-bold py-4">
-                  Submit Enquiry <ArrowRight size={18} className="ml-2" />
+                {error && (
+                  <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-red-600 text-sm flex items-center gap-2">
+                    <AlertCircle size={16} className="flex-shrink-0" /> {error}
+                  </div>
+                )}
+                <Button type="submit" disabled={sending} size="lg" className="w-full bg-[#1a5c2e] text-white hover:bg-[#1a5c2e]/90 rounded-xl font-bold py-4 disabled:opacity-70">
+                  {sending ? "Sending…" : <><span>Submit Enquiry</span><ArrowRight size={18} className="ml-2" /></>}
                 </Button>
                 <p className="text-center text-xs text-gray-400">We will contact you within 24 hours of submission.</p>
               </motion.form>
