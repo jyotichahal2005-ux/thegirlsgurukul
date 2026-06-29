@@ -9,6 +9,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BackToTop from "@/components/BackToTop";
+import ChatBot from "@/components/ChatBot";
 
 import Home from "@/pages/Home";
 import About from "@/pages/About";
@@ -54,6 +55,7 @@ function Router() {
       <Footer />
       <WhatsAppButton />
       <BackToTop />
+      <ChatBot />
     </div>
   );
 }
