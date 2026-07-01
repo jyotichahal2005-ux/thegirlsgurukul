@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Bot, ChevronDown, AlertCircle } from "lucide-react";
+import { Send, Bot, ChevronDown, AlertCircle, Mic, MicOff } from "lucide-react";
 
 interface ChatMessage {
   id: number;
@@ -28,6 +28,13 @@ const WELCOME: ChatMessage = {
 
 let msgId = 1;
 
+declare global {
+  interface Window {
+    SpeechRecognition: typeof SpeechRecognition;
+    webkitSpeechRecognition: typeof SpeechRecognition;
+  }
+}
+
 export default function ChatBot() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([WELCOME]);
@@ -35,8 +42,10 @@ export default function ChatBot() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [listening, setListening] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const recognitionRef = useRef<SpeechRecognition | null>(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -45,6 +54,60 @@ export default function ChatBot() {
   useEffect(() => {
     if (open) setTimeout(() => inputRef.current?.focus(), 300);
   }, [open]);
+
+  useEffect(() => {
+    return () => {
+      recognitionRef.current?.stop();
+    };
+  }, []);
+
+  const startListening = () => {
+    const SpeechRecognitionAPI =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognitionAPI) {
+      setError("Voice input is not supported in your browser.");
+      return;
+    }
+
+    if (listening) {
+      recognitionRef.current?.stop();
+      setListening(false);
+      return;
+    }
+
+    const recognition = new SpeechRecognitionAPI();
+    recognition.lang = "hi-IN";
+    recognition.interimResults = true;
+    recognition.continuous = false;
+
+    recognition.onstart = () => setListening(true);
+
+    recognition.onresult = (event: SpeechRecognitionEvent) => {
+      let transcript = "";
+      for (let i = 0; i < event.results.length; i++) {
+        transcript += event.results[i][0].transcript;
+      }
+      setInput(transcript);
+    };
+
+    recognition.onend = () => {
+      setListening(false);
+      setTimeout(() => {
+        setInput((prev) => {
+          if (prev.trim()) sendMessage(prev);
+          return prev;
+        });
+      }, 300);
+    };
+
+    recognition.onerror = () => {
+      setListening(false);
+      setError("Voice input failed. Please try again.");
+    };
+
+    recognitionRef.current = recognition;
+    recognition.start();
+  };
 
   const sendMessage = async (text: string) => {
     if (!text.trim() || loading) return;
@@ -201,16 +264,33 @@ export default function ChatBot() {
             </div>
 
             {/* Input */}
-            <div className="bg-white border-t border-gray-100 px-3 py-3 flex gap-2 flex-shrink-0">
+            <div className="bg-white border-t border-gray-100 px-3 py-3 flex gap-2 flex-shrink-0 items-center">
               <input
                 ref={inputRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => { if (e.key === "Enter" && !loading) sendMessage(input); }}
-                placeholder="Type your question…"
+                placeholder={listening ? "Listening… speak now 🎙️" : "Type or speak your question…"}
                 disabled={loading}
                 className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#1a5c2e] transition-colors disabled:opacity-60"
               />
+              {/* Mic Button */}
+              <button
+                onClick={startListening}
+                disabled={loading}
+                title={listening ? "Stop listening" : "Speak your question"}
+                className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all flex-shrink-0 disabled:opacity-40 ${
+                  listening
+                    ? "bg-red-500 animate-pulse"
+                    : "bg-gray-100 hover:bg-gray-200"
+                }`}
+              >
+                {listening
+                  ? <MicOff className="text-white w-4 h-4" />
+                  : <Mic className="text-gray-600 w-4 h-4" />
+                }
+              </button>
+              {/* Send Button */}
               <button
                 onClick={() => sendMessage(input)}
                 disabled={!input.trim() || loading}

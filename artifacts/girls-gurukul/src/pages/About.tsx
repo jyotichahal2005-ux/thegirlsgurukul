@@ -262,8 +262,7 @@ export default function About() {
                     <img src="/images/principal-photo.webp" alt="Principal" className="w-full h-full object-cover object-top" />
                   </div>
                   <div className="text-center mt-3">
-                    <p className="font-bold text-[#1a5c2e] text-sm">Mrs. Kavita Sharma</p>
-                    <p className="text-[#ffffff] text-xs">M.Ed., Ph.D.</p>
+                    <p className="font-bold text-[#1a5c2e] text-sm">Bhawna Cholia</p>
                     <p className="text-gray-400 text-xs">Principal</p>
                     <div className="flex justify-center gap-1 mt-1">
                       {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="#ffffff" className="text-[#ffffff]" />)}
@@ -283,7 +282,7 @@ export default function About() {
                   <p className="text-gray-600 leading-relaxed mb-4">
                     I invite every parent and student to partner with us in this journey of learning and growth. Together, we will ensure that every girl at The Girls Gurukul reaches her highest potential.
                   </p>
-                  <p className="text-gray-600 font-semibold">With warm regards,<br />Mrs. Kavita Sharma</p>
+                  <p className="text-gray-600 font-semibold">With warm regards,<br />Bhawna Cholia</p>
                 </div>
               </div>
             </motion.div>

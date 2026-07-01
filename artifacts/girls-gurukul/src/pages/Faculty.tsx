@@ -80,7 +80,8 @@ export default function Faculty() {
               <img src="/images/principal-photo.webp" alt="Principal" className="w-full h-full object-cover object-top" />
             </div>
             <div className="bg-gray-50 px-8 py-6 text-center">
-              <h3 className="font-serif font-bold text-[#1a5c2e] text-xl">Principal</h3>
+              <h3 className="font-serif font-bold text-[#1a5c2e] text-xl">Bhawna Cholia</h3>
+              <p className="text-gray-500 text-sm mt-0.5">Principal</p>
               <p className="text-gray-500 font-semibold text-sm mt-1">The Girls Gurukul, Kalayat</p>
               <span className="inline-block bg-[#1a5c2e]/10 text-[#1a5c2e] text-xs px-3 py-1 rounded-full mt-2">School Leadership</span>
             </div>
