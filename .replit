@@ -30,3 +30,8 @@ externalPort = 80
 [[ports]]
 localPort = 8081
 externalPort = 8081
+
+[userenv]
+
+[userenv.shared]
+GROK_API_KEY = "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"

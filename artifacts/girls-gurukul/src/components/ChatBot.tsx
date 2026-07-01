@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Send, Bot, ChevronDown } from "lucide-react";
+import { Send, Bot, ChevronDown, AlertCircle } from "lucide-react";
 
-interface Message {
+interface ChatMessage {
   id: number;
   from: "bot" | "user";
   text: string;
@@ -19,124 +19,10 @@ const QUICK_TOPICS = [
   "Facilities",
 ];
 
-function getBotReply(input: string): { text: string; quickReplies?: string[] } {
-  const msg = input.toLowerCase();
-
-  if (msg.includes("hello") || msg.includes("hi") || msg.includes("namaste") || msg.includes("helo")) {
-    return {
-      text: "Namaste! 🙏 Welcome to The Girls Gurukul, Kalayat. I'm here to help you with admissions, fees, timings, and more. What would you like to know?",
-      quickReplies: QUICK_TOPICS,
-    };
-  }
-
-  if (msg.includes("admission") || msg.includes("apply") || msg.includes("enroll") || msg.includes("dakhila")) {
-    return {
-      text: "📋 Admissions are open for 2026-27!\n\n✅ Classes: Nursery to Class XII\n✅ CBSE Affiliated\n\nProcess:\n1. Collect / download admission form\n2. Fill and submit with documents\n3. Entrance test (Class VI onwards)\n4. Pay fee and confirm admission\n\nFor more info, visit our Admissions page or call +91-1742-271XXX.",
-      quickReplies: ["Documents Required", "Eligibility Criteria", "Fee Structure", "Contact Info"],
-    };
-  }
-
-  if (msg.includes("eligib") || msg.includes("age") || msg.includes("criteria")) {
-    return {
-      text: "📚 Eligibility by Class:\n\n• Nursery/LKG: 3–4 years\n• Class I–V: 6–11 years (TC required)\n• Class VI–VIII: 11–14 years (Entrance test)\n• Class IX: 14–15 years (Min 50% in Class VIII)\n• Class XI Science: Min 60% in Class X\n• Class XI Commerce: Min 50% in Class X",
-      quickReplies: ["Documents Required", "Admission Process", "Fee Structure"],
-    };
-  }
-
-  if (msg.includes("document") || msg.includes("kagaz") || msg.includes("required")) {
-    return {
-      text: "📁 Documents Required for Admission:\n\n• Birth Certificate\n• Aadhaar Card (student + parents)\n• Transfer Certificate (TC)\n• Previous class marksheet\n• 4 passport-size photographs\n• Residence proof\n• Caste certificate (if applicable)\n• Income certificate (for scholarship)",
-      quickReplies: ["Admission Process", "Fee Structure", "Contact Info"],
-    };
-  }
-
-  if (msg.includes("fee") || msg.includes("faida") || msg.includes("payment") || msg.includes("cost") || msg.includes("kitna") || msg.includes("charge")) {
-    return {
-      text: "💰 Fee Structure Overview:\n\n• Admission Fee: One-time at the time of joining\n• Tuition Fee: Monthly / Quarterly\n• Annual charges: Exam, Sports, Library, Misc.\n\nFee is payable by:\n💵 Cash at school office\n📱 UPI / Online transfer\n\nFor exact class-wise fees, please visit our Fee Structure page or contact the school office.",
-      quickReplies: ["Contact Info", "Admission Process", "School Timing"],
-    };
-  }
-
-  if (msg.includes("timing") || msg.includes("time") || msg.includes("hour") || msg.includes("samay") || msg.includes("schedule")) {
-    return {
-      text: "🕗 School Timings:\n\n🌅 School Hours: 8:00 AM – 2:30 PM\n🏢 Office Hours: 9:00 AM – 4:00 PM\n📅 Days: Monday to Saturday\n\n🚌 School bus facility available for nearby villages.\n\nFor holiday schedule, check our Documents page.",
-      quickReplies: ["Contact Info", "Facilities", "Courses Offered"],
-    };
-  }
-
-  if (msg.includes("contact") || msg.includes("phone") || msg.includes("address") || msg.includes("location") || msg.includes("where") || msg.includes("kahan")) {
-    return {
-      text: "📍 Contact Information:\n\n🏫 The Girls Gurukul\nKalayat, Kaithal District\nHaryana – 136027\n\n📞 Phone: +91-1742-271XXX\n📧 Email: info@girlsgurukul.edu.in\n\n🕐 Office Hours: Mon–Sat, 9 AM – 4 PM\n\nYou can also fill the Contact form on our website!",
-      quickReplies: ["School Timing", "Admission Process", "Facilities"],
-    };
-  }
-
-  if (msg.includes("course") || msg.includes("stream") || msg.includes("subject") || msg.includes("class") || msg.includes("विषय")) {
-    return {
-      text: "📚 Courses & Streams Offered:\n\n🔹 Pre-Primary: Nursery, LKG, UKG\n🔹 Primary: Class I – V\n🔹 Middle: Class VI – VIII\n🔹 Secondary: Class IX – X (CBSE)\n🔹 Sr. Secondary:\n   • Science (PCM / PCB)\n   • Commerce (with Maths)\n\nAll CBSE aligned curriculum.",
-      quickReplies: ["Admission Process", "Fee Structure", "Facilities"],
-    };
-  }
-
-  if (msg.includes("facilit") || msg.includes("lab") || msg.includes("library") || msg.includes("sport") || msg.includes("khel") || msg.includes("infrastructure")) {
-    return {
-      text: "🏫 World-Class Facilities:\n\n🔬 Physics, Chemistry & Biology Labs\n💻 Computer Lab (100+ systems)\n📚 Library (15,000+ books)\n🏹 Archery Range\n⚽ Multi-Sports Ground\n🎨 Art Studio & Music Room\n🍽️ Hygienic Cafeteria\n🖥️ Smart Classrooms\n🚌 School Bus Service",
-      quickReplies: ["Courses Offered", "School Timing", "Contact Info"],
-    };
-  }
-
-  if (msg.includes("result") || msg.includes("board") || msg.includes("pass") || msg.includes("cbse")) {
-    return {
-      text: "🏆 Academic Results:\n\n✅ 100% pass rate in CBSE Board exams (10 consecutive years)\n🥇 District Topper in Kaithal – 2024\n🎖️ Best Girls School award – Haryana Govt 2023\n\nOur students have gone on to top colleges across India!",
-      quickReplies: ["Courses Offered", "Admission Process", "Facilities"],
-    };
-  }
-
-  if (msg.includes("principal") || msg.includes("teacher") || msg.includes("faculty") || msg.includes("staff")) {
-    return {
-      text: "👩‍🏫 Our Faculty:\n\n• Experienced and highly qualified teaching staff\n• All teachers B.Ed. trained\n• 12+ years average experience\n• Departments: Science, Maths, Languages, Social Studies, Arts, Sports\n\nVisit our Faculty page to meet the team!",
-      quickReplies: ["Courses Offered", "Facilities", "Contact Info"],
-    };
-  }
-
-  if (msg.includes("transport") || msg.includes("bus") || msg.includes("pick") || msg.includes("drop")) {
-    return {
-      text: "🚌 Transport Facility:\n\nSchool bus service is available for students from nearby villages and areas.\n\nFor bus routes and timings, please contact the school office:\n📞 +91-1742-271XXX",
-      quickReplies: ["School Timing", "Contact Info", "Fee Structure"],
-    };
-  }
-
-  if (msg.includes("uniform") || msg.includes("dress")) {
-    return {
-      text: "👗 School Uniform:\n\nThe school has a prescribed uniform for all students. Details about the uniform are provided at the time of admission confirmation.\n\nFor more info, contact the school office:\n📞 +91-1742-271XXX",
-      quickReplies: ["Admission Process", "Contact Info"],
-    };
-  }
-
-  if (msg.includes("scholarship") || msg.includes("concession") || msg.includes("discount") || msg.includes("छात्रव")) {
-    return {
-      text: "🎓 Scholarships & Fee Concessions:\n\n• Sibling Discount: 10% on 2nd child\n• Merit Scholarship: Top performers\n• SC/ST Concession: As per Govt norms\n• Single Parent: Special consideration\n• Sports Excellence: Fee waiver available\n\nFor details, visit our Fee Structure page.",
-      quickReplies: ["Fee Structure", "Admission Process", "Contact Info"],
-    };
-  }
-
-  if (msg.includes("thank") || msg.includes("shukriya") || msg.includes("dhanyawad") || msg.includes("ok") || msg.includes("okay") || msg.includes("great") || msg.includes("good")) {
-    return {
-      text: "You're welcome! 😊 Is there anything else I can help you with? Feel free to ask anytime!\n\nFor any other queries, call us at +91-1742-271XXX or visit the school.",
-      quickReplies: QUICK_TOPICS.slice(0, 4),
-    };
-  }
-
-  return {
-    text: "I'm not sure I understood that. 😊 Here are some topics I can help you with:",
-    quickReplies: QUICK_TOPICS,
-  };
-}
-
-const WELCOME: Message = {
+const WELCOME: ChatMessage = {
   id: 0,
   from: "bot",
-  text: "Namaste! 🙏 I'm the Girls Gurukul Assistant.\n\nI can help you with admissions, fees, timings, and more. What would you like to know?",
+  text: "Namaste! 🙏 I'm the Girls Gurukul AI Assistant.\n\nI can help you with admissions, fees, timings, facilities and more. What would you like to know?",
   quickReplies: QUICK_TOPICS,
 };
 
@@ -144,26 +30,65 @@ let msgId = 1;
 
 export default function ChatBot() {
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([WELCOME]);
+  const [messages, setMessages] = useState<ChatMessage[]>([WELCOME]);
+  const [history, setHistory] = useState<{ role: string; content: string }[]>([]);
   const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, open]);
+  }, [messages, loading, open]);
 
   useEffect(() => {
     if (open) setTimeout(() => inputRef.current?.focus(), 300);
   }, [open]);
 
-  const sendMessage = (text: string) => {
-    if (!text.trim()) return;
-    const userMsg: Message = { id: msgId++, from: "user", text: text.trim() };
-    const reply = getBotReply(text.trim());
-    const botMsg: Message = { id: msgId++, from: "bot", ...reply };
-    setMessages((prev) => [...prev, userMsg, botMsg]);
+  const sendMessage = async (text: string) => {
+    if (!text.trim() || loading) return;
+    setError(null);
+
+    const userMsg: ChatMessage = { id: msgId++, from: "user", text: text.trim() };
+    setMessages((prev) => [...prev, userMsg]);
     setInput("");
+    setLoading(true);
+
+    const newHistory = [...history, { role: "user", content: text.trim() }];
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: newHistory }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error ?? `Server error ${res.status}`);
+      }
+
+      const data = await res.json() as { reply: string };
+      const botMsg: ChatMessage = {
+        id: msgId++,
+        from: "bot",
+        text: data.reply,
+        quickReplies: QUICK_TOPICS.slice(0, 4),
+      };
+      setMessages((prev) => [...prev, botMsg]);
+      setHistory([...newHistory, { role: "assistant", content: data.reply }]);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Something went wrong";
+      setError(msg);
+      setMessages((prev) => [...prev, {
+        id: msgId++,
+        from: "bot",
+        text: "Sorry, I'm having trouble connecting right now. Please try again or call us at +91-1742-271XXX. 🙏",
+      }]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -178,7 +103,7 @@ export default function ChatBot() {
               exit={{ scale: 0, opacity: 0 }}
               onClick={() => setOpen(true)}
               className="w-14 h-14 bg-[#1a5c2e] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform relative"
-              title="Chat with us"
+              title="Chat with AI Assistant"
             >
               <Bot className="text-white w-7 h-7" />
               <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#d4a017] rounded-full animate-pulse border-2 border-white" />
@@ -204,10 +129,10 @@ export default function ChatBot() {
                 <Bot className="text-white w-5 h-5" />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-white font-bold text-sm leading-tight">Gurukul Assistant</p>
+                <p className="text-white font-bold text-sm leading-tight">Gurukul AI Assistant</p>
                 <p className="text-white/70 text-xs flex items-center gap-1">
                   <span className="w-1.5 h-1.5 bg-green-400 rounded-full inline-block" />
-                  Online – Ask me anything!
+                  Powered by AI — Ask me anything!
                 </p>
               </div>
               <button onClick={() => setOpen(false)} className="text-white/70 hover:text-white transition-colors flex-shrink-0">
@@ -235,8 +160,12 @@ export default function ChatBot() {
                     {msg.quickReplies && msg.quickReplies.length > 0 && (
                       <div className="flex flex-wrap gap-1.5 mt-2">
                         {msg.quickReplies.map((qr) => (
-                          <button key={qr} onClick={() => sendMessage(qr)}
-                            className="text-xs bg-white border border-[#1a5c2e]/30 text-[#1a5c2e] px-3 py-1.5 rounded-full hover:bg-[#1a5c2e] hover:text-white transition-all font-semibold shadow-sm">
+                          <button
+                            key={qr}
+                            onClick={() => sendMessage(qr)}
+                            disabled={loading}
+                            className="text-xs bg-white border border-[#1a5c2e]/30 text-[#1a5c2e] px-3 py-1.5 rounded-full hover:bg-[#1a5c2e] hover:text-white transition-all font-semibold shadow-sm disabled:opacity-50"
+                          >
                             {qr}
                           </button>
                         ))}
@@ -245,6 +174,29 @@ export default function ChatBot() {
                   </div>
                 </div>
               ))}
+
+              {/* Loading indicator */}
+              {loading && (
+                <div className="flex justify-start">
+                  <div className="w-7 h-7 bg-[#1a5c2e] rounded-full flex items-center justify-center flex-shrink-0 mr-2 mt-1">
+                    <Bot className="text-white w-3.5 h-3.5" />
+                  </div>
+                  <div className="bg-white border border-gray-100 rounded-2xl rounded-bl-sm px-4 py-3 shadow-sm flex items-center gap-1.5">
+                    <span className="w-2 h-2 bg-[#1a5c2e]/50 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+                    <span className="w-2 h-2 bg-[#1a5c2e]/50 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+                    <span className="w-2 h-2 bg-[#1a5c2e]/50 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                  </div>
+                </div>
+              )}
+
+              {/* Error banner */}
+              {error && (
+                <div className="flex items-center gap-2 bg-red-50 border border-red-200 rounded-xl px-3 py-2 text-red-600 text-xs">
+                  <AlertCircle size={12} className="flex-shrink-0" />
+                  {error}
+                </div>
+              )}
+
               <div ref={bottomRef} />
             </div>
 
@@ -254,13 +206,14 @@ export default function ChatBot() {
                 ref={inputRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => { if (e.key === "Enter") sendMessage(input); }}
+                onKeyDown={(e) => { if (e.key === "Enter" && !loading) sendMessage(input); }}
                 placeholder="Type your question…"
-                className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#1a5c2e] transition-colors"
+                disabled={loading}
+                className="flex-1 bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#1a5c2e] transition-colors disabled:opacity-60"
               />
               <button
                 onClick={() => sendMessage(input)}
-                disabled={!input.trim()}
+                disabled={!input.trim() || loading}
                 className="w-10 h-10 bg-[#1a5c2e] rounded-xl flex items-center justify-center hover:bg-[#1a5c2e]/90 transition-colors disabled:opacity-40 flex-shrink-0"
               >
                 <Send className="text-white w-4 h-4" />
