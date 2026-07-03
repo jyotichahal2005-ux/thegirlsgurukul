@@ -217,13 +217,13 @@ export default function ChatBot() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0, opacity: 0 }}
               onClick={() => setOpen(true)}
-              className="w-16 h-16 rounded-full shadow-2xl hover:scale-110 transition-transform relative bg-white overflow-hidden"
+              className="w-16 h-16 hover:scale-110 transition-transform relative bg-transparent"
               title="Chat with AI Assistant"
             >
               <img
-                src="/images/chatbot-robot.jpg"
+                src="/images/chatbot-robot.png"
                 alt="AI Assistant"
-                className="w-full h-full object-cover rounded-full"
+                className="w-full h-full object-contain drop-shadow-lg"
               />
               <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#d4a017] rounded-full animate-pulse border-2 border-white" />
             </motion.button>
