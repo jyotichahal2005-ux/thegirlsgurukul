@@ -1,4 +1,4 @@
-modules = ["nodejs-24", "python-3.11"]
+modules = ["nodejs-20", "web", "bash"]
 
 [deployment]
 router = "application"
@@ -74,3 +74,6 @@ externalPort = 8081
 GROK_API_KEY = "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"
 GMAIL_USER = "jyotichahal2005@gmail.com"
 PORT = "8080"
+
+[nix]
+channel = "stable-25_05"

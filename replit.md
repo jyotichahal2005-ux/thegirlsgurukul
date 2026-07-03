@@ -5,7 +5,7 @@ A premium, fully responsive school website for "The Girls Gurukul, Kalayat (Hary
 ## Run & Operate
 
 - `pnpm --filter @workspace/girls-gurukul run dev` — run the school website (port 5173)
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/api-server run dev` — run the API server (port 8080)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 
@@ -15,7 +15,11 @@ A premium, fully responsive school website for "The Girls Gurukul, Kalayat (Hary
 - Frontend: React + Vite + Tailwind CSS v4 + shadcn/ui + wouter routing
 - Animations: Framer Motion
 - Icons: Lucide React + React Icons (react-icons/si)
-- No backend — frontend-only presentation site
+- Backend: Express 5 + Drizzle ORM + Groq SDK (AI chatbot) + Nodemailer
+
+## Secrets required
+
+- `GROQ_API_KEY` — required for the AI chatbot (`/api/chat`). Get a free key at console.groq.com and add it as a Replit secret.
 
 ## Where things live
 
