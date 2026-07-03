@@ -39,11 +39,32 @@ export default function Contact() {
 
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSubmitted(true);
+        setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+      } else {
+        setError(data.error ?? "Something went wrong. Please call us directly.");
+      }
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -187,8 +208,13 @@ export default function Contact() {
                     <textarea required value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Write your message here..." rows={4}
                       className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#1a5c2e] focus:ring-2 focus:ring-[#1a5c2e]/10 transition-all resize-none" />
                   </div>
-                  <Button type="submit" size="lg" className="w-full bg-[#1a5c2e] text-white hover:bg-[#1a5c2e]/90 rounded-xl font-bold">
-                    Send Message <ArrowRight size={16} className="ml-2" />
+                  {error && (
+                    <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-red-600 text-sm flex items-center gap-2">
+                      <MessageCircle size={16} className="flex-shrink-0" /> {error}
+                    </div>
+                  )}
+                  <Button type="submit" disabled={sending} size="lg" className="w-full bg-[#1a5c2e] text-white hover:bg-[#1a5c2e]/90 rounded-xl font-bold disabled:opacity-70">
+                    {sending ? "Sending…" : <><span>Send Message</span><ArrowRight size={16} className="ml-2" /></>}
                   </Button>
                 </form>
               )}
