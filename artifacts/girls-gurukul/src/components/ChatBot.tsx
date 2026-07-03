@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Bot, ChevronDown, AlertCircle, Mic, MicOff } from "lucide-react";
+import { Send, Bot, ChevronDown, AlertCircle, Mic, MicOff, Volume2, VolumeX } from "lucide-react";
 
 interface ChatMessage {
   id: number;
@@ -43,9 +43,12 @@ export default function ChatBot() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [listening, setListening] = useState(false);
+  const [voiceEnabled, setVoiceEnabled] = useState(true);
+  const [speaking, setSpeaking] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const recognitionRef = useRef<SpeechRecognition | null>(null);
+  const voicesRef = useRef<SpeechSynthesisVoice[]>([]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -55,11 +58,59 @@ export default function ChatBot() {
     if (open) setTimeout(() => inputRef.current?.focus(), 300);
   }, [open]);
 
+  // Load voices into ref (browsers load voices asynchronously)
+  useEffect(() => {
+    const synth = window.speechSynthesis;
+    if (!synth) return;
+    const load = () => { voicesRef.current = synth.getVoices(); };
+    load();
+    synth.addEventListener("voiceschanged", load);
+    return () => synth.removeEventListener("voiceschanged", load);
+  }, []);
+
   useEffect(() => {
     return () => {
       recognitionRef.current?.stop();
+      window.speechSynthesis?.cancel();
+      setSpeaking(false);
     };
   }, []);
+
+  // Stop speaking when chat is closed
+  useEffect(() => {
+    if (!open) { window.speechSynthesis?.cancel(); setSpeaking(false); }
+  }, [open]);
+
+  const speak = useCallback((text: string) => {
+    if (!voiceEnabled || !window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    setSpeaking(false);
+
+    // Strip emojis & normalise newlines for cleaner speech
+    const clean = text.replace(/[\u{1F300}-\u{1FAFF}]/gu, "").replace(/\n+/g, ". ").trim();
+    if (!clean) return;
+
+    const utterance = new SpeechSynthesisUtterance(clean);
+
+    // Use cached voices (populated via voiceschanged listener)
+    const voices = voicesRef.current.length ? voicesRef.current : window.speechSynthesis.getVoices();
+    const hindiVoice = voices.find((v) => v.lang.startsWith("hi"));
+    const indianEnglish = voices.find((v) => v.lang === "en-IN");
+    const anyEnglish = voices.find((v) => v.lang.startsWith("en"));
+    const selected = hindiVoice ?? indianEnglish ?? anyEnglish ?? null;
+    utterance.voice = selected;
+    // Set lang from the chosen voice so browser doesn't mis-route phonemes
+    utterance.lang = selected?.lang ?? "en-IN";
+    utterance.rate = 0.92;
+    utterance.pitch = 1.05;
+    utterance.volume = 1;
+
+    utterance.onstart = () => setSpeaking(true);
+    utterance.onend = () => setSpeaking(false);
+    utterance.onerror = () => setSpeaking(false);
+
+    window.speechSynthesis.speak(utterance);
+  }, [voiceEnabled]);
 
   const startListening = () => {
     const SpeechRecognitionAPI =
@@ -141,6 +192,7 @@ export default function ChatBot() {
       };
       setMessages((prev) => [...prev, botMsg]);
       setHistory([...newHistory, { role: "assistant", content: data.reply }]);
+      speak(data.reply);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Something went wrong";
       setError(msg);
@@ -198,6 +250,16 @@ export default function ChatBot() {
                   Powered by AI — Ask me anything!
                 </p>
               </div>
+              <button
+                onClick={() => { setVoiceEnabled((v) => !v); window.speechSynthesis?.cancel(); setSpeaking(false); }}
+                title={voiceEnabled ? "Turn off voice" : "Turn on voice"}
+                className="text-white/70 hover:text-white transition-colors flex-shrink-0 mr-1"
+              >
+                {voiceEnabled
+                  ? <Volume2 size={18} className={speaking ? "text-green-300 animate-pulse" : ""} />
+                  : <VolumeX size={18} />
+                }
+              </button>
               <button onClick={() => setOpen(false)} className="text-white/70 hover:text-white transition-colors flex-shrink-0">
                 <ChevronDown size={22} />
               </button>
