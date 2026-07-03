@@ -266,8 +266,8 @@ export default function ChatBot() {
               {messages.map((msg) => (
                 <div key={msg.id} className={`flex ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
                   {msg.from === "bot" && (
-                    <div className="w-7 h-7 bg-[#1a5c2e] rounded-full flex items-center justify-center flex-shrink-0 mr-2 mt-1 shadow-sm">
-                      <Bot className="text-white w-3.5 h-3.5" />
+                    <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 mr-2 mt-1 shadow-sm overflow-hidden bg-white">
+                      <img src="/images/chatbot-robot.png" alt="AI" className="w-full h-full object-contain" />
                     </div>
                   )}
                   <div className="max-w-[85%]">
