@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Bot, ChevronDown, AlertCircle, Mic, MicOff, Volume2, VolumeX } from "lucide-react";
+import { Send, ChevronDown, AlertCircle, Mic, MicOff, Volume2, VolumeX } from "lucide-react";
 
 interface ChatMessage {
   id: number;
@@ -48,7 +48,7 @@ export default function ChatBot() {
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const recognitionRef = useRef<SpeechRecognition | null>(null);
-  const voicesRef = useRef<SpeechSynthesisVoice[]>([]);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -58,58 +58,50 @@ export default function ChatBot() {
     if (open) setTimeout(() => inputRef.current?.focus(), 300);
   }, [open]);
 
-  // Load voices into ref (browsers load voices asynchronously)
-  useEffect(() => {
-    const synth = window.speechSynthesis;
-    if (!synth) return;
-    const load = () => { voicesRef.current = synth.getVoices(); };
-    load();
-    synth.addEventListener("voiceschanged", load);
-    return () => synth.removeEventListener("voiceschanged", load);
-  }, []);
-
   useEffect(() => {
     return () => {
       recognitionRef.current?.stop();
-      window.speechSynthesis?.cancel();
+      audioRef.current?.pause();
       setSpeaking(false);
     };
   }, []);
 
-  // Stop speaking when chat is closed
+  // Stop audio when chat is closed
   useEffect(() => {
-    if (!open) { window.speechSynthesis?.cancel(); setSpeaking(false); }
+    if (!open) { audioRef.current?.pause(); setSpeaking(false); }
   }, [open]);
 
-  const speak = useCallback((text: string) => {
-    if (!voiceEnabled || !window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
+  const speak = useCallback(async (text: string) => {
+    if (!voiceEnabled) return;
+    // Stop any currently playing audio
+    if (audioRef.current) { audioRef.current.pause(); audioRef.current = null; }
     setSpeaking(false);
 
     // Strip emojis & normalise newlines for cleaner speech
     const clean = text.replace(/[\u{1F300}-\u{1FAFF}]/gu, "").replace(/\n+/g, ". ").trim();
     if (!clean) return;
 
-    const utterance = new SpeechSynthesisUtterance(clean);
+    try {
+      const res = await fetch("/api/tts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: clean }),
+      });
+      if (!res.ok) return;
 
-    // Use cached voices (populated via voiceschanged listener)
-    const voices = voicesRef.current.length ? voicesRef.current : window.speechSynthesis.getVoices();
-    const hindiVoice = voices.find((v) => v.lang.startsWith("hi"));
-    const indianEnglish = voices.find((v) => v.lang === "en-IN");
-    const anyEnglish = voices.find((v) => v.lang.startsWith("en"));
-    const selected = hindiVoice ?? indianEnglish ?? anyEnglish ?? null;
-    utterance.voice = selected;
-    // Set lang from the chosen voice so browser doesn't mis-route phonemes
-    utterance.lang = selected?.lang ?? "en-IN";
-    utterance.rate = 0.92;
-    utterance.pitch = 1.05;
-    utterance.volume = 1;
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const audio = new Audio(url);
+      audioRef.current = audio;
 
-    utterance.onstart = () => setSpeaking(true);
-    utterance.onend = () => setSpeaking(false);
-    utterance.onerror = () => setSpeaking(false);
+      audio.onplay = () => setSpeaking(true);
+      audio.onended = () => { setSpeaking(false); URL.revokeObjectURL(url); };
+      audio.onerror = () => { setSpeaking(false); URL.revokeObjectURL(url); };
 
-    window.speechSynthesis.speak(utterance);
+      await audio.play();
+    } catch {
+      setSpeaking(false);
+    }
   }, [voiceEnabled]);
 
   const startListening = () => {
@@ -244,8 +236,8 @@ export default function ChatBot() {
           >
             {/* Header */}
             <div className="bg-[#1a5c2e] px-5 py-4 flex items-center gap-3 flex-shrink-0">
-              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                <Bot className="text-white w-5 h-5" />
+              <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden bg-white/10">
+                <img src="/images/chatbot-robot.png" alt="AI" className="w-full h-full object-contain" />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-white font-bold text-sm leading-tight">Gurukul AI Assistant</p>
