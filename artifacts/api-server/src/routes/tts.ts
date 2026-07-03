@@ -32,7 +32,7 @@ router.post("/tts", async (req, res) => {
         transcript: text,
         voice: {
           mode: "id",
-          id: "a0e99841-438c-4a64-b679-ae501e7d6091",
+          id: "910fb75e-1d20-4840-ac63-ac6b26a71bdc",
         },
         output_format: {
           container: "mp3",
