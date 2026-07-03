@@ -28,7 +28,7 @@ router.post("/tts", async (req, res) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model_id: "sonic-2",
+        model_id: "sonic-preview",
         transcript: text,
         voice: {
           mode: "id",

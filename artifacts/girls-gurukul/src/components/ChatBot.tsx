@@ -299,8 +299,8 @@ export default function ChatBot() {
               {/* Loading indicator */}
               {loading && (
                 <div className="flex justify-start">
-                  <div className="w-7 h-7 bg-[#1a5c2e] rounded-full flex items-center justify-center flex-shrink-0 mr-2 mt-1">
-                    <Bot className="text-white w-3.5 h-3.5" />
+                  <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 mr-2 mt-1 overflow-hidden bg-white shadow-sm">
+                    <img src="/images/chatbot-robot.png" alt="AI" className="w-full h-full object-contain" />
                   </div>
                   <div className="bg-white border border-gray-100 rounded-2xl rounded-bl-sm px-4 py-3 shadow-sm flex items-center gap-1.5">
                     <span className="w-2 h-2 bg-[#1a5c2e]/50 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
