@@ -62,29 +62,27 @@ export default function Admissions() {
     setSending(true);
     setError("");
     try {
-      const res = await fetch("https://formsubmit.co/ajax/jyotichahal2005@gmail.com", {
+      const res = await fetch("/api/admission", {
         method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          _subject: `New Admission Enquiry – ${form.name} (Class ${form.class})`,
-          _captcha: "false",
-          "Student Name": form.name,
-          "Date of Birth": form.dob,
-          "Class Seeking": form.class,
-          "Father's Name": form.fatherName,
-          "Mother's Name": form.motherName,
-          "Mobile Number": form.mobile,
-          "Email": form.email,
-          "Address": form.address,
-          "Message": form.message,
+          name: form.name,
+          dob: form.dob,
+          cls: form.class,
+          fatherName: form.fatherName,
+          motherName: form.motherName,
+          mobile: form.mobile,
+          email: form.email,
+          address: form.address,
+          message: form.message,
         }),
       });
       const data = await res.json();
-      if (data.success === "true" || data.success === true) {
+      if (data.success) {
         setSubmitted(true);
         setForm({ name: "", dob: "", class: "", fatherName: "", motherName: "", mobile: "", email: "", address: "", message: "" });
       } else {
-        setError("Something went wrong. Please call us directly at +91-1742-271XXX.");
+        setError(data.error ?? "Something went wrong. Please call us directly at +91-1742-271XXX.");
       }
     } catch {
       setError("Network error. Please check your connection and try again.");
