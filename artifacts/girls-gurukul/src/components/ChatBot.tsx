@@ -97,8 +97,16 @@ export default function ChatBot() {
     if (audioRef.current) { audioRef.current.pause(); audioRef.current = null; }
     setSpeaking(false);
 
-    // Strip emojis & normalise newlines for cleaner speech
-    const clean = text.replace(/[\u{1F300}-\u{1FAFF}]/gu, "").replace(/\n+/g, ". ").trim();
+    // Strip emojis, markdown symbols, phone placeholders & normalise for clean speech
+    const clean = text
+      .replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}\u{2300}-\u{23FF}]/gu, "") // all emojis
+      .replace(/[*_~`#]/g, "")                        // markdown bold/italic/code
+      .replace(/\+91[-\s]?[\dX\-]+/g, "")             // phone numbers
+      .replace(/[-]{2,}/g, " ")                        // repeated dashes
+      .replace(/\n{2,}/g, ". ")                        // blank lines → pause
+      .replace(/\n/g, ", ")                            // single newline → comma pause
+      .replace(/\s{2,}/g, " ")                         // collapse spaces
+      .trim();
     if (!clean) return;
 
     try {

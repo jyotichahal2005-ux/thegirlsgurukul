@@ -68,7 +68,7 @@ router.post("/chat", async (req, res) => {
           content: m.content,
         })),
       ],
-      max_tokens: 512,
+      max_tokens: 180,
       temperature: 0.7,
     });
 
