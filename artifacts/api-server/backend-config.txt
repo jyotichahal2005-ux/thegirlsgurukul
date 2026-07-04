@@ -1,0 +1,45 @@
+# ============================================================
+#  The Girls Gurukul — Backend Configuration
+#  Ye file leke dusri jagah .env file banao
+#  ⚠️  Kisi ke sath share mat karo (API keys private hain)
+# ============================================================
+
+# Jab nayi jagah project move karo, tab neeche ki values
+# copy karke ek nayi .env file banao aur Replit Secrets mein daalo.
+
+# ── Gmail (Contact Form & Admissions Email) ──────────────────
+GMAIL_USER=jyotichahal2005@gmail.com
+
+# Gmail App Password (Replit Secret mein save hai)
+# Google Account → Security → App Passwords se naya banao
+# Ya apna purana App Password yahan note karo:
+GMAIL_APP_PASSWORD=<Replit Secret se copy karo>
+
+# ── Groq API (AI Chatbot) ─────────────────────────────────────
+# Free API key: https://console.groq.com
+GROQ_API_KEY=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
+
+# ── Cartesia API (Chatbot Voice) ─────────────────────────────
+# API key: https://play.cartesia.ai → Dashboard → API Keys
+CARTESIA_API_KEY=<Replit Secret se copy karo>
+
+# ── Session Secret ────────────────────────────────────────────
+# Koi bhi lamba random string chalega
+SESSION_SECRET=<Replit Secret se copy karo>
+
+# ── Server Port ───────────────────────────────────────────────
+PORT=8080
+
+# ============================================================
+#  NAYI REPLIT ACCOUNT MEIN KAISE SETUP KAREIN:
+# ============================================================
+#  1. Project fork ya upload karo
+#  2. Replit ke "Secrets" tab mein ye 3 secrets daalo:
+#       - GMAIL_APP_PASSWORD
+#       - CARTESIA_API_KEY
+#       - SESSION_SECRET
+#  3. Replit ke "Environment Variables" mein ye daalo:
+#       - GMAIL_USER  = jyotichahal2005@gmail.com
+#       - GROQ_API_KEY = gsk_jJOXh2jq....(upar wali value)
+#  4. Workflows restart karo — sab kaam karega!
+# ============================================================
