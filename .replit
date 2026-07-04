@@ -71,9 +71,9 @@ externalPort = 8081
 [userenv]
 
 [userenv.shared]
-GROK_API_KEY = "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"
 GMAIL_USER = "jyotichahal2005@gmail.com"
 PORT = "8080"
+GROQ_API_KEY = "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"
 
 [nix]
 channel = "stable-25_05"
