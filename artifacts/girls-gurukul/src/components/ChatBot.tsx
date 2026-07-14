@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, ChevronDown, AlertCircle, Mic, MicOff, Volume2, VolumeX, Map, X } from "lucide-react";
 import { useLocation } from "wouter";
+import { API_BASE_URL } from "@/lib/api";
 
 interface ChatMessage {
   id: number;
@@ -164,7 +165,7 @@ export default function ChatBot() {
     if (!clean) return Promise.resolve();
 
     return new Promise((resolve) => {
-      fetch("/api/tts", {
+      fetch(`${API_BASE_URL}/api/tts`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: clean }),
@@ -327,7 +328,7 @@ export default function ChatBot() {
     const newHistory = [...history, { role: "user", content: text.trim() }];
 
     try {
-      const res = await fetch("/api/chat", {
+      const res = await fetch(`${API_BASE_URL}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: newHistory }),

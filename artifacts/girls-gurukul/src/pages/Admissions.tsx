@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { CheckCircle, FileText, Calendar, ChevronRight, ArrowRight, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SectionHeader from "@/components/SectionHeader";
+import { API_BASE_URL } from "@/lib/api";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -62,7 +63,7 @@ export default function Admissions() {
     setSending(true);
     setError("");
     try {
-      const res = await fetch("/api/admission", {
+      const res = await fetch(`${API_BASE_URL}/api/admission`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
