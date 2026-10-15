@@ -2,7 +2,7 @@
 
 A fully responsive school website for The Girls Gurukul, Kalayat, Kaithal (Haryana), with modern design and AI-generated imagery.
 
-![screenshot](IMAGE-LINK)
+<img src="https://github.com/user-attachments/assets/9a1d49d3-b413-42f4-b734-9e81787c620c" alt="The Girls Gurukul" width="100%" />
 
 ## ✨ Features
 - Fully responsive design (mobile, tablet, laptop)
